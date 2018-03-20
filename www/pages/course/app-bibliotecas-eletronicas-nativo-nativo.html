@@ -1,0 +1,189 @@
+
+<div class="page" data-name="bibliotecas-eletronicas-nativo-nativo">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Voltar</span>
+                </a>
+            </div>
+            <div class="title">bibliotecas-eletronicas-nativo-nativo</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block">
+			
+<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bibliotecas Eletrônicas - Nativo Nativo</font></font></h1>
+
+
+
+
+
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilizamos um módulo de nodejs, fs, no capítulo anterior. </font><font style="vertical-align: inherit;">Vamos agora olhar para alguns outros módulos de nodejss que podemos usar com o Electron.</font></font></p>
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo OS</font></font></h2>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usando o módulo do sistema operacional, podemos obter muitas informações sobre o sistema em que nosso aplicativo está sendo executado. </font><font style="vertical-align: inherit;">Os seguintes são alguns métodos que ajudam enquanto o aplicativo está sendo criado. </font><font style="vertical-align: inherit;">Esses métodos nos ajudam a personalizar as aplicações de acordo com o sistema operacional em que elas estão sendo executadas.</font></font></p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S.No</font></font></th>
+<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrição da função</font></font></th>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
+<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">os.userInfo ([opções])</font></font></b></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O </font><font style="vertical-align: inherit;">método </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">os.userInfo ()</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> retorna informações sobre o usuário atualmente efetivo. </font><font style="vertical-align: inherit;">Esta informação pode ser usada para personalizar o aplicativo para o usuário, mesmo sem solicitar explicitamente informações.</font></font></p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td>
+<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">os.platform ()</font></font></b></p>
+<p>The <b>os.platform()</b> method returns a string identifying the operating system platform. This can be used to customize the app according to the user OS.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">3</td>
+<td><p><b>os.homedir()</b></p>
+<p>The <b>os.homedir()</b> method returns the home directory of the current user as a string. Generally, configs of all users reside in the home directory of the user. So this can be used for the same purpose for our app.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">4</td>
+<td><p><b>os.arch()</b></p>
+<p>The <b>os.arch()</b> method returns a string identifying the operating system CPU architecture. This can be used when running on exotic architectures to adapt your application for that system.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">5</td>
+<td><p><b>os.EOL</b></p>
+<p>A string constant defining the operating system-specific end-ofline marker. This should be used whenever ending lines in files on the host OS.</p>
+</td>
+</tr>
+</tbody></table>
+<p>Using the same main.js file and the following HTML file, we can print these properties on the screen −</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      </span><span class="tag">&lt;title&gt;</span><span class="pln">OS Module</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+   
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      </span><span class="tag">&lt;script&gt;</span><span class="pln">
+         let os </span><span class="pun">=</span><span class="pln"> require</span><span class="pun">(</span><span class="str">'os'</span><span class="pun">)</span><span class="pln">
+         document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="str">'User Info: '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> JSON</span><span class="pun">.</span><span class="pln">stringify</span><span class="pun">(</span><span class="pln">os</span><span class="pun">.</span><span class="pln">userInfo</span><span class="pun">())</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'&lt;br&gt;'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> 
+            </span><span class="str">'Platform: '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> os</span><span class="pun">.</span><span class="pln">platform</span><span class="pun">()</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'&lt;br&gt;'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> 
+            </span><span class="str">'User home directory: '</span><span class="pln"> </span><span class="pun">+</span><span class="pln">  os</span><span class="pun">.</span><span class="pln">homedir</span><span class="pun">()</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'&lt;br&gt;'</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> 
+            </span><span class="str">'OS Architecture: '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> os</span><span class="pun">.</span><span class="pln">arch</span><span class="pun">()</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> </span><span class="str">'&lt;br&gt;'</span><span class="pun">)</span><span class="pln">
+      </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre>
+<p>Now run the app using the following command −</p>
+<pre class="result notranslate">$ electron ./main.js
+</pre>
+<p>The above command will generate the following output −</p>
+<pre class="result notranslate">User Info: {"uid":1000,"gid":1000,"username":"ayushgp","homedir":"/home/ayushgp",
+   "shell":"/usr/bin/zsh"}
+Platform: linux
+User home directory: /home/ayushgp
+OS Architecture: x64
+</pre>
+<h2>Net Module</h2>
+<p>The net module is used for network related work in the app. We can create both servers and socket connections using this module. Generally, the use of wrapper module from npm is recommended over the use of the net module for networking related tasks.</p>
+<p>The following tables lists down the most useful methods from the module −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="text-align:center;">S.No</th>
+<th style="text-align:center;">Function &amp; Description</th>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">1</td>
+<td><p><b>net.createServer([options][, connectionListener])</b></p>
+<p>Creates a new TCP server. The connectionListener argument is automatically set as a listener for the 'connection' event.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">2</td>
+<td><p><b>net.createConnection(options[, connectionListener])</b></p>
+<p>A factory method, which returns a new 'net.Socket' and connects to the supplied address and port.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">3</td>
+<td><p><b>net.Server.listen(port[, host][, backlog][, callback])</b></p>
+<p>Begin accepting connections on the specified port and host. If the host is omitted, the server will accept connections directed to any IPv4 address.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">4</td>
+<td><p><b>net.Server.close([callback])</b></p>
+<p>Finally closed when all connections are ended and the server emits a 'close' event.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">5</td>
+<td><p><b>net.Socket.connect(port[, host][, connectListener])</b></p>
+<p>Opens the connection for a given socket. If port and host are given, then the socket will be opened as a TCP socket.</p>
+</td>
+</tr>
+</tbody></table>
+<p>The net module comes with a few other methods too. To get a more comprehensive list, see <a>this</a>.</p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora, vamos criar um aplicativo de elétrons que use o módulo de rede para criar conexões para o servidor. </font><font style="vertical-align: inherit;">Precisamos criar um novo arquivo, </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">var</span><span class="pln"> net </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'net'</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> server </span><span class="pun">=</span><span class="pln"> net</span><span class="pun">.</span><span class="pln">createServer</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">connection</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
+   console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Client Connected'</span><span class="pun">);</span><span class="pln">
+   
+   connection</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'end'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'client disconnected'</span><span class="pun">);</span><span class="pln">
+   </span><span class="pun">});</span><span class="pln">
+   
+   connection</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="str">'Hello World!\r\n'</span><span class="pun">);</span><span class="pln">
+   connection</span><span class="pun">.</span><span class="pln">pipe</span><span class="pun">(</span><span class="pln">connection</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">});</span><span class="pln">
+
+server</span><span class="pun">.</span><span class="pln">listen</span><span class="pun">(</span><span class="lit">8080</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
+   console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Server running on http://localhost:8080'</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">});</span></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usando o mesmo arquivo main.js, substitua o arquivo HTML pelo seguinte:</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      </span><span class="tag">&lt;title&gt;</span><span class="pln">net Module</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+   
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      </span><span class="tag">&lt;script&gt;</span><span class="pln">
+         </span><span class="kwd">var</span><span class="pln"> net </span><span class="pun">=</span><span class="pln"> require</span><span class="pun">(</span><span class="str">'net'</span><span class="pun">);</span><span class="pln">
+         </span><span class="kwd">var</span><span class="pln"> client </span><span class="pun">=</span><span class="pln"> net</span><span class="pun">.</span><span class="pln">connect</span><span class="pun">({</span><span class="pln">port</span><span class="pun">:</span><span class="pln"> </span><span class="lit">8080</span><span class="pun">},</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Connection established!'</span><span class="pun">);</span><span class="pln">  
+         </span><span class="pun">});</span><span class="pln">
+         
+         client</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'data'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">data</span><span class="pun">.</span><span class="pln">toString</span><span class="pun">());</span><span class="pln">
+            client</span><span class="pun">.</span><span class="pln">end</span><span class="pun">();</span><span class="pln">
+         </span><span class="pun">});</span><span class="pln">
+         
+         client</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'end'</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
+            console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Disconnected :('</span><span class="pun">);</span><span class="pln">
+         </span><span class="pun">});</span><span class="pln">
+      </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute o servidor usando o seguinte comando -</font></font></p>
+<pre class="result notranslate">$ node server.js
+</pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute o aplicativo usando o seguinte comando -</font></font></p>
+<pre class="result notranslate">$ electron ./main.js
+</pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O comando acima gerará a saída a seguir -</font></font></p>
+<img src="https://www.tutorialspoint.com/electron/images/netModule.jpg" alt="Módulo Net">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Observe que nos conectamos ao servidor automaticamente e automaticamente nos desconectamos.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nodejss também temos alguns outros módulos de nodejss que podemos usar diretamente no front-end usando o Electron. </font><font style="vertical-align: inherit;">O uso desses módulos depende do cenário em que você os usa.</font></font></p>
+
+
+
+
+
+<!-- PRINTING ENDS HERE -->
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+
+<h1>Electron - Environment Variables</h1>
+
+
+
+
+
+
+<p>Environment Variables control application configuration and behavior without changing code. Certain Electron behaviors are controlled by environment variables because they are initialized earlier than the command line flags and the app’s code.</p>
+<p>There are two kinds of environment variables encoded in electron – <b>Production variables</b> and <b>Development variables.</b></p>
+<h2>Production Variables</h2>
+<p>The following environment variables are intended for use at runtime in packaged Electron applications.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="text-align:center;width:10%">S.No</th>
+<th style="text-align:center;">Variable &amp; Description</th>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">1</td>
+<td><p><b>GOOGLE_API_KEY</b></p>
+<p>Electron includes a hardcoded API key for making requests to Google’s geocoding webservice. Because this API key is included in every version of Electron, it often exceeds its usage quota.</p>
+<p>To work around this, you can supply your own Google API key in the environment. Place the following code in your main process file, before opening any browser windows that will make geocoding requests −</p>
+<pre class="result notranslate">process.env.GOOGLE_API_KEY = 'YOUR_KEY_HERE'
+</pre>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">2</td>
+<td><p><b>ELECTRON_RUN_AS_NODE</b></p>
+<p>Starts the process as a normal Node.js process.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">3</td>
+<td><p><b>ELECTRON_FORCE_WINDOW_MENU_BAR (Linux Only)</b></p>
+<p>Do not use the global menu bar on Linux.</p>
+</td>
+</tr>
+</tbody></table>
+<h2>Development Variables</h2>
+<p>The following environment variables are intended primarily for development and debugging purposes.</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="text-align:center;">S.No</th>
+<th style="text-align:center;">Variable &amp; Description</th>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">1</td>
+<td><p><b>ELECTRON_ENABLE_LOGGING</b></p>
+<p>Prints Chrome’s internal logging to the console.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">2</td>
+<td><p><b>ELECTRON_ENABLE_STACK_DUMPING</b></p>
+<p>Prints the stack trace to the console when Electron crashes.</p>
+</td>
+</tr>
+<tr>
+<td style="text-align:center;vertical-align:middle;">3</td>
+<td><p><b>ELECTRON_DEFAULT_ERROR_MODE</b></p>
+<p>Shows the Windows’s crash dialog when Electron crashes.</p>
+</td>
+</tr>
+</tbody></table>
+<p>To set any of these environment variables as true, set it in your console. For example, if you want to enable logging, then use the following commands −</p>
+<h3>For Windows</h3>
+<pre class="result notranslate">&gt; set ELECTRON_ENABLE_LOGGING=true
+</pre>
+<h3>For Linux</h3>
+<pre class="result notranslate">$ export ELECTRON_ENABLE_LOGGING=true
+</pre>
+<p>Note that you will need to set these environment variables every time you restart your computer. If you want to avoid doing so, add these lines to your <b>.bashrc</b> files.</p>
+
+
+
+
+
+<!-- PRINTING ENDS HERE -->

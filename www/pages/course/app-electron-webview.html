@@ -1,0 +1,100 @@
+
+<div class="page" data-name="electron-webview">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Voltar</span>
+                </a>
+            </div>
+            <div class="title">electron-webview</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block">
+			
+<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Webview</font></font></h1>
+
+
+
+
+
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A tag webview é usada para incorporar o conteúdo do "convidado" como páginas da web no seu aplicativo Electron. </font><font style="vertical-align: inherit;">Este conteúdo está contido no contêiner do webview. </font><font style="vertical-align: inherit;">Uma página incorporada no seu aplicativo controla como este conteúdo será exibido.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O webview é executado em um processo separado do seu aplicativo. </font><font style="vertical-align: inherit;">Para garantir a segurança de conteúdos maliciosos, a visão web não tem as mesmas permissões que a sua página da Web. </font><font style="vertical-align: inherit;">Isso mantém o seu aplicativo a salvo do conteúdo incorporado. </font><font style="vertical-align: inherit;">Todas as interações entre seu aplicativo e a página incorporada serão assíncronas.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Consideremos um exemplo para entender a incorporação de uma página externa em nosso aplicativo Electron. </font><font style="vertical-align: inherit;">Vamos incorporar o site do tutorialpoint no nosso aplicativo no lado direito. </font><font style="vertical-align: inherit;">Crie um novo </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> com o seguinte conteúdo -</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">
+
+</span><span class="kwd">let</span><span class="pln"> win
+
+</span><span class="kwd">function</span><span class="pln"> createWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   win </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">({</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">600</span><span class="pun">})</span><span class="pln">
+   win</span><span class="pun">.</span><span class="pln">loadURL</span><span class="pun">(</span><span class="pln">url</span><span class="pun">.</span><span class="pln">format </span><span class="pun">({</span><span class="pln">
+      pathname</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">__dirname</span><span class="pun">,</span><span class="pln"> </span><span class="str">'index.html'</span><span class="pun">),</span><span class="pln">
+      protocol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'file:'</span><span class="pun">,</span><span class="pln">
+      slashes</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+   </span><span class="pun">}))</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora que estabelecemos nosso processo principal, vamos criar o arquivo HTML que irá incorporar o site do tutorialspoint. </font><font style="vertical-align: inherit;">Crie um arquivo chamado index.html com o seguinte conteúdo -</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
+      </span><span class="tag">&lt;title&gt;</span><span class="pln">Menus</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+   
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      </span><span class="tag">&lt;div&gt;</span><span class="pln">
+         </span><span class="tag">&lt;div&gt;</span><span class="pln">
+            </span><span class="tag">&lt;h2&gt;</span><span class="pln">We have the website embedded below!</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+         </span><span class="tag">&lt;webview</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"foo"</span><span class="pln"> </span><span class="atn">src</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"https://www.tutorialspoint.com/"</span><span class="pln"> </span><span class="atn">style</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> 
+            </span><span class="atv">"</span><span class="pln">width</span><span class="pun">:</span><span class="lit">400px</span><span class="pun">;</span><span class="pln"> height</span><span class="pun">:</span><span class="lit">480px</span><span class="pun">;</span><span class="atv">"</span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"indicator"</span><span class="tag">&gt;&lt;/div&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/webview&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="com">// Event handlers for loading events.</span><span class="pln">
+         </span><span class="com">// Use these to handle loading screens, transitions, etc</span><span class="pln">
+         onload </span><span class="pun">=</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            </span><span class="kwd">const</span><span class="pln"> webview </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'foo'</span><span class="pun">)</span><span class="pln">
+            </span><span class="kwd">const</span><span class="pln"> indicator </span><span class="pun">=</span><span class="pln"> document</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(</span><span class="str">'.indicator'</span><span class="pun">)</span><span class="pln">
+
+            </span><span class="kwd">const</span><span class="pln"> loadstart </span><span class="pun">=</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+               indicator</span><span class="pun">.</span><span class="pln">innerText </span><span class="pun">=</span><span class="pln"> </span><span class="str">'loading...'</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+
+            </span><span class="kwd">const</span><span class="pln"> loadstop </span><span class="pun">=</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+               indicator</span><span class="pun">.</span><span class="pln">innerText </span><span class="pun">=</span><span class="pln"> </span><span class="str">''</span><span class="pln">
+            </span><span class="pun">}</span><span class="pln">
+
+            webview</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">'did-start-loading'</span><span class="pun">,</span><span class="pln"> loadstart</span><span class="pun">)</span><span class="pln">
+            webview</span><span class="pun">.</span><span class="pln">addEventListener</span><span class="pun">(</span><span class="str">'did-stop-loading'</span><span class="pun">,</span><span class="pln"> loadstop</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">}</span><span class="pln">
+      </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute o aplicativo usando o seguinte comando -</font></font></p>
+<pre class="result notranslate">$ electron ./main.js
+</pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O comando acima gerará a saída a seguir -</font></font></p>
+<img src="https://www.tutorialspoint.com/electron/images/webview.jpg" alt="Webview">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A tag webview também pode ser usada para outros recursos. </font><font style="vertical-align: inherit;">O elemento webview possui uma lista de eventos que ele emite listados nos documentos oficiais. </font><font style="vertical-align: inherit;">Você pode usar esses eventos para melhorar a funcionalidade dependendo das coisas que ocorrem no webview.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sempre que você estiver incorporando scripts ou outros recursos da Internet, é aconselhável usar o Webview. </font><font style="vertical-align: inherit;">Isso é recomendado, pois ele vem com grandes benefícios de segurança e não prejudica o comportamento normal.</font></font></p>
+
+
+
+
+
+<!-- PRINTING ENDS HERE -->
+
+
+        </div>
+    </div>
+</div>

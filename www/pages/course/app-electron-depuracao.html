@@ -1,0 +1,64 @@
+
+<div class="page" data-name="electron-depuracao">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Voltar</span>
+                </a>
+            </div>
+            <div class="title">electron-depuracao</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block">
+			
+<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Depuração</font></font></h1>
+
+
+
+
+
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Temos dois processos que executam nossa aplicação - o processo principal e o processo de renderização.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uma vez que o processo de renderização é aquele que está sendo executado na janela do nosso navegador, podemos usar os Devtools do Chrome para depurá-lo. </font><font style="vertical-align: inherit;">Para abrir DevTools, use o atalho "Ctrl + Shift + I" ou a tecla &lt;F12&gt;. </font><font style="vertical-align: inherit;">Você pode verificar como usar os devtools </font></font><a target="_blank" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">aqui</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quando você abre o DevTools, seu aplicativo parecerá como mostrado na seguinte captura de tela -</font></font></p>
+<img src="https://www.tutorialspoint.com/electron/images/devtools.jpg" alt="DevTools">
+<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Depuração do processo principal</font></font></h2>
+<p>The DevTools in an Electron browser window can only debug JavaScript that is executed in that window (i.e., the web pages). To debug JavaScript that is executed in the main process you will need to use an external debugger and launch Electron with the <i>--debug</i> or the <i>--debug-brk</i> switch.</p>
+<p>Electron will listen for the V8 debugger protocol messages on the specified port; an external debugger will need to connect on this port. The default port is 5858.</p>
+<p>Run your app using the following −</p>
+<pre class="result notranslate">$ electron --debug = 5858 ./main.js
+</pre>
+<p>Now you will need a debugger that supports the V8 debugger protocol. You can use VSCode or node-inspector for this purpose. For example, let us follow these steps and set up VSCode for this purpose. Follow these steps to set it up −</p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Baixe e instale o </font></font><a rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">VSCode</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . </font><font style="vertical-align: inherit;">Abra o seu projeto Electron em VSCode.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Adicione um arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.vscode / launch.json</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> com a seguinte configuração -</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="pun">{</span><span class="pln">
+   </span><span class="str">"version"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"1.0.0"</span><span class="pun">,</span><span class="pln">
+   </span><span class="str">"configurations"</span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln">
+      </span><span class="pun">{</span><span class="pln">
+         </span><span class="str">"name"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"Debug Main Process"</span><span class="pun">,</span><span class="pln">
+         </span><span class="str">"type"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"node"</span><span class="pun">,</span><span class="pln">
+         </span><span class="str">"request"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"launch"</span><span class="pun">,</span><span class="pln">
+         </span><span class="str">"cwd"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"${workspaceRoot}"</span><span class="pun">,</span><span class="pln">
+         </span><span class="str">"runtimeExecutable"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"${workspaceRoot}/node_modules/.bin/electron"</span><span class="pun">,</span><span class="pln">
+         </span><span class="str">"program"</span><span class="pun">:</span><span class="pln"> </span><span class="str">"${workspaceRoot}/main.js"</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
+   </span><span class="pun">]</span><span class="pln">
+</span><span class="pun">}</span></pre>
+<p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nota</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> - Para Windows, use </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"$ {workspaceRoot} /node_modules/.bin/electron.cmd"</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> para </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">runtimeExecutable</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Defina alguns pontos de interrupção no </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e comece a depurar na Vista de depuração. </font><font style="vertical-align: inherit;">Quando você acertar os pontos de interrupção, a tela será algo assim -</font></font></p>  
+<img src="https://www.tutorialspoint.com/electron/images/debug.jpg" alt="Depurador">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O depurador VSCode é muito poderoso e irá ajudá-lo a corrigir erros rapidamente. </font><font style="vertical-align: inherit;">Você também possui outras opções como o </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nodejs de inspetor</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> para depurar aplicativos eletrônicos.</font></font></p>
+
+
+
+
+
+<!-- PRINTING ENDS HERE -->
+
+
+        </div>
+    </div>
+</div>

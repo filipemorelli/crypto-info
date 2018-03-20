@@ -1,0 +1,157 @@
+
+<div class="page" data-name="electron-manipulacao-de-arquivos">
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+            <div class="left">
+                <a href="#" class="link back">
+                    <i class="icon icon-back"></i>
+                    <span class="ios-only">Voltar</span>
+                </a>
+            </div>
+            <div class="title">electron-manipulacao-de-arquivos</div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="block">
+			
+<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Manipulação de arquivos</font></font></h1>
+
+
+
+
+
+
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O gerenciamento de arquivos é uma parte muito importante da construção de uma aplicação de desktop. </font><font style="vertical-align: inherit;">Quase todos os aplicativos de desktop interagem com arquivos.</font></font></p> 
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vamos criar um formulário no nosso aplicativo que irá receber como entrada, um Nome e um endereço de e-mail. </font><font style="vertical-align: inherit;">Este formulário será salvo em um arquivo e será criada uma lista que mostrará isso como saída.</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configure seu processo principal usando o seguinte código no </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">
+
+</span><span class="kwd">let</span><span class="pln"> win
+
+</span><span class="kwd">function</span><span class="pln"> createWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   win </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">({</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">600</span><span class="pun">})</span><span class="pln">
+   win</span><span class="pun">.</span><span class="pln">loadURL</span><span class="pun">(</span><span class="pln">url</span><span class="pun">.</span><span class="pln">format </span><span class="pun">({</span><span class="pln">
+      pathname</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">__dirname</span><span class="pun">,</span><span class="pln"> </span><span class="str">'index.html'</span><span class="pun">),</span><span class="pln">
+      protocol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'file:'</span><span class="pun">,</span><span class="pln">
+      slashes</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+   </span><span class="pun">}))</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora, abra o </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">index.html</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e insira o seguinte código nela -</font></font></p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
+      </span><span class="tag">&lt;title&gt;</span><span class="pln">File System</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+      </span><span class="tag">&lt;link</span><span class="pln"> </span><span class="atn">rel</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"stylesheet"</span><span class="pln"> 
+         </span><span class="atn">href</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"./bower_components/bootstrap/dist/css/bootstrap.min.css"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+      
+      </span><span class="tag">&lt;style</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/css"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="com">#contact-list {</span><span class="pln">
+            height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">150px</span><span class="pun">;</span><span class="pln">
+            overflow</span><span class="pun">-</span><span class="pln">y</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">auto</span><span class="pun">;</span><span class="pln">
+         </span><span class="pun">}</span><span class="pln">
+      </span><span class="tag">&lt;/style&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+   
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"container"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;h1&gt;</span><span class="pln">Enter Names and Email addresses of your contacts</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
+         </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"form-group"</span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Name"</span><span class="tag">&gt;</span><span class="pln">Name</span><span class="tag">&lt;/label&gt;</span><span class="pln">
+            </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text"</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Name"</span><span class="pln"> </span><span class="atn">value</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">""</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Name"</span><span class="pln"> 
+               </span><span class="atn">placeholder</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Name"</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"form-control"</span><span class="pln"> </span><span class="atn">required</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+         
+         </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"form-group"</span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;label</span><span class="pln"> </span><span class="atn">for</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Email"</span><span class="tag">&gt;</span><span class="pln">Email</span><span class="tag">&lt;/label&gt;</span><span class="pln">
+            </span><span class="tag">&lt;input</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"email"</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Email"</span><span class="pln"> </span><span class="atn">value</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">""</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Email"</span><span class="pln"> 
+               </span><span class="atn">placeholder</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"Email"</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"form-control"</span><span class="pln"> </span><span class="atn">required</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+         
+         </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"form-group"</span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"btn btn-primary"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"add-to-list"</span><span class="tag">&gt;</span><span class="pln">Add to list!</span><span class="tag">&lt;/button&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+         
+         </span><span class="tag">&lt;div</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"contact-list"</span><span class="tag">&gt;</span><span class="pln">
+            </span><span class="tag">&lt;table</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"table-striped"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"contact-table"</span><span class="tag">&gt;</span><span class="pln">
+               </span><span class="tag">&lt;tr&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;th</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"col-xs-2"</span><span class="tag">&gt;</span><span class="pln">S. No.</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;th</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"col-xs-4"</span><span class="tag">&gt;</span><span class="pln">Name</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+                  </span><span class="tag">&lt;th</span><span class="pln"> </span><span class="atn">class</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"col-xs-6"</span><span class="tag">&gt;</span><span class="pln">Email</span><span class="tag">&lt;/th&gt;</span><span class="pln">
+               </span><span class="tag">&lt;/tr&gt;</span><span class="pln">
+            </span><span class="tag">&lt;/table&gt;</span><span class="pln">
+         </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+         
+         </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">src</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"./view.js"</span><span class="pln"> </span><span class="tag">&gt;&lt;/script&gt;</span><span class="pln">
+      </span><span class="tag">&lt;/div&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
+</span><span class="tag">&lt;/html&gt;</span></pre>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora precisamos lidar com o evento de adição. </font><font style="vertical-align: inherit;">Vamos fazer isso no nosso </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">view.js.</font></font></b><font style="vertical-align: inherit;"></font></p>
+<p>We will create a function <i>loadAndDisplayContacts()</i> that will initially load contacts from the file. After creating the <i>loadAndDisplayContacts()</i> function, we will create a click handler on our <b>add to list</b> button. This will add the entry to both the file and the table.</p>
+<p>In your view.js file, enter the following code −</p>
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">let</span><span class="pln"> $ </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'jquery'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">let</span><span class="pln"> fs </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'fs'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">let</span><span class="pln"> filename </span><span class="pun">=</span><span class="pln"> </span><span class="str">'contacts'</span><span class="pln">
+</span><span class="kwd">let</span><span class="pln"> sno </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pln">
+
+$</span><span class="pun">(</span><span class="str">'#add-to-list'</span><span class="pun">).</span><span class="pln">on</span><span class="pun">(</span><span class="str">'click'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">let</span><span class="pln"> name </span><span class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#Name'</span><span class="pun">).</span><span class="pln">val</span><span class="pun">()</span><span class="pln">
+   </span><span class="kwd">let</span><span class="pln"> email </span><span class="pun">=</span><span class="pln"> $</span><span class="pun">(</span><span class="str">'#Email'</span><span class="pun">).</span><span class="pln">val</span><span class="pun">()</span><span class="pln">
+
+   fs</span><span class="pun">.</span><span class="pln">appendFile</span><span class="pun">(</span><span class="str">'contacts'</span><span class="pun">,</span><span class="pln"> name </span><span class="pun">+</span><span class="pln"> </span><span class="str">','</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> email </span><span class="pun">+</span><span class="pln"> </span><span class="str">'\n'</span><span class="pun">)</span><span class="pln">
+
+   addEntry</span><span class="pun">(</span><span class="pln">name</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">})</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> addEntry</span><span class="pun">(</span><span class="pln">name</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">name </span><span class="pun">&amp;&amp;</span><span class="pln"> email</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      sno</span><span class="pun">++</span><span class="pln">
+      </span><span class="kwd">let</span><span class="pln"> updateString </span><span class="pun">=</span><span class="pln"> </span><span class="str">'&lt;tr&gt;&lt;td&gt;'</span><span class="pun">+</span><span class="pln"> sno </span><span class="pun">+</span><span class="pln"> </span><span class="str">'&lt;/td&gt;&lt;td&gt;'</span><span class="pun">+</span><span class="pln"> name </span><span class="pun">+</span><span class="str">'&lt;/td&gt;&lt;td&gt;'</span><span class="pln"> 
+         </span><span class="pun">+</span><span class="pln"> email </span><span class="pun">+</span><span class="str">'&lt;/td&gt;&lt;/tr&gt;'</span><span class="pln">
+      $</span><span class="pun">(</span><span class="str">'#contact-table'</span><span class="pun">).</span><span class="pln">append</span><span class="pun">(</span><span class="pln">updateString</span><span class="pun">)</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="kwd">function</span><span class="pln"> loadAndDisplayContacts</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">  
+   
+   </span><span class="com">//Check if file exists</span><span class="pln">
+   </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">fs</span><span class="pun">.</span><span class="pln">existsSync</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">))</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      </span><span class="kwd">let</span><span class="pln"> data </span><span class="pun">=</span><span class="pln"> fs</span><span class="pun">.</span><span class="pln">readFileSync</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">,</span><span class="pln"> </span><span class="str">'utf8'</span><span class="pun">).</span><span class="pln">split</span><span class="pun">(</span><span class="str">'\n'</span><span class="pun">)</span><span class="pln">
+      
+      data</span><span class="pun">.</span><span class="pln">forEach</span><span class="pun">((</span><span class="pln">contact</span><span class="pun">,</span><span class="pln"> index</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+         </span><span class="kwd">let</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> name</span><span class="pun">,</span><span class="pln"> email </span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> contact</span><span class="pun">.</span><span class="pln">split</span><span class="pun">(</span><span class="str">','</span><span class="pun">)</span><span class="pln">
+         addEntry</span><span class="pun">(</span><span class="pln">name</span><span class="pun">,</span><span class="pln"> email</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">})</span><span class="pln">
+   
+   </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"File Doesn\'t Exist. Creating new file."</span><span class="pun">)</span><span class="pln">
+      fs</span><span class="pun">.</span><span class="pln">writeFile</span><span class="pun">(</span><span class="pln">filename</span><span class="pun">,</span><span class="pln"> </span><span class="str">''</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">err</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+         </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">err</span><span class="pun">)</span><span class="pln">
+            console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">err</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">})</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+loadAndDisplayContacts</span><span class="pun">()</span></pre>
+<p>Now run the application, using the following command −</p>
+<pre class="result notranslate">$ electron ./main.js
+</pre>
+<p>Once you add some contacts to it, the application will look like −</p>
+<img src="https://www.tutorialspoint.com/electron/images/file.jpg" alt="Arquivo">
+<p>For more <b>fs module API calls</b>, please refer to <a>Node File System tutorial</a>.</p>
+<p>Now we can handle files using Electron. We will look at how to call the save and open dialog boxes(native) for files in the dialogs chapter.</p>
+
+
+
+
+
+<!-- PRINTING ENDS HERE -->
+
+
+        </div>
+    </div>
+</div>
