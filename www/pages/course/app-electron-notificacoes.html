@@ -1,4 +1,3 @@
-
 <div class="page" data-name="electron-notificacoes">
     <div class="navbar">
         <div class="navbar-inner sliding">
@@ -8,12 +7,12 @@
                     <span class="ios-only">Voltar</span>
                 </a>
             </div>
-            <div class="title">electron-notificacoes</div>
+            <div class="title">Electron Notificações</div>
         </div>
     </div>
     <div class="page-content">
         <div class="block">
-			
+
 <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Notificações</font></font></h1>
 
 
@@ -50,14 +49,14 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
       </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
       </span><span class="tag">&lt;title&gt;</span><span class="pln">Menus</span><span class="tag">&lt;/title&gt;</span><span class="pln">
    </span><span class="tag">&lt;/head&gt;</span><span class="pln">
-   
+
    </span><span class="tag">&lt;body&gt;</span><span class="pln">
       </span><span class="tag">&lt;button</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"button"</span><span class="pln"> </span><span class="atn">id</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"notify"</span><span class="pln"> </span><span class="atn">name</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"button"</span><span class="tag">&gt;</span><span class="pln">
          Click here to trigger a notification!</span><span class="tag">&lt;/button&gt;</span><span class="pln">
       </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span><span class="pln">
          </span><span class="kwd">const</span><span class="pln"> notifier </span><span class="pun">=</span><span class="pln"> require</span><span class="pun">(</span><span class="str">'node-notifier'</span><span class="pun">)</span><span class="pln">
          </span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">);</span><span class="pln">
-         
+
          document</span><span class="pun">.</span><span class="pln">getElementById</span><span class="pun">(</span><span class="str">'notify'</span><span class="pun">).</span><span class="pln">onclick </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">event</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
             notifier</span><span class="pun">.</span><span class="pln">notify </span><span class="pun">({</span><span class="pln">
                title</span><span class="pun">:</span><span class="pln"> </span><span class="str">'My awesome title'</span><span class="pun">,</span><span class="pln">
@@ -67,7 +66,7 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
                sound</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln">  </span><span class="com">// Only Notification Center or Windows Toasters</span><span class="pln">
                wait</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">    </span><span class="com">// Wait with callback, until user action is taken </span><span class="pln">
                against notification
-            
+
             </span><span class="pun">},</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">err</span><span class="pun">,</span><span class="pln"> response</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
                </span><span class="com">// Response is response from notification</span><span class="pln">
             </span><span class="pun">});</span><span class="pln">

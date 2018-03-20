@@ -1,4 +1,3 @@
-
 <div class="page" data-name="electron-system-tray">
     <div class="navbar">
         <div class="navbar-inner sliding">
@@ -8,12 +7,12 @@
                     <span class="ios-only">Voltar</span>
                 </a>
             </div>
-            <div class="title">electron-system-tray</div>
+            <div class="title">Electron - System tray</div>
         </div>
     </div>
     <div class="page-content">
         <div class="block">
-			
+
 <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - System Tray</font></font></h1>
 
 
@@ -59,14 +58,14 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
                label</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Empty Application'</span><span class="pun">,</span><span class="pln">
                enabled</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">false</span><span class="pln">
             </span><span class="pun">},</span><span class="pln">
-            
+
             </span><span class="pun">{</span><span class="pln">
                label</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Settings'</span><span class="pun">,</span><span class="pln">
                click</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
                   console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"Clicked on settings"</span><span class="pun">)</span><span class="pln">
                </span><span class="pun">}</span><span class="pln">
             </span><span class="pun">},</span><span class="pln">
-            
+
             </span><span class="pun">{</span><span class="pln">
                label</span><span class="pun">:</span><span class="pln"> </span><span class="str">'Help'</span><span class="pun">,</span><span class="pln">
                click</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
@@ -74,7 +73,7 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
                </span><span class="pun">}</span><span class="pln">
             </span><span class="pun">}</span><span class="pln">
          </span><span class="pun">]</span><span class="pln">
-         
+
          let trayMenu </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Menu</span><span class="pun">.</span><span class="pln">buildFromTemplate</span><span class="pun">(</span><span class="pln">trayMenuTemplate</span><span class="pun">)</span><span class="pln">
          trayIcon</span><span class="pun">.</span><span class="pln">setContextMenu</span><span class="pun">(</span><span class="pln">trayMenu</span><span class="pun">)</span><span class="pln">
       </span><span class="tag">&lt;/script&gt;</span><span class="pln">

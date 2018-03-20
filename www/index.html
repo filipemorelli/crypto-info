@@ -1,139 +1,139 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <!--
-      Customize this policy to fit your own app's needs. For more guidance, see:
-          https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-      Some notes:
-          * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-          * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-          * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-              * Enable inline JS: add 'unsafe-inline' to default-src
+    <head>
+        <meta charset="utf-8">
+        <!--
+          Customize this policy to fit your own app's needs. For more guidance, see:
+              https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+          Some notes:
+              * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+              * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+              * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                  * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="theme-color" content="#2196f3">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <title>My App</title>
+        <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <meta name="theme-color" content="#2196f3">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <title>My App</title>
 
-    <link rel="stylesheet" href="framework7/css/framework7.min.css">
-    <link rel="stylesheet" href="css/icons.css">
-    <link rel="stylesheet" href="css/app.css">
-</head>
+        <link rel="stylesheet" href="framework7/css/framework7.min.css">
+        <link rel="stylesheet" href="css/icons.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
 
-<body>
-    <div id="app">
-        <!-- Status bar overlay for fullscreen mode-->
-        <div class="statusbar"></div>
-        <!-- Left panel with cover effect-->
-        <div class="panel panel-left panel-cover">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="title">Left Panel</div>
+    <body>
+        <div id="app">
+            <!-- Status bar overlay for fullscreen mode-->
+            <div class="statusbar"></div>
+            <!-- Left panel with cover effect-->
+            <div class="panel panel-left panel-cover">
+                <div class="view">
+                    <div class="page">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <div class="title">Left Panel</div>
+                            </div>
+                        </div>
+                        <div class="page-content">
+                            <div class="list links-list no-margin">
+                                <ul>
+                                    <li><a href="/electron-home/" class="panel-close">Electron Home</a></li>
+                                    <li><a href="/electron-visao-geral/" class="panel-close">Electron Visão Geral</a></li>
+                                    <li><a href="/electron-instalacao/" class="panel-close">Electron Instalação</a></li>
+                                    <li><a href="/como-o-electron-funciona/" class="panel-close">Como o Electron Funciona</a></li>
+                                    <li><a href="/electron-hello-world/" class="panel-close">Electron Hello World</a></li>
+                                    <li><a href="/on-line-de-construcao-eletronica/" class="panel-close">Electron - Contruindo Interfaces</a></li>
+                                    <li><a href="/electron-manipulacao-de-arquivos/" class="panel-close">Electron manipulacao de arquivos</a></li>
+                                    <li><a href="/bibliotecas-eletronicas-nativo-nativo/" class="panel-close">Bibliotecas Electron nativo</a></li>
+                                    <li><a href="/inter-process-communication/" class="panel-close">Inter process communication (ipc)</a></li>
+                                    <li><a href="/diagramas-de-dialogo-eletronico-sistema/" class="panel-close">Electron - sistema de dialogo</a></li>
+                                    <li><a href="/electron-menus/" class="panel-close">Electron - Menus</a></li>
+                                    <li><a href="/electron-system-tray/" class="panel-close">Electron - System tray</a></li>
+                                    <li><a href="/electron-notificacoes/" class="panel-close">Electron - Notificações</a></li>
+                                    <li><a href="/electron-webview/" class="panel-close">Electron - Webview</a></li>
+                                    <li><a href="/electron-captura-de-audio-e-video/" class="panel-close">Electron - Captura de audio e vídeo</a></li>
+                                    <li><a href="/electron-definicao-de-atalhos/" class="panel-close">Electron - definicao de atalhos</a></li>
+                                    <li><a href="/electron-variaveis-de-ambiente/" class="panel-close">Electron - variaveis de ambiente</a></li>
+                                    <li><a href="/electron-depuracao/" class="panel-close">Electron - Depuracao</a></li>
+                                    <li><a href="/electron-packaging-apps/" class="panel-close">Electron - packaging apps</a></li>
+                                    <li><a href="/electron-recursos/" class="panel-close">Electron - Recursos</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Your main view, should have "view-main" class -->
+            <div class="view view-main ios-edges">
+                <!-- Page, data-name contains page name which can be used in callbacks -->
+                <div class="page" data-name="home">
+                    <!-- Top Navbar -->
+                    <div class="navbar">
+                        <div class="navbar-inner">
+                            <div class="left">
+                                <a href="#" class="link icon-only panel-open" data-panel="left">
+                                    <i class="icon f7-icons ios-only">menu</i>
+                                    <i class="icon material-icons md-only">menu</i>
+                                </a>
+                            </div>
+                            <div class="title sliding">My App</div>
+                        </div>
+                    </div>
+                    <!-- Toolbar-->
+                    <div class="toolbar">
+                        <div class="toolbar-inner">
+                            <a href="#" class="link">Left Link</a>
+                            <a href="#" class="link">Right Link</a>
+                        </div>
+                    </div>
+                    <!-- Scrollable page content-->
                     <div class="page-content">
-                        <div class="list links-list no-margin">
+                        <div class="block block-strong">
+                            <p>Here is your blank Framework7 app. Let's see what we have here.</p>
+                        </div>
+
+                        <div class="block-title">Navigation</div>
+                        <div class="list">
                             <ul>
-                                <li><a href="/electron-home/" class="panel-close">electron-home</a></li>
-                                <li><a href="/electron-visao-geral/" class="panel-close">electron-visao-geral</a></li>
-                                <li><a href="/electron-instalacao/" class="panel-close">electron-instalacao</a></li>
-                                <li><a href="/como-o-electron-funciona/" class="panel-close">como-o-electron-funciona</a></li>
-                                <li><a href="/electron-hello-world/" class="panel-close">electron-hello-world</a></li>
-                                <li><a href="/on-line-de-construcao-eletronica/" class="panel-close">on-line-de-construcao-eletronica</a></li>
-                                <li><a href="/electron-manipulacao-de-arquivos/" class="panel-close">electron-manipulacao-de-arquivos</a></li>
-                                <li><a href="/bibliotecas-eletronicas-nativo-nativo/" class="panel-close">bibliotecas-eletronicas-nativo-nativo</a></li>
-                                <li><a href="/inter-process-communication/" class="panel-close">inter-process-communication-(ipc)</a></li>
-                                <li><a href="/diagramas-de-dialogo-eletronico-sistema/" class="panel-close">diagramas-de-dialogo-eletronico-sistema</a></li>
-                                <li><a href="/electron-menus/" class="panel-close">electron-menus</a></li>
-                                <li><a href="/electron-system-tray/" class="panel-close">electron-system-tray</a></li>
-                                <li><a href="/electron-notificacoes/" class="panel-close">electron-notificacoes</a></li>
-                                <li><a href="/electron-webview/" class="panel-close">electron-webview</a></li>
-                                <li><a href="/electron-captura-de-audio-e-video/" class="panel-close">electron-captura-de-audio-e-video</a></li>
-                                <li><a href="/electron-definicao-de-atalhos/" class="panel-close">electron-definicao-de-atalhos</a></li>
-                                <li><a href="/electron-variaveis-de-ambiente/" class="panel-close">electron-variaveis-de-ambiente</a></li>
-                                <li><a href="/electron-depuracao/" class="panel-close">electron-depuracao</a></li>
-                                <li><a href="/electron-packaging-apps/" class="panel-close">electron-packaging-apps</a></li>
-                                <li><a href="/electron-recursos/" class="panel-close">electron-recursos</a></li>
+                                <li>
+                                    <a href="/about/" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">About</div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/form/" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Form</div>
+                                        </div>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Your main view, should have "view-main" class -->
-        <div class="view view-main ios-edges">
-            <!-- Page, data-name contains page name which can be used in callbacks -->
-            <div class="page" data-name="home">
-                <!-- Top Navbar -->
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="left">
-                            <a href="#" class="link icon-only panel-open" data-panel="left">
-                                    <i class="icon f7-icons ios-only">menu</i>
-                                    <i class="icon material-icons md-only">menu</i>
-                                </a>
-                        </div>
-                        <div class="title sliding">My App</div>
-                    </div>
-                </div>
-                <!-- Toolbar-->
-                <div class="toolbar">
-                    <div class="toolbar-inner">
-                        <a href="#" class="link">Left Link</a>
-                        <a href="#" class="link">Right Link</a>
-                    </div>
-                </div>
-                <!-- Scrollable page content-->
-                <div class="page-content">
-                    <div class="block block-strong">
-                        <p>Here is your blank Framework7 app. Let's see what we have here.</p>
-                    </div>
-
-                    <div class="block-title">Navigation</div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="/about/" class="item-content item-link">
-                                    <div class="item-inner">
-                                        <div class="item-title">About</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/form/" class="item-content item-link">
-                                    <div class="item-inner">
-                                        <div class="item-title">Form</div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Cordova -->
-    <!--
-      <script src="cordova.js"></script>
+        <!-- Cordova -->
+        <!--
+          <script src="cordova.js"></script>
         -->
 
-    <!-- Framework7 library -->
-    <script src="framework7/js/framework7.min.js"></script>
+        <!-- Framework7 library -->
+        <script src="framework7/js/framework7.min.js"></script>
 
-    <!-- App routes -->
-    <script src="js/routes.js"></script>
+        <!-- App routes -->
+        <script src="js/routes.js"></script>
 
-    <!-- Your custom app scripts -->
-    <script src="js/app.js"></script>
-z</body>
+        <!-- Your custom app scripts -->
+        <script src="js/app.js"></script>
+    </body>
 
 </html>

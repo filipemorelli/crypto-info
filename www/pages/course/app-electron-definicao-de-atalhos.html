@@ -1,4 +1,3 @@
-
 <div class="page" data-name="electron-definicao-de-atalhos">
     <div class="navbar">
         <div class="navbar-inner sliding">
@@ -8,12 +7,12 @@
                     <span class="ios-only">Voltar</span>
                 </a>
             </div>
-            <div class="title">electron-definicao-de-atalhos</div>
+            <div class="title">Electron definicao de atalhos</div>
         </div>
     </div>
     <div class="page-content">
         <div class="block">
-			
+
 <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Definição de atalhos</font></font></h1>
 
 
@@ -45,7 +44,7 @@ ipcMain</span><span class="pun">.</span><span class="pln">on</span><span class="
    </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">dialog</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
    </span><span class="kwd">const</span><span class="pln"> fs </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'fs'</span><span class="pun">)</span><span class="pln">
    dialog</span><span class="pun">.</span><span class="pln">showOpenDialog</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">fileNames</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
-         
+
       </span><span class="com">// fileNames is an array that contains all the selected</span><span class="pln">
       </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">fileNames </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">undefined</span><span class="pun">)</span><span class="pln">
          console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"No file selected"</span><span class="pun">)</span><span class="pln">
@@ -59,7 +58,7 @@ ipcMain</span><span class="pun">.</span><span class="pln">on</span><span class="
             alert</span><span class="pun">(</span><span class="str">"An error ocurred reading the file :"</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> err</span><span class="pun">.</span><span class="pln">message</span><span class="pun">)</span><span class="pln">
             </span><span class="kwd">return</span><span class="pln">
          </span><span class="pun">}</span><span class="pln">
-         
+
          </span><span class="com">// handle the file content</span><span class="pln">
          </span><span class="kwd">event</span><span class="pun">.</span><span class="pln">sender</span><span class="pun">.</span><span class="pln">send</span><span class="pun">(</span><span class="str">'fileData'</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln">
       </span><span class="pun">})</span><span class="pln">
@@ -75,7 +74,7 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
       </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
       </span><span class="tag">&lt;title&gt;</span><span class="pln">File read using system dialogs</span><span class="tag">&lt;/title&gt;</span><span class="pln">
    </span><span class="tag">&lt;/head&gt;</span><span class="pln">
-   
+
    </span><span class="tag">&lt;body&gt;</span><span class="pln">
       </span><span class="tag">&lt;p&gt;</span><span class="pln">Press CTRL/CMD + O to open a file. </span><span class="tag">&lt;/p&gt;</span><span class="pln">
       </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span><span class="pln">
@@ -85,7 +84,7 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
             ipcRenderer</span><span class="pun">.</span><span class="pln">send</span><span class="pun">(</span><span class="str">'openFile'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
                console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"Event sent."</span><span class="pun">);</span><span class="pln">
             </span><span class="pun">})</span><span class="pln">
-            
+
             ipcRenderer</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'fileData'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
                document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln">
             </span><span class="pun">})</span><span class="pln">

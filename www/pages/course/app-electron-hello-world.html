@@ -1,4 +1,3 @@
-
 <div class="page" data-name="electron-hello-world">
     <div class="navbar">
         <div class="navbar-inner sliding">
@@ -8,12 +7,12 @@
                     <span class="ios-only">Voltar</span>
                 </a>
             </div>
-            <div class="title">electron-hello-world</div>
+            <div class="title">Electron Hello World</div>
         </div>
     </div>
     <div class="page-content">
         <div class="block">
-			
+
 <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Hello World</font></font></h1>
 
 
@@ -23,20 +22,20 @@
 
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Criamos um </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">package.json</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> para o nosso projeto. </font><font style="vertical-align: inherit;">Agora vamos criar nosso primeiro aplicativo de desktop usando o Electron.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Criar um novo arquivo chamado </font></font><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main.js</font></font></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . </font><font style="vertical-align: inherit;">Digite o seguinte código nela -</font></font></p>
-<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln"> 
-</span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln"> 
-</span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">  
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">
 
-</span><span class="kwd">let</span><span class="pln"> win  
+</span><span class="kwd">let</span><span class="pln"> win
 
-</span><span class="kwd">function</span><span class="pln"> createWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-   win </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">({</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">600</span><span class="pun">})</span><span class="pln"> 
-   win</span><span class="pun">.</span><span class="pln">loadURL</span><span class="pun">(</span><span class="pln">url</span><span class="pun">.</span><span class="pln">format </span><span class="pun">({</span><span class="pln"> 
-      pathname</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">__dirname</span><span class="pun">,</span><span class="pln"> </span><span class="str">'index.html'</span><span class="pun">),</span><span class="pln"> 
-      protocol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'file:'</span><span class="pun">,</span><span class="pln"> 
-      slashes</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln"> 
-   </span><span class="pun">}))</span><span class="pln"> 
-</span><span class="pun">}</span><span class="pln">  
+</span><span class="kwd">function</span><span class="pln"> createWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   win </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">({</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">600</span><span class="pun">})</span><span class="pln">
+   win</span><span class="pun">.</span><span class="pln">loadURL</span><span class="pun">(</span><span class="pln">url</span><span class="pun">.</span><span class="pln">format </span><span class="pun">({</span><span class="pln">
+      pathname</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">__dirname</span><span class="pun">,</span><span class="pln"> </span><span class="str">'index.html'</span><span class="pun">),</span><span class="pln">
+      protocol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'file:'</span><span class="pun">,</span><span class="pln">
+      slashes</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+   </span><span class="pun">}))</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
 
 app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span><span class="pln"> </span></pre>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crie outro arquivo, desta vez um arquivo HTML chamado </font></font><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">index.html</font></font></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . </font><font style="vertical-align: inherit;">Digite o seguinte código nele.</font></font></p>
@@ -46,7 +45,7 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
       </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
       </span><span class="tag">&lt;title&gt;</span><span class="pln">Hello World!</span><span class="tag">&lt;/title&gt;</span><span class="pln">
    </span><span class="tag">&lt;/head&gt;</span><span class="pln">
-   
+
    </span><span class="tag">&lt;body&gt;</span><span class="pln">
       </span><span class="tag">&lt;h1&gt;</span><span class="pln">Hello World!</span><span class="tag">&lt;/h1&gt;</span><span class="pln">
       We are using node </span><span class="tag">&lt;script&gt;</span><span class="pln">document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">process</span><span class="pun">.</span><span class="pln">versions</span><span class="pun">.</span><span class="pln">node</span><span class="pun">)</span><span class="tag">&lt;/script&gt;</span><span class="pln">,

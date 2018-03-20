@@ -1,4 +1,3 @@
-
 <div class="page" data-name="diagramas-de-dialogo-eletronico-sistema">
     <div class="navbar">
         <div class="navbar-inner sliding">
@@ -8,12 +7,12 @@
                     <span class="ios-only">Voltar</span>
                 </a>
             </div>
-            <div class="title">diagramas-de-dialogo-eletronico-sistema</div>
+            <div class="title">Electron - sistema de dialogo</div>
         </div>
     </div>
     <div class="page-content">
         <div class="block">
-			
+
 <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diagramas de diálogo eletrônico - sistema</font></font></h1>
 
 
@@ -25,71 +24,71 @@
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O Electron fornece um </font><font style="vertical-align: inherit;">módulo de </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">diálogo</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> que podemos usar para exibir diálogos do sistema nativo para abrir e salvar arquivos, alertas, etc.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deixe-nos saltar diretamente para um exemplo e criar um aplicativo para exibir arquivos de texto simples.</font></font></p>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crie um novo arquivo main.js e insira o seguinte código nela -</font></font></p>
-<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln"> 
-</span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln"> 
-</span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln"> 
-</span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">ipcMain</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">  
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">
+</span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">ipcMain</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
 
-</span><span class="kwd">let</span><span class="pln"> win  
+</span><span class="kwd">let</span><span class="pln"> win
 
-</span><span class="kwd">function</span><span class="pln"> createWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-   win </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">({</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">600</span><span class="pun">})</span><span class="pln"> 
-   win</span><span class="pun">.</span><span class="pln">loadURL</span><span class="pun">(</span><span class="pln">url</span><span class="pun">.</span><span class="pln">format </span><span class="pun">({</span><span class="pln"> 
-      pathname</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">__dirname</span><span class="pun">,</span><span class="pln"> </span><span class="str">'index.html'</span><span class="pun">),</span><span class="pln"> 
-      protocol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'file:'</span><span class="pun">,</span><span class="pln"> 
-      slashes</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln"> 
-   </span><span class="pun">}))</span><span class="pln"> 
-</span><span class="pun">}</span><span class="pln">  
+</span><span class="kwd">function</span><span class="pln"> createWindow</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   win </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">({</span><span class="pln">width</span><span class="pun">:</span><span class="pln"> </span><span class="lit">800</span><span class="pun">,</span><span class="pln"> height</span><span class="pun">:</span><span class="pln"> </span><span class="lit">600</span><span class="pun">})</span><span class="pln">
+   win</span><span class="pun">.</span><span class="pln">loadURL</span><span class="pun">(</span><span class="pln">url</span><span class="pun">.</span><span class="pln">format </span><span class="pun">({</span><span class="pln">
+      pathname</span><span class="pun">:</span><span class="pln"> path</span><span class="pun">.</span><span class="pln">join</span><span class="pun">(</span><span class="pln">__dirname</span><span class="pun">,</span><span class="pln"> </span><span class="str">'index.html'</span><span class="pun">),</span><span class="pln">
+      protocol</span><span class="pun">:</span><span class="pln"> </span><span class="str">'file:'</span><span class="pun">,</span><span class="pln">
+      slashes</span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">
+   </span><span class="pun">}))</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
 
-ipcMain</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'openFile'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">event</span><span class="pun">,</span><span class="pln"> path</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-   </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">dialog</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln"> 
-   </span><span class="kwd">const</span><span class="pln"> fs </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'fs'</span><span class="pun">)</span><span class="pln"> 
-   dialog</span><span class="pun">.</span><span class="pln">showOpenDialog</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">fileNames</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-      
+ipcMain</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'openFile'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">event</span><span class="pun">,</span><span class="pln"> path</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+   </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">dialog</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+   </span><span class="kwd">const</span><span class="pln"> fs </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'fs'</span><span class="pun">)</span><span class="pln">
+   dialog</span><span class="pun">.</span><span class="pln">showOpenDialog</span><span class="pun">(</span><span class="kwd">function</span><span class="pln"> </span><span class="pun">(</span><span class="pln">fileNames</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
       </span><span class="com">// fileNames is an array that contains all the selected </span><span class="pln">
-      </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">fileNames </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">undefined</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-         console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"No file selected"</span><span class="pun">);</span><span class="pln"> 
-      
-      </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-         readFile</span><span class="pun">(</span><span class="pln">fileNames</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]);</span><span class="pln"> 
-      </span><span class="pun">}</span><span class="pln"> 
+      </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">fileNames </span><span class="pun">===</span><span class="pln"> </span><span class="kwd">undefined</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+         console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"No file selected"</span><span class="pun">);</span><span class="pln">
+
+      </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">else</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+         readFile</span><span class="pun">(</span><span class="pln">fileNames</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]);</span><span class="pln">
+      </span><span class="pun">}</span><span class="pln">
    </span><span class="pun">});</span><span class="pln">
-   
-   </span><span class="kwd">function</span><span class="pln"> readFile</span><span class="pun">(</span><span class="pln">filepath</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-      fs</span><span class="pun">.</span><span class="pln">readFile</span><span class="pun">(</span><span class="pln">filepath</span><span class="pun">,</span><span class="pln"> </span><span class="str">'utf-8'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">err</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-         
-         </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">err</span><span class="pun">){</span><span class="pln"> 
-            alert</span><span class="pun">(</span><span class="str">"An error ocurred reading the file :"</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> err</span><span class="pun">.</span><span class="pln">message</span><span class="pun">)</span><span class="pln"> 
-            </span><span class="kwd">return</span><span class="pln"> 
-         </span><span class="pun">}</span><span class="pln"> 
-         
+
+   </span><span class="kwd">function</span><span class="pln"> readFile</span><span class="pun">(</span><span class="pln">filepath</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+      fs</span><span class="pun">.</span><span class="pln">readFile</span><span class="pun">(</span><span class="pln">filepath</span><span class="pun">,</span><span class="pln"> </span><span class="str">'utf-8'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">err</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+
+         </span><span class="kwd">if</span><span class="pun">(</span><span class="pln">err</span><span class="pun">){</span><span class="pln">
+            alert</span><span class="pun">(</span><span class="str">"An error ocurred reading the file :"</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> err</span><span class="pun">.</span><span class="pln">message</span><span class="pun">)</span><span class="pln">
+            </span><span class="kwd">return</span><span class="pln">
+         </span><span class="pun">}</span><span class="pln">
+
          </span><span class="com">// handle the file content </span><span class="pln">
-         </span><span class="kwd">event</span><span class="pun">.</span><span class="pln">sender</span><span class="pun">.</span><span class="pln">send</span><span class="pun">(</span><span class="str">'fileData'</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> 
-      </span><span class="pun">})</span><span class="pln"> 
-   </span><span class="pun">}</span><span class="pln"> 
-</span><span class="pun">})</span><span class="pln">  
+         </span><span class="kwd">event</span><span class="pun">.</span><span class="pln">sender</span><span class="pun">.</span><span class="pln">send</span><span class="pun">(</span><span class="str">'fileData'</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln">
+      </span><span class="pun">})</span><span class="pln">
+   </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">})</span><span class="pln">
 app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span></pre>
 <p>This code will pop open the open dialog box whenever our main process recieves a 'openFile' message from a renderer process. This message will redirect the file content back to the renderer process. Now, we will have to print the content.</p>
 <p>Now, create a new <b>index.html</b> file with the following content −</p>
-<pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln"> 
-</span><span class="tag">&lt;html&gt;</span><span class="pln"> 
-   </span><span class="tag">&lt;head&gt;</span><span class="pln"> 
-      </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln"> 
-      </span><span class="tag">&lt;title&gt;</span><span class="pln">File read using system dialogs</span><span class="tag">&lt;/title&gt;</span><span class="pln"> 
-   </span><span class="tag">&lt;/head&gt;</span><span class="pln"> 
-   
-   </span><span class="tag">&lt;body&gt;</span><span class="pln"> 
-      </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span><span class="pln"> 
-         </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">ipcRenderer</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln"> 
-         ipcRenderer</span><span class="pun">.</span><span class="pln">send</span><span class="pun">(</span><span class="str">'openFile'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-            console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"Event sent."</span><span class="pun">);</span><span class="pln"> 
-         </span><span class="pun">})</span><span class="pln"> 
-         
-         ipcRenderer</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'fileData'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
-            document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln"> 
-         </span><span class="pun">})</span><span class="pln"> 
-      </span><span class="tag">&lt;/script&gt;</span><span class="pln"> 
-   </span><span class="tag">&lt;/body&gt;</span><span class="pln"> 
+<pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+</span><span class="tag">&lt;html&gt;</span><span class="pln">
+   </span><span class="tag">&lt;head&gt;</span><span class="pln">
+      </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
+      </span><span class="tag">&lt;title&gt;</span><span class="pln">File read using system dialogs</span><span class="tag">&lt;/title&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/head&gt;</span><span class="pln">
+
+   </span><span class="tag">&lt;body&gt;</span><span class="pln">
+      </span><span class="tag">&lt;script</span><span class="pln"> </span><span class="atn">type</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"text/javascript"</span><span class="tag">&gt;</span><span class="pln">
+         </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">ipcRenderer</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+         ipcRenderer</span><span class="pun">.</span><span class="pln">send</span><span class="pun">(</span><span class="str">'openFile'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">()</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">"Event sent."</span><span class="pun">);</span><span class="pln">
+         </span><span class="pun">})</span><span class="pln">
+
+         ipcRenderer</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'fileData'</span><span class="pun">,</span><span class="pln"> </span><span class="pun">(</span><span class="pln">event</span><span class="pun">,</span><span class="pln"> data</span><span class="pun">)</span><span class="pln"> </span><span class="pun">=&gt;</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+            document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">data</span><span class="pun">)</span><span class="pln">
+         </span><span class="pun">})</span><span class="pln">
+      </span><span class="tag">&lt;/script&gt;</span><span class="pln">
+   </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></pre>
 <p>Now whenever we run our app, a native open dialog box will pop up as shown in the following screenshot −</p>
 <img src="https://www.tutorialspoint.com/electron/images/opendialog.jpg" alt="Abrir caixa de diálogo">
