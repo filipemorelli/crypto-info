@@ -1,76 +1,76 @@
 
-<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Variáveis ​​de ambiente</font></font></h1>
+<h1><font><font>Electron - Variáveis ​​de ambiente</font></font></h1>
 
 
 
 
 
 
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As variáveis ​​de ambiente controlam a configuração e o comportamento do aplicativo sem alterar o código. </font><font style="vertical-align: inherit;">Certos comportamentos de elétrons são controlados por variáveis ​​de ambiente porque são inicializados anteriormente que os sinalizadores de linha de comando e o código do aplicativo.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Existem dois tipos de variáveis ​​de ambiente codificadas em elétrons - </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variáveis ​​de produção</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">variáveis ​​de desenvolvimento.</font></font></b></p>
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variáveis ​​de Produção</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As seguintes variáveis ​​de ambiente destinam-se a ser utilizadas em tempo de execução em aplicativos de eletrônicos embalados.</font></font></p>
+<p><font><font>As variáveis ​​de ambiente controlam a configuração e o comportamento do aplicativo sem alterar o código. </font><font>Certos comportamentos de elétrons são controlados por variáveis ​​de ambiente porque são inicializados anteriormente que os sinalizadores de linha de comando e o código do aplicativo.</font></font></p>
+<p><font><font>Existem dois tipos de variáveis ​​de ambiente codificadas em elétrons - </font></font><b><font><font>Variáveis ​​de produção</font></font></b><font><font> e </font></font><b><font><font>variáveis ​​de desenvolvimento.</font></font></b></p>
+<h2><font><font>Variáveis ​​de Produção</font></font></h2>
+<p><font><font>As seguintes variáveis ​​de ambiente destinam-se a ser utilizadas em tempo de execução em aplicativos de eletrônicos embalados.</font></font></p>
 <table class="table table-bordered">
 <tbody><tr>
-<th style="text-align:center;width:10%"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S.No</font></font></th>
-<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variável e Descrição</font></font></th>
+<th style="text-align:center;width:10%"><font><font>S.No</font></font></th>
+<th style="text-align:center;"><font><font>Variável e Descrição</font></font></th>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GOOGLE_API_KEY</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O eletrônon inclui uma chave de API codificada para fazer solicitações no webservice de geocodificação do Google. </font><font style="vertical-align: inherit;">Como essa chave API está incluída em todas as versões do Electron, ela geralmente excede sua quota de uso.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para contornar isso, você pode fornecer sua própria chave de API do Google no ambiente. </font><font style="vertical-align: inherit;">Coloque o seguinte código em seu arquivo de processo principal, antes de abrir qualquer janela do navegador que faça pedidos de geocodificação -</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>1</font></font></td>
+<td><p><b><font><font>GOOGLE_API_KEY</font></font></b></p>
+<p><font><font>O eletrônon inclui uma chave de API codificada para fazer solicitações no webservice de geocodificação do Google. </font><font>Como essa chave API está incluída em todas as versões do Electron, ela geralmente excede sua quota de uso.</font></font></p>
+<p><font><font>Para contornar isso, você pode fornecer sua própria chave de API do Google no ambiente. </font><font>Coloque o seguinte código em seu arquivo de processo principal, antes de abrir qualquer janela do navegador que faça pedidos de geocodificação -</font></font></p>
 <pre class="result notranslate">process.env.GOOGLE_API_KEY = 'YOUR_KEY_HERE'
 </pre>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELECTRON_RUN_AS_NODE</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inicia o processo como um processo normal do Node.js.</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>2</font></font></td>
+<td><p><b><font><font>ELECTRON_RUN_AS_NODE</font></font></b></p>
+<p><font><font>Inicia o processo como um processo normal do Node.js.</font></font></p>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELECTRON_FORCE_WINDOW_MENU_BAR (Somente Linux)</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Não use a barra de menu global no Linux.</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>3</font></font></td>
+<td><p><b><font><font>ELECTRON_FORCE_WINDOW_MENU_BAR (Somente Linux)</font></font></b></p>
+<p><font><font>Não use a barra de menu global no Linux.</font></font></p>
 </td>
 </tr>
 </tbody></table>
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variáveis ​​de desenvolvimento</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">As seguintes variáveis ​​de ambiente destinam-se principalmente a fins de desenvolvimento e depuração.</font></font></p>
+<h2><font><font>Variáveis ​​de desenvolvimento</font></font></h2>
+<p><font><font>As seguintes variáveis ​​de ambiente destinam-se principalmente a fins de desenvolvimento e depuração.</font></font></p>
 <table class="table table-bordered">
 <tbody><tr>
-<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S.No</font></font></th>
-<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Variável e Descrição</font></font></th>
+<th style="text-align:center;"><font><font>S.No</font></font></th>
+<th style="text-align:center;"><font><font>Variável e Descrição</font></font></th>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELECTRON_ENABLE_LOGGING</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Imprime o log interno do Chrome no console.</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>1</font></font></td>
+<td><p><b><font><font>ELECTRON_ENABLE_LOGGING</font></font></b></p>
+<p><font><font>Imprime o log interno do Chrome no console.</font></font></p>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELECTRON_ENABLE_STACK_DUMPING</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Imprime o rastreamento da pilha no console quando o elétron falhar.</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>2</font></font></td>
+<td><p><b><font><font>ELECTRON_ENABLE_STACK_DUMPING</font></font></b></p>
+<p><font><font>Imprime o rastreamento da pilha no console quando o elétron falhar.</font></font></p>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ELECTRON_DEFAULT_ERROR_MODE</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mostra o diálogo de falha do Windows quando o Electron falha.</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>3</font></font></td>
+<td><p><b><font><font>ELECTRON_DEFAULT_ERROR_MODE</font></font></b></p>
+<p><font><font>Mostra o diálogo de falha do Windows quando o Electron falha.</font></font></p>
 </td>
 </tr>
 </tbody></table>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para definir qualquer uma dessas variáveis ​​de ambiente como verdadeiras, configure-as no seu console. </font><font style="vertical-align: inherit;">Por exemplo, se você quiser habilitar o registro, use os seguintes comandos -</font></font></p>
-<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para Windows</font></font></h3>
+<p><font><font>Para definir qualquer uma dessas variáveis ​​de ambiente como verdadeiras, configure-as no seu console. </font><font>Por exemplo, se você quiser habilitar o registro, use os seguintes comandos -</font></font></p>
+<h3><font><font>Para Windows</font></font></h3>
 <pre class="result notranslate">&gt; set ELECTRON_ENABLE_LOGGING=true
 </pre>
-<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Para Linux</font></font></h3>
+<h3><font><font>Para Linux</font></font></h3>
 <pre class="result notranslate">$ export ELECTRON_ENABLE_LOGGING=true
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Observe que você precisará configurar essas variáveis ​​de ambiente sempre que você reiniciar seu computador. </font><font style="vertical-align: inherit;">Se você quiser evitar isso, adicione essas linhas aos seus </font><font style="vertical-align: inherit;">arquivos </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.bashrc</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
+<p><font><font>Observe que você precisará configurar essas variáveis ​​de ambiente sempre que você reiniciar seu computador. </font><font>Se você quiser evitar isso, adicione essas linhas aos seus </font><font>arquivos </font></font><b><font><font>.bashrc</font></font></b><font><font> .</font></font></p>
 
 
 

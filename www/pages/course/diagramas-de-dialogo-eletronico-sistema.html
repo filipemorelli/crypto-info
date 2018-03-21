@@ -1,15 +1,15 @@
 
-<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diagramas de diálogo eletrônico - sistema</font></font></h1>
+<h1><font><font>Diagramas de diálogo eletrônico - sistema</font></font></h1>
 
 
 
 
 
 
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">É muito importante que qualquer aplicativo seja amigável. </font><font style="vertical-align: inherit;">Como resultado, você não deve criar caixas de diálogo usando chamadas de alerta (). </font><font style="vertical-align: inherit;">O Electron fornece uma interface muito boa para realizar a tarefa de criar caixas de diálogo. </font><font style="vertical-align: inherit;">Vamos dar uma olhada nisso.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O Electron fornece um </font><font style="vertical-align: inherit;">módulo de </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">diálogo</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> que podemos usar para exibir diálogos do sistema nativo para abrir e salvar arquivos, alertas, etc.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deixe-nos saltar diretamente para um exemplo e criar um aplicativo para exibir arquivos de texto simples.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crie um novo arquivo main.js e insira o seguinte código nela -</font></font></p>
+<p><font><font>É muito importante que qualquer aplicativo seja amigável. </font><font>Como resultado, você não deve criar caixas de diálogo usando chamadas de alerta (). </font><font>O Electron fornece uma interface muito boa para realizar a tarefa de criar caixas de diálogo. </font><font>Vamos dar uma olhada nisso.</font></font></p>
+<p><font><font>O Electron fornece um </font><font>módulo de </font></font><b><font><font>diálogo</font></font></b><font><font> que podemos usar para exibir diálogos do sistema nativo para abrir e salvar arquivos, alertas, etc.</font></font></p>
+<p><font><font>Deixe-nos saltar diretamente para um exemplo e criar um aplicativo para exibir arquivos de texto simples.</font></font></p>
+<p><font><font>Crie um novo arquivo main.js e insira o seguinte código nela -</font></font></p>
 <pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln"> 
 </span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln"> 
 </span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln"> 
@@ -84,8 +84,8 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
 <p>The dialogs having the same functionality are −</p>
 <ul class="list">
 <li>showSaveDialog([browserWindow, ]options[, callback])</li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">showMessageDialog ([browserWindow,] opções [, callback])</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">showErrorDialog (título, conteúdo)</font></font></li>
+<li><font><font>showMessageDialog ([browserWindow,] opções [, callback])</font></font></li>
+<li><font><font>showErrorDialog (título, conteúdo)</font></font></li>
 </ul>
 
 

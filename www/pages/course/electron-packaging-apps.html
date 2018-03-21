@@ -1,44 +1,44 @@
 
-<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Packaging Apps</font></font></h1>
+<h1><font><font>Electron - Packaging Apps</font></font></h1>
 
 
 
 
 
 
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A embalagem e a distribuição de aplicativos são parte integrante do processo de desenvolvimento de uma aplicação de desktop. </font><font style="vertical-align: inherit;">Uma vez que a Electron é uma plataforma de desenvolvimento de aplicativos de desktop multiplataforma, a embalagem e a distribuição de aplicativos para todas as plataformas também devem ser uma experiência perfeita.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">A comunidade eletrônica criou um projeto, </font></font><a target="_blank" rel="nofollow"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">o pacote eletrônico</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> que cuida o mesmo para nodejss. </font><font style="vertical-align: inherit;">Ele nos permite empacotar e distribuir o nosso aplicativo Electron com pacotes específicos do sistema operacional (.app, .exe etc) via JS ou CLI.</font></font></p>
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Plataformas suportadas</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O Packer Eletrônico é executado nas seguintes plataformas host:</font></font></p>
+<p><font><font>A embalagem e a distribuição de aplicativos são parte integrante do processo de desenvolvimento de uma aplicação de desktop. </font><font>Uma vez que a Electron é uma plataforma de desenvolvimento de aplicativos de desktop multiplataforma, a embalagem e a distribuição de aplicativos para todas as plataformas também devem ser uma experiência perfeita.</font></font></p>
+<p><font><font>A comunidade eletrônica criou um projeto, </font></font><a target="_blank" rel="nofollow"><font><font>o pacote eletrônico</font></font></a><font><font> que cuida o mesmo para nodejss. </font><font>Ele nos permite empacotar e distribuir o nosso aplicativo Electron com pacotes específicos do sistema operacional (.app, .exe etc) via JS ou CLI.</font></font></p>
+<h2><font><font>Plataformas suportadas</font></font></h2>
+<p><font><font>O Packer Eletrônico é executado nas seguintes plataformas host:</font></font></p>
 <ul class="list">
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windows (32/64 bit)</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OS X</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux (x86 / x86_64)</font></font></li>
+<li><font><font>Windows (32/64 bit)</font></font></li>
+<li><font><font>OS X</font></font></li>
+<li><font><font>Linux (x86 / x86_64)</font></font></li>
 </ul>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ele gera executáveis ​​/ pacotes para as seguintes plataformas-alvo -</font></font></p>
+<p><font><font>Ele gera executáveis ​​/ pacotes para as seguintes plataformas-alvo -</font></font></p>
 <ul class="list">
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windows (também conhecido como win32, ambos 32/64 bits)</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">OS X (também conhecido como darwin) / Mac App Store (também conhecido como mas)</font></font></li>
-<li><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Linux (para arquiteturas x86, x86_64 e armv7l)</font></font></li>
+<li><font><font>Windows (também conhecido como win32, ambos 32/64 bits)</font></font></li>
+<li><font><font>OS X (também conhecido como darwin) / Mac App Store (também conhecido como mas)</font></font></li>
+<li><font><font>Linux (para arquiteturas x86, x86_64 e armv7l)</font></font></li>
 </ul>
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalação</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instale o embalador de elétrons usando -</font></font></p>
+<h2><font><font>Instalação</font></font></h2>
+<p><font><font>Instale o embalador de elétrons usando -</font></font></p>
 <pre class="result notranslate"># for use in npm scripts
 $ npm install electron-packager --save-dev
 
 # for use from cli
 $ npm install electron-packager -g
 </pre>
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Aplicativos de embalagem</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nesta seção, veremos como executar o packager a partir da linha de comando. </font><font style="vertical-align: inherit;">A forma básica do comando é -</font></font></p>
+<h2><font><font>Aplicativos de embalagem</font></font></h2>
+<p><font><font>Nesta seção, veremos como executar o packager a partir da linha de comando. </font><font>A forma básica do comando é -</font></font></p>
 <pre class="result notranslate">electron-packager &lt;sourcedir&gt; &lt;appname&gt; --platform=&lt;platform&gt; --arch=&lt;arch&gt; [optional flags...]
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Isto irá -</font></font></p>
+<p><font><font>Isto irá -</font></font></p>
 <ul class="list">
-<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Encontre ou baixe a versão correta do Electron.</font></font></p></li>
-<li><p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Use essa versão do Electron para criar um aplicativo em &lt;output-folder&gt; / &lt;appname&gt; - &lt;platform&gt; - &lt;arch&gt;.</font></font></p></li>
+<li><p><font><font>Encontre ou baixe a versão correta do Electron.</font></font></p></li>
+<li><p><font><font>Use essa versão do Electron para criar um aplicativo em &lt;output-folder&gt; / &lt;appname&gt; - &lt;platform&gt; - &lt;arch&gt;.</font></font></p></li>
 </ul>
-<p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--platform</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--arch</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> podem ser omitidos, em dois casos. </font><font style="vertical-align: inherit;">Se você especificar </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">- em</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> vez disso, serão criados os pacotes para todas as combinações válidas de plataformas / arquiteturas de destino. </font><font style="vertical-align: inherit;">Caso contrário, será criado um único pacote para a plataforma / arquitetura host.</font></font></p>
+<p><b><font><font>--platform</font></font></b><font><font> e </font></font><b><font><font>--arch</font></font></b><font><font> podem ser omitidos, em dois casos. </font><font>Se você especificar </font></font><b><font><font>- em</font></font></b><font><font> vez disso, serão criados os pacotes para todas as combinações válidas de plataformas / arquiteturas de destino. </font><font>Caso contrário, será criado um único pacote para a plataforma / arquitetura host.</font></font></p>
 
 
 

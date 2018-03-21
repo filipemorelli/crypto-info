@@ -1,13 +1,13 @@
 
-<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Hello World</font></font></h1>
+<h1><font><font>Electron - Hello World</font></font></h1>
 
 
 
 
 
 
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Criamos um </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">package.json</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> para o nosso projeto. </font><font style="vertical-align: inherit;">Agora vamos criar nosso primeiro aplicativo de desktop usando o Electron.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Criar um novo arquivo chamado </font></font><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main.js</font></font></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . </font><font style="vertical-align: inherit;">Digite o seguinte código nela -</font></font></p>
+<p><font><font>Criamos um </font><font>arquivo </font></font><b><font><font>package.json</font></font></b><font><font> para o nosso projeto. </font><font>Agora vamos criar nosso primeiro aplicativo de desktop usando o Electron.</font></font></p>
+<p><font><font>Criar um novo arquivo chamado </font></font><i><font><font>main.js</font></font></i><font><font> . </font><font>Digite o seguinte código nela -</font></font></p>
 <pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln"> 
 </span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln"> 
 </span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">  
@@ -24,7 +24,7 @@
 </span><span class="pun">}</span><span class="pln">  
 
 app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span><span class="pln"> </span></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crie outro arquivo, desta vez um arquivo HTML chamado </font></font><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">index.html</font></font></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . </font><font style="vertical-align: inherit;">Digite o seguinte código nele.</font></font></p>
+<p><font><font>Crie outro arquivo, desta vez um arquivo HTML chamado </font></font><i><font><font>index.html</font></font></i><font><font> . </font><font>Digite o seguinte código nele.</font></font></p>
 <pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
    </span><span class="tag">&lt;head&gt;</span><span class="pln">
@@ -39,12 +39,12 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
       and Electron </span><span class="tag">&lt;script&gt;</span><span class="pln">document</span><span class="pun">.</span><span class="pln">write</span><span class="pun">(</span><span class="pln">process</span><span class="pun">.</span><span class="pln">versions</span><span class="pun">.</span><span class="pln">electron</span><span class="pun">)</span><span class="tag">&lt;/script&gt;</span><span class="pln">.
    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute este aplicativo usando o seguinte comando -</font></font></p>
+<p><font><font>Execute este aplicativo usando o seguinte comando -</font></font></p>
 <pre class="result notranslate">$ electron ./main.js
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Uma nova janela será aberta. </font><font style="vertical-align: inherit;">Parecerá o seguinte -</font></font></p>
+<p><font><font>Uma nova janela será aberta. </font><font>Parecerá o seguinte -</font></font></p>
 <img src="https://www.tutorialspoint.com/electron/images/hello_world.jpg" alt="Electron Hello World">
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Como esse aplicativo funciona?</font></font></h2>
+<h2><font><font>Como esse aplicativo funciona?</font></font></h2>
 <p>We created a main file and an HTML file. The main file uses two modules – <i>app</i> and <i>BrowserWindow</i>. The app module is used to control your application’s event lifecycle while the BrowserWindow module is used to create and control browser windows.</p>
 <p>We defined a <i>createWindow</i> function, where we are creating a new BrowserWindow and attaching a URL to this BrowserWindow. This is the HTML file that is rendered and shown to us when we run the app.</p>
 <p>We have used a native Electron object process in our html file. This object is extended from the Node.js process object and includes all of <b>t=its</b> functionalities while adding many more.</p>

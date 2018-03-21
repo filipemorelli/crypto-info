@@ -8,8 +8,7 @@ var app = new Framework7({
     name: 'Framework7', // App name
     theme: 'auto', // Automatic theme detection
     // App routes
-    routes: routes,
-    cache: false
+    routes: routes
 });
 
 // Init/Create main view
@@ -100,9 +99,9 @@ $$(document).on('page:init', function (e) {
     var page = e.detail;
     showBanner();
     setTimeout(function () {
-        CodeMirror.colorize(document.querySelectorAll("pre[type=javascript]"), "text/javascript")
-        CodeMirror.colorize(document.querySelectorAll("pre[type=html]"), "text/html")
-        CodeMirror.colorize(document.querySelectorAll("pre[type=bash]"), "text/x-sh")
+        CodeMirror.colorize(document.querySelectorAll("pre"), "text/x-sh");
+        CodeMirror.colorize(document.querySelectorAll("pre[type=javascript]"), "text/javascript");
+        CodeMirror.colorize(document.querySelectorAll("pre[type=html]"), "text/html");
     }, 200)
 });
 

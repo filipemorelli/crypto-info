@@ -1,28 +1,28 @@
 
-<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bibliotecas Eletrônicas - Nativo Nativo</font></font></h1>
+<h1><font><font>Bibliotecas Eletrônicas - Nativo Nativo</font></font></h1>
 
 
 
 
 
 
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilizamos um módulo de nodejs, fs, no capítulo anterior. </font><font style="vertical-align: inherit;">Vamos agora olhar para alguns outros módulos de nodejss que podemos usar com o Electron.</font></font></p>
-<h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Módulo OS</font></font></h2>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usando o módulo do sistema operacional, podemos obter muitas informações sobre o sistema em que nosso aplicativo está sendo executado. </font><font style="vertical-align: inherit;">Os seguintes são alguns métodos que ajudam enquanto o aplicativo está sendo criado. </font><font style="vertical-align: inherit;">Esses métodos nos ajudam a personalizar as aplicações de acordo com o sistema operacional em que elas estão sendo executadas.</font></font></p>
+<p><font><font>Utilizamos um módulo de nodejs, fs, no capítulo anterior. </font><font>Vamos agora olhar para alguns outros módulos de nodejss que podemos usar com o Electron.</font></font></p>
+<h2><font><font>Módulo OS</font></font></h2>
+<p><font><font>Usando o módulo do sistema operacional, podemos obter muitas informações sobre o sistema em que nosso aplicativo está sendo executado. </font><font>Os seguintes são alguns métodos que ajudam enquanto o aplicativo está sendo criado. </font><font>Esses métodos nos ajudam a personalizar as aplicações de acordo com o sistema operacional em que elas estão sendo executadas.</font></font></p>
 <table class="table table-bordered">
 <tbody><tr>
-<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">S.No</font></font></th>
-<th style="text-align:center;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descrição da função</font></font></th>
+<th style="text-align:center;"><font><font>S.No</font></font></th>
+<th style="text-align:center;"><font><font>Descrição da função</font></font></th>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">os.userInfo ([opções])</font></font></b></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O </font><font style="vertical-align: inherit;">método </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">os.userInfo ()</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> retorna informações sobre o usuário atualmente efetivo. </font><font style="vertical-align: inherit;">Esta informação pode ser usada para personalizar o aplicativo para o usuário, mesmo sem solicitar explicitamente informações.</font></font></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>1</font></font></td>
+<td><p><b><font><font>os.userInfo ([opções])</font></font></b></p>
+<p><font><font>O </font><font>método </font></font><b><font><font>os.userInfo ()</font></font></b><font><font> retorna informações sobre o usuário atualmente efetivo. </font><font>Esta informação pode ser usada para personalizar o aplicativo para o usuário, mesmo sem solicitar explicitamente informações.</font></font></p>
 </td>
 </tr>
 <tr>
-<td style="text-align:center;vertical-align:middle;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></td>
-<td><p><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">os.platform ()</font></font></b></p>
+<td style="text-align:center;vertical-align:middle;"><font><font>2</font></font></td>
+<td><p><b><font><font>os.platform ()</font></font></b></p>
 <p>The <b>os.platform()</b> method returns a string identifying the operating system platform. This can be used to customize the app according to the user OS.</p>
 </td>
 </tr>
@@ -111,7 +111,7 @@ OS Architecture: x64
 </tr>
 </tbody></table>
 <p>The net module comes with a few other methods too. To get a more comprehensive list, see <a>this</a>.</p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora, vamos criar um aplicativo de elétrons que use o módulo de rede para criar conexões para o servidor. </font><font style="vertical-align: inherit;">Precisamos criar um novo arquivo, </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">server.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> -</font></font></p>
+<p><font><font>Agora, vamos criar um aplicativo de elétrons que use o módulo de rede para criar conexões para o servidor. </font><font>Precisamos criar um novo arquivo, </font></font><b><font><font>server.js</font></font></b><font><font> -</font></font></p>
 <pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">var</span><span class="pln"> net </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'net'</span><span class="pun">);</span><span class="pln">
 </span><span class="kwd">var</span><span class="pln"> server </span><span class="pun">=</span><span class="pln"> net</span><span class="pun">.</span><span class="pln">createServer</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">connection</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Client Connected'</span><span class="pun">);</span><span class="pln">
@@ -127,7 +127,7 @@ OS Architecture: x64
 server</span><span class="pun">.</span><span class="pln">listen</span><span class="pun">(</span><span class="lit">8080</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> 
    console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="str">'Server running on http://localhost:8080'</span><span class="pun">);</span><span class="pln">
 </span><span class="pun">});</span></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Usando o mesmo arquivo main.js, substitua o arquivo HTML pelo seguinte:</font></font></p>
+<p><font><font>Usando o mesmo arquivo main.js, substitua o arquivo HTML pelo seguinte:</font></font></p>
 <pre class="prettyprint notranslate prettyprinted" style=""><span class="tag">&lt;html&gt;</span><span class="pln">
    </span><span class="tag">&lt;head&gt;</span><span class="pln">
       </span><span class="tag">&lt;title&gt;</span><span class="pln">net Module</span><span class="tag">&lt;/title&gt;</span><span class="pln">
@@ -151,16 +151,16 @@ server</span><span class="pun">.</span><span class="pln">listen</span><span clas
       </span><span class="tag">&lt;/script&gt;</span><span class="pln">
    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute o servidor usando o seguinte comando -</font></font></p>
+<p><font><font>Execute o servidor usando o seguinte comando -</font></font></p>
 <pre class="result notranslate">$ node server.js
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute o aplicativo usando o seguinte comando -</font></font></p>
+<p><font><font>Execute o aplicativo usando o seguinte comando -</font></font></p>
 <pre class="result notranslate">$ electron ./main.js
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O comando acima gerará a saída a seguir -</font></font></p>
+<p><font><font>O comando acima gerará a saída a seguir -</font></font></p>
 <img src="https://www.tutorialspoint.com/electron/images/netModule.jpg" alt="Módulo Net">
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Observe que nos conectamos ao servidor automaticamente e automaticamente nos desconectamos.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nodejss também temos alguns outros módulos de nodejss que podemos usar diretamente no front-end usando o Electron. </font><font style="vertical-align: inherit;">O uso desses módulos depende do cenário em que você os usa.</font></font></p>
+<p><font><font>Observe que nos conectamos ao servidor automaticamente e automaticamente nos desconectamos.</font></font></p>
+<p><font><font>Nodejss também temos alguns outros módulos de nodejss que podemos usar diretamente no front-end usando o Electron. </font><font>O uso desses módulos depende do cenário em que você os usa.</font></font></p>
 
 
 

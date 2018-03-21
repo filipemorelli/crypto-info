@@ -13,20 +13,61 @@
     <div class="page-content">
         <div class="block">
 
-<h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Notificações</font></font></h1>
+            <h1>
+                <font>
+                    <font>Electron - Notificações</font>
+                </font>
+            </h1>
 
 
 
 
 
 
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O Electron fornece API de notificações nativas apenas para o MacOS. </font><font style="vertical-align: inherit;">Então, não vamos usar isso, em vez disso, usaremos um módulo npm chamado </font></font><i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">notificador de nodejs</font></font></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> . </font><font style="vertical-align: inherit;">Isso nos permite notificar usuários em Windows, MacOS e Linux.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instale o módulo de notificador de nodejs na pasta da sua aplicação usando o seguinte comando nessa pasta -</font></font></p>
-<pre class="result notranslate">$ npm install --save node-notifier
+            <p>
+                <font>
+                    <font>O Electron fornece API de notificações nativas apenas para o MacOS. </font>
+                    <font>Então, não vamos usar isso, em vez disso, usaremos um módulo npm chamado </font>
+                </font>
+                <i>
+                    <font>
+                        <font>notificador de nodejs</font>
+                    </font>
+                </i>
+                <font>
+                    <font> . </font>
+                    <font>Isso nos permite notificar usuários em Windows, MacOS e Linux.</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>Instale o módulo de notificador de nodejs na pasta da sua aplicação usando o seguinte comando nessa pasta
+                        -</font>
+                </font>
+            </p>
+            <pre class="result notranslate">$ npm install --save node-notifier
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deixe-nos agora criar um aplicativo que tenha um botão que gerará uma notificação sempre que clicarmos neste botão.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crie um novo </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e insira o seguinte código nela -</font></font></p>
-<pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+            <p>
+                <font>
+                    <font>Deixe-nos agora criar um aplicativo que tenha um botão que gerará uma notificação sempre que clicarmos
+                        neste botão.</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>Crie um novo </font>
+                    <font>arquivo </font>
+                </font>
+                <b>
+                    <font>
+                        <font>main.js</font>
+                    </font>
+                </b>
+                <font>
+                    <font> e insira o seguinte código nela -</font>
+                </font>
+            </p>
+            <pre class="prettyprint notranslate prettyprinted" style="" type="javascript"><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
 </span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln">
 </span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">
 
@@ -42,8 +83,22 @@
 </span><span class="pun">}</span><span class="pln">
 
 app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Deixe-nos agora criar nossa página e script que irá ativar a notificação. </font><font style="vertical-align: inherit;">Crie um novo </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">index.html</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> com o seguinte código -</font></font></p>
-<pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+            <p>
+                <font>
+                    <font>Deixe-nos agora criar nossa página e script que irá ativar a notificação. </font>
+                    <font>Crie um novo </font>
+                    <font>arquivo </font>
+                </font>
+                <b>
+                    <font>
+                        <font>index.html</font>
+                    </font>
+                </b>
+                <font>
+                    <font> com o seguinte código -</font>
+                </font>
+            </p>
+            <pre class="prettyprint notranslate prettyprinted" style="" type="htmls"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
    </span><span class="tag">&lt;head&gt;</span><span class="pln">
       </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
@@ -82,19 +137,56 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
       </span><span class="tag">&lt;/script&gt;</span><span class="pln">
    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O </font><font style="vertical-align: inherit;">método de </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">notificação</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> nos permite passar um </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">objeto com</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> informações como o título, mensagem, miniatura, etc., que nos ajudam a personalizar a notificação. </font><font style="vertical-align: inherit;">Também podemos definir alguns ouvintes de eventos na notificação.</font></font></p>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora, execute o aplicativo usando o seguinte comando -</font></font></p>
-<pre class="result notranslate">$ electron ./main.js
+            <p>
+                <font>
+                    <font>O </font>
+                    <font>método de </font>
+                </font>
+                <b>
+                    <font>
+                        <font>notificação</font>
+                    </font>
+                </b>
+                <font>
+                    <font> nos permite passar um </font>
+                </font>
+                <b>
+                    <font>
+                        <font>objeto com</font>
+                    </font>
+                </b>
+                <font>
+                    <font> informações como o título, mensagem, miniatura, etc., que nos ajudam a personalizar a notificação. </font>
+                    <font>Também podemos definir alguns ouvintes de eventos na notificação.</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>Agora, execute o aplicativo usando o seguinte comando -</font>
+                </font>
+            </p>
+            <pre class="result notranslate">$ electron ./main.js
 </pre>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quando você clica no botão que criamos, você verá uma notificação nativa do seu sistema operacional conforme mostrado na seguinte captura de tela -</font></font></p>
-<img src="https://www.tutorialspoint.com/electron/images/notification.jpg" alt="Notificação">
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nodejss também manipulamos os eventos em que, o usuário clica na notificação ou a notificação expira. </font><font style="vertical-align: inherit;">Esses métodos nos ajudam a tornar o aplicativo mais interativo se ele estiver executando em segundo plano.</font></font></p>
+            <p>
+                <font>
+                    <font>Quando você clica no botão que criamos, você verá uma notificação nativa do seu sistema operacional conforme
+                        mostrado na seguinte captura de tela -</font>
+                </font>
+            </p>
+            <img src="https://www.tutorialspoint.com/electron/images/notification.jpg" alt="Notificação">
+            <p>
+                <font>
+                    <font>Nodejss também manipulamos os eventos em que, o usuário clica na notificação ou a notificação expira.
+                        </font>
+                    <font>Esses métodos nos ajudam a tornar o aplicativo mais interativo se ele estiver executando em segundo plano.</font>
+                </font>
+            </p>
 
 
 
 
 
-<!-- PRINTING ENDS HERE -->
+            <!-- PRINTING ENDS HERE -->
 
 
         </div>

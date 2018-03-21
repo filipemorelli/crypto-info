@@ -13,19 +13,92 @@
     <div class="page-content">
         <div class="block">
 
-            <h1><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Electron - Inter Process Communication</font></font></h1>
+            <h1>
+                <font>
+                    <font>Electron - Inter Process Communication</font>
+                </font>
+            </h1>
 
 
 
 
 
 
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O electronon nos fornece 2 módulos IPC (Inter Process Communication) chamados </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ipcMain</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ipcRenderer</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .</font></font></p>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O </font><font style="vertical-align: inherit;">módulo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ipcMain</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> é usado para se comunicar de forma assíncrona do processo principal para processos de renderização. </font><font style="vertical-align: inherit;">Quando usado no processo principal, o módulo lida com mensagens assíncronas e síncronas enviadas a partir de um processo de renderização (página web). </font><font style="vertical-align: inherit;">As mensagens enviadas de um renderizador serão emitidas para este módulo.</font></font></p>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O </font><font style="vertical-align: inherit;">módulo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ipcRenderer</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> é usado para se comunicar assincronamente de um processo de renderização para o processo principal. </font><font style="vertical-align: inherit;">Ele fornece alguns métodos para que você possa enviar mensagens síncronas e assíncronas do processo de renderização (página da web) para o processo principal. </font><font style="vertical-align: inherit;">Você também pode receber respostas do processo principal.</font></font></p>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vamos criar um processo principal e um processo de renderização que nos enviarão mensagens usando os módulos acima.</font></font></p>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crie um novo arquivo chamado </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">main_process.js</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> com os seguintes conteúdos:</font></font></p>
-            <pre class="prettyprint notranslate prettyprinted" style=""><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
+            <p>
+                <font>
+                    <font>O electronon nos fornece 2 módulos IPC (Inter Process Communication) chamados </font>
+                </font>
+                <b>
+                    <font>
+                        <font>ipcMain</font>
+                    </font>
+                </b>
+                <font>
+                    <font> e </font>
+                </font>
+                <b>
+                    <font>
+                        <font>ipcRenderer</font>
+                    </font>
+                </b>
+                <font>
+                    <font> .</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>O </font>
+                    <font>módulo </font>
+                </font>
+                <b>
+                    <font>
+                        <font>ipcMain</font>
+                    </font>
+                </b>
+                <font>
+                    <font> é usado para se comunicar de forma assíncrona do processo principal para processos de renderização. </font>
+                    <font>Quando usado no processo principal, o módulo lida com mensagens assíncronas e síncronas enviadas a partir
+                        de um processo de renderização (página web). </font>
+                    <font>As mensagens enviadas de um renderizador serão emitidas para este módulo.</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>O </font>
+                    <font>módulo </font>
+                </font>
+                <b>
+                    <font>
+                        <font>ipcRenderer</font>
+                    </font>
+                </b>
+                <font>
+                    <font> é usado para se comunicar assincronamente de um processo de renderização para o processo principal. </font>
+                    <font>Ele fornece alguns métodos para que você possa enviar mensagens síncronas e assíncronas do processo de
+                        renderização (página da web) para o processo principal. </font>
+                    <font>Você também pode receber respostas do processo principal.</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>Vamos criar um processo principal e um processo de renderização que nos enviarão mensagens usando os
+                        módulos acima.</font>
+                </font>
+            </p>
+            <p>
+                <font>
+                    <font>Crie um novo arquivo chamado </font>
+                </font>
+                <b>
+                    <font>
+                        <font>main_process.js</font>
+                    </font>
+                </b>
+                <font>
+                    <font> com os seguintes conteúdos:</font>
+                </font>
+            </p>
+            <pre class="prettyprint notranslate prettyprinted" style="" type="javascript"><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">app</span><span class="pun">,</span><span class="pln"> </span><span class="typ">BrowserWindow</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
 </span><span class="kwd">const</span><span class="pln"> url </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'url'</span><span class="pun">)</span><span class="pln">
 </span><span class="kwd">const</span><span class="pln"> path </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'path'</span><span class="pun">)</span><span class="pln">
 </span><span class="kwd">const</span><span class="pln"> </span><span class="pun">{</span><span class="pln">ipcMain</span><span class="pun">}</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">require</span><span class="pun">(</span><span class="str">'electron'</span><span class="pun">)</span><span class="pln">
@@ -58,8 +131,21 @@ ipcMain</span><span class="pun">.</span><span class="pln">on</span><span class="
 </span><span class="pun">})</span><span class="pln">
 
 app</span><span class="pun">.</span><span class="pln">on</span><span class="pun">(</span><span class="str">'ready'</span><span class="pun">,</span><span class="pln"> createWindow</span><span class="pun">)</span></pre>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora, crie um novo </font><font style="vertical-align: inherit;">arquivo </font></font><b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">index.html</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> e adicione o seguinte código nele.</font></font></p>
-            <pre class="prettyprint notranslate prettyprinted" style=""><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
+            <p>
+                <font>
+                    <font>Agora, crie um novo </font>
+                    <font>arquivo </font>
+                </font>
+                <b>
+                    <font>
+                        <font>index.html</font>
+                    </font>
+                </b>
+                <font>
+                    <font> e adicione o seguinte código nele.</font>
+                </font>
+            </p>
+            <pre class="prettyprint notranslate prettyprinted" style="" type="html"><span class="dec">&lt;!DOCTYPE html&gt;</span><span class="pln">
 </span><span class="tag">&lt;html&gt;</span><span class="pln">
    </span><span class="tag">&lt;head&gt;</span><span class="pln">
       </span><span class="tag">&lt;meta</span><span class="pln"> </span><span class="atn">charset</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="atv">"UTF-8"</span><span class="tag">&gt;</span><span class="pln">
@@ -83,10 +169,18 @@ app</span><span class="pun">.</span><span class="pln">on</span><span class="pun"
       </span><span class="tag">&lt;/script&gt;</span><span class="pln">
    </span><span class="tag">&lt;/body&gt;</span><span class="pln">
 </span><span class="tag">&lt;/html&gt;</span></pre>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Execute o aplicativo usando o seguinte comando -</font></font></p>
+            <p>
+                <font>
+                    <font>Execute o aplicativo usando o seguinte comando -</font>
+                </font>
+            </p>
             <pre class="result notranslate">$ electron ./main_process.js
             </pre>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">O comando acima gerará a saída a seguir -</font></font></p>
+            <p>
+                <font>
+                    <font>O comando acima gerará a saída a seguir -</font>
+                </font>
+            </p>
             <pre class="result notranslate">// On your app console
 Sync Pong
 Async Pong
@@ -95,7 +189,13 @@ Async Pong
 Sync Ping
 Async Ping
             </pre>
-            <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recomenda-se não realizar computação de tarefas pesadas / bloqueadoras no processo de renderização. </font><font style="vertical-align: inherit;">Use sempre o IPC para delegar essas tarefas ao processo principal. </font><font style="vertical-align: inherit;">Isso ajuda a manter o ritmo de sua aplicação.</font></font></p>
+            <p>
+                <font>
+                    <font>Recomenda-se não realizar computação de tarefas pesadas / bloqueadoras no processo de renderização. </font>
+                    <font>Use sempre o IPC para delegar essas tarefas ao processo principal. </font>
+                    <font>Isso ajuda a manter o ritmo de sua aplicação.</font>
+                </font>
+            </p>
 
 
 
