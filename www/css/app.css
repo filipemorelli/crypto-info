@@ -1,25 +1,11 @@
-.page img {
-    width: 100%;
+.text-red {
+    color: #f44336 !important;
 }
 
-.demo-card-header-pic .card-header {
-    height: 40vw;
-    background-size: cover;
-    background-position: center;
-    color: #fff;
+.text-green {
+    color: #4caf50 !important;
 }
 
-.page .card:first-child {
-    margin: 8px;
-}
-
-.page .card {
-    margin-top: 30px;
-}
-
-.page pre {
-    border: solid #44b7df;
-    border-width: .1em .1em .1em .8em;
-    padding: .2em .6em;
-    overflow: auto;
+.change-icon{
+    font-size: 18px;
 }
