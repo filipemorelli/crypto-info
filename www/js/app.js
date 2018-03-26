@@ -1,10 +1,12 @@
 // Dom7
 var $$ = Dom7;
 
-angular.module("app-crypto", ["provider.app", "run.app"]);
+angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 
-angular.module("run.app", []).run([
-    function () {
+angular.module("run.app", []).run(['$rootScope', '$timeout',
+    function ($rootScope, $timeout) {
+
+        $rootScope.FILTERS = {};
 
         // Framework7 App main instance
         var app = new Framework7({
@@ -33,6 +35,9 @@ angular.module("run.app", []).run([
                 on: {
                     change: function (e, values) {
                         console.log(values);
+                        $timeout(function () {
+                            $rootScope.FILTERS.range = values;
+                        });
                     }
                 }
             });
@@ -71,5 +76,11 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
                     return "en-US";
             }
         }
+    }
+]);
+
+angular.module("controller.app", []).controller("panelRightCtrl", ['$scope', '$rootScope',
+    function ($scope, $rootScope) {
+        $scope.title = "Price Filter";
     }
 ]);

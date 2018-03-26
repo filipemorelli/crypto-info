@@ -32,7 +32,7 @@
         <div class="statusbar"></div>
 
         <!-- Left panel with cover effect-->
-        <div class="panel panel-right panel-cover">
+        <div class="panel panel-right panel-cover" ng-controller="panelRightCtrl">
             <div class="view">
                 <div class="page">
                     <div class="navbar">
@@ -41,7 +41,8 @@
                         </div>
                     </div>
                     <div class="page-content">
-                        <div class="block-title display-flex justify-content-space-between">Price Filter
+                        <div class="block-title display-flex justify-content-space-between">
+                            <span ng-bind="title"></span>
                             <span class="price-value">$200 - $400</span>
                         </div>
                         <div class="list simple-list">
@@ -62,6 +63,10 @@
                                     </div>
                                 </li>
                             </ul>
+                        </div>
+                        <div class="block">
+                            <p ng-bind="FILTERS.range[0]"></p>
+                            <p ng-bind="FILTERS.range[1]"></p>
                         </div>
                     </div>
                 </div>
@@ -133,11 +138,6 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
-
-                    <div class="block">
-                        <input type="text" ng-model="type">
-                        <b>{{type}}</b>
                     </div>
                 </div>
             </div>
