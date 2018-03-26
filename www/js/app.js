@@ -7,6 +7,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
     function ($rootScope, $timeout) {
 
         $rootScope.FILTERS = {};
+        $rootScope.IS_LOADING = false;
 
         // Framework7 App main instance
         var app = new Framework7({
@@ -46,11 +47,13 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
         // create searchbar
         var searchbar = app.searchbar.create({
             el: '.searchbar',
-            searchContainer: '.list-teste',
-            searchIn: '.item-title',
+            searchContainer: '.list-search',
+            searchIn: '.item-title,.item-after',
             on: {
                 search(sb, query, previousQuery) {
-                    console.log(query, previousQuery);
+                    $timeout(function () {
+                        $rootScope.IS_LOADING = true;
+                    });
                 }
             }
         });
@@ -79,8 +82,40 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
     }
 ]);
 
-angular.module("controller.app", []).controller("panelRightCtrl", ['$scope', '$rootScope',
-    function ($scope, $rootScope) {
-        $scope.title = "Price Filter";
-    }
-]);
+angular.module("controller.app", ['service.app'])
+    .controller("panelRightCtrl", ['$scope', '$rootScope',
+        function ($scope, $rootScope) {
+            $scope.title = "Price Filter";
+        }
+    ])
+    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout',
+        function ($scope, $rootScope, coinsService, $interval, $timeout) {
+
+            function getCoins() {
+                $rootScope.IS_LOADING = true;
+                coinsService.getCoins()
+                    .success(function (data) {
+                        $timeout(function () {
+                            $rootScope.IS_LOADING = false;
+                        }, 500);
+                        $rootScope.LIST_COINS = data;
+                    });
+            }
+            getCoins();
+            $interval(function () {
+                getCoins();
+            }, 1000 * 10);
+
+        }
+    ]);
+
+
+angular.module("service.app", [])
+    .service("coinsService", ['$http',
+        function ($http) {
+            this.getCoins = function (query) {
+                var q = query ? query : "";
+                return $http.get("https://api.coinmarketcap.com/v1/ticker/" + q);
+            };
+        }
+    ]);

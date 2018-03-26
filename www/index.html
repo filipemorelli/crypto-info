@@ -19,7 +19,7 @@
     <meta name="theme-color" content="#2196f3">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <title>My App</title>
+    <title>Crypto Info</title>
 
     <link rel="stylesheet" href="framework7/css/framework7.min.css">
     <link rel="stylesheet" href="css/icons.css">
@@ -77,10 +77,11 @@
         <div class="view view-main ios-edges">
             <!-- Page, data-name contains page name which can be used in callbacks -->
             <div class="page" data-name="home">
+                <div class="progressbar-infinite color-multi" ng-show="IS_LOADING"></div>
                 <!-- Top Navbar -->
                 <div class="navbar">
                     <div class="navbar-inner">
-                        <div class="title sliding">My App</div>
+                        <div class="title sliding">Crypto Info</div>
                         <div class="right">
                             <a href="#" class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo">
                                 <i class="icon f7-icons ios-only">search</i>
@@ -125,54 +126,28 @@
                 </div>
 
                 <div class="tabs">
-                    <div id="tab-1" class="page-content tab tab-active">
-                        <div class="block block-strong">
+                    <div id="tab-1" class="page-content tab tab-active" ng-controller="coinsCtrl">
+                        <div class="block block-strong searchbar-hide-on-search">
                             <p>Here is your blank Framework7 app. Let's see what we have here.</p>
                         </div>
 
-                        <div class="block-title">Navigation</div>
-                        <div class="list list-teste">
+                        <div class="list list-search">
                             <ul>
-                                <li>
-                                    <a href="/about/" class="item-content item-link">
-                                        <div class="item-inner">
-                                            <div class="item-title">About</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/form/" class="item-content item-link">
-                                        <div class="item-inner">
-                                            <div class="item-title">Form</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="/form/" class="item-content item-link">
-                                        <div class="item-inner">
-                                            <div class="item-title" translate="APP"></div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="list">
-                            <ul>
-                                <li class="item-content">
+                                <li class="item-content" ng-repeat="c in LIST_COINS track by $index">
                                     <div class="item-media">
-                                        <img src="https://s2.coinmarketcap.com/static/img/coins/32x32/1.png" class="currency-logo-sprite" alt="Bitcoin">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/32x32/{{c.rank}}.png" class="currency-logo-sprite" alt="{{c.name + '' + c.symbol}}">
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">
-                                            <div class="item-header">Bitcoin</div>
-                                            $8.122,95
+                                            <div class="item-header" ng-bind="c.name + ' (' + c.symbol + ')'"></div>
+                                            <span ng-bind="c.price_usd | currency"></span>
                                             <div class="item-footer">
-                                                Volume: $5.176.720.000
+                                                Volume:
+                                                <span ng-bind="c['24h_volume_usd'] | currency"></span>
                                             </div>
                                         </div>
                                         <div class="item-after">
-                                            <i class="f7-icons text-green change-icon">arrow_up</i>&nbsp;0.06
+                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h']}}
                                         </div>
                                     </div>
                                 </li>
