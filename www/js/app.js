@@ -88,6 +88,13 @@ angular.module("controller.app", ['service.app'])
             $scope.title = "Price Filter";
         }
     ])
+    .controller("navbarCtrl", ['$scope',
+        function ($scope) {
+            $scope.reload = function () {
+                window.location.reload();
+            };
+        }
+    ])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout',
         function ($scope, $rootScope, coinsService, $interval, $timeout) {
 

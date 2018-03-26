@@ -79,7 +79,7 @@
             <div class="page" data-name="home">
                 <div class="progressbar-infinite color-multi" ng-show="IS_LOADING"></div>
                 <!-- Top Navbar -->
-                <div class="navbar">
+                <div class="navbar" ng-controller="navbarCtrl">
                     <div class="navbar-inner">
                         <div class="title sliding">Crypto Info</div>
                         <div class="right">
@@ -87,7 +87,7 @@
                                 <i class="icon f7-icons ios-only">search</i>
                                 <i class="icon material-icons md-only">search</i>
                             </a>
-                            <a href="#" class="link icon-only panel-open" data-panel="right">
+                            <a href="#" class="link icon-only" ng-click="reload()">
                                 <i class="icon f7-icons ios-only">refresh</i>
                                 <i class="icon material-icons md-only">refresh</i>
                             </a>
