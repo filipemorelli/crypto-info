@@ -103,7 +103,10 @@ angular.module("controller.app", ['service.app'])
             function getCoins() {
                 $rootScope.IS_LOADING = true;
                 $scope.showLoading = true;
-                coinsService.getCoins()
+                var t = {
+                    limit: 10
+                };
+                coinsService.getCoins(t)
                     .success(function (data) {
                         $timeout(function () {
                             $scope.showLoading = false;
@@ -124,9 +127,9 @@ angular.module("controller.app", ['service.app'])
 angular.module("service.app", [])
     .service("coinsService", ['$http',
         function ($http) {
-            this.getCoins = function (query) {
-                var q = query ? query : "";
-                return $http.get("https://api.coinmarketcap.com/v1/ticker/" + q);
+            this.getCoins = function (data) {
+                var q = data && typeof data === 'object' ? $.param(data) : "";
+                return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + q);
             };
         }
     ]);
