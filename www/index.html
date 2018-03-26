@@ -133,6 +133,9 @@
 
                         <div class="list list-search">
                             <ul>
+                                <li class="text-center padding" ng-show="showLoading">
+                                    <div class="preloader color-multi"></div>
+                                </li>
                                 <li class="item-content" ng-repeat="c in LIST_COINS track by $index">
                                     <div class="item-media">
                                         <img ng-src="https://s2.coinmarketcap.com/static/img/coins/32x32/{{c.rank}}.png" class="currency-logo-sprite" alt="{{c.name + '' + c.symbol}}">

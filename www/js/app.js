@@ -91,11 +91,15 @@ angular.module("controller.app", ['service.app'])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout',
         function ($scope, $rootScope, coinsService, $interval, $timeout) {
 
+            $scope.showLoading = false;
+
             function getCoins() {
                 $rootScope.IS_LOADING = true;
+                $scope.showLoading = true;
                 coinsService.getCoins()
                     .success(function (data) {
                         $timeout(function () {
+                            $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
                         }, 500);
                         $rootScope.LIST_COINS = data;
