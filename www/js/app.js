@@ -125,6 +125,41 @@ angular.module("controller.app", ['service.app'])
 
 
 angular.module("service.app", [])
+    .service("filtroService", [
+        function () {
+            this.setRealCoin = function (c) {
+                localStorage.setItem('realCoin', c);
+            };
+
+            this.getRealCoin = function () {
+                return localStorage.getItem('realCoin');
+            };
+
+            this.setLimitCoin = function (c) {
+                localStorage.setItem('limitCoin', c);
+            };
+
+            this.getLimitCoin = function () {
+                return localStorage.getItem('limitCoin');
+            };
+
+            this.setTimeRefresh = function (time) {
+                localStorage.setItem("timeRefresh", time);
+            };
+
+            this.getTimeRefresh = function () {
+                return localStorage.getItem('timeRefresh');
+            };
+
+            this.setRangeValuesSearch = function (values) {
+                localStorage.setItem("rangeValues", JSON.stringify(values));
+            };
+
+            this.getRangeValuesSearch = function () {
+                return localStorage.getItem("rangeValues") ? JSON.parse(localStorage.getItem("rangeValues")) : {};
+            };
+        }
+    ])
     .service("coinsService", ['$http',
         function ($http) {
             this.getCoins = function (data) {
