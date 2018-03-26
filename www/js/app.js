@@ -30,18 +30,22 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
             var page = e.detail;
         });
 
+        var hasRange = false;
         $$('.panel-right').on('panel:open', function () {
-            var range = app.range.create({
-                el: '.range-slider',
-                on: {
-                    change: function (e, values) {
-                        console.log(values);
-                        $timeout(function () {
-                            $rootScope.FILTERS.range = values;
-                        });
+            if (!hasRange) {
+                hasRange = true;
+                var range = app.range.create({
+                    el: '.range-slider',
+                    on: {
+                        change: function (e, values) {
+                            console.log(values);
+                            $timeout(function () {
+                                $rootScope.FILTERS.range = values;
+                            });
+                        }
                     }
-                }
-            });
+                });
+            }
         });
 
         // create searchbar
