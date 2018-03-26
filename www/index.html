@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app-crypto">
 
 <head>
     <meta charset="utf-8">
@@ -24,85 +24,42 @@
     <link rel="stylesheet" href="framework7/css/framework7.min.css">
     <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/app.css">
-
-    <link rel="stylesheet" href="codemirror-5.36.0/lib/codemirror.css">
 </head>
 
 <body>
     <div id="app">
         <!-- Status bar overlay for fullscreen mode-->
         <div class="statusbar"></div>
+
         <!-- Left panel with cover effect-->
-        <div class="panel panel-left panel-cover">
+        <div class="panel panel-right panel-cover">
             <div class="view">
                 <div class="page">
                     <div class="navbar">
                         <div class="navbar-inner">
-                            <div class="title">Left Panel</div>
+                            <div class="title">Opções</div>
                         </div>
                     </div>
                     <div class="page-content">
-                        <div class="list links-list no-margin">
+                        <div class="block-title display-flex justify-content-space-between">Price Filter
+                            <span class="price-value">$200 - $400</span>
+                        </div>
+                        <div class="list simple-list">
                             <ul>
-                                <li>
-                                    <a href="/electron-home/" class="panel-close">Electron Home</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-visao-geral/" class="panel-close">Electron Visão Geral</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-instalacao/" class="panel-close">Electron Instalação</a>
-                                </li>
-                                <li>
-                                    <a href="/como-o-electron-funciona/" class="panel-close">Como o Electron Funciona</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-hello-world/" class="panel-close">Electron Hello World</a>
-                                </li>
-                                <li>
-                                    <a href="/on-line-de-construcao-eletronica/" class="panel-close">Electron - Contruindo Interfaces</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-manipulacao-de-arquivos/" class="panel-close">Electron manipulacao de arquivos</a>
-                                </li>
-                                <li>
-                                    <a href="/bibliotecas-eletronicas-nativo-nativo/" class="panel-close">Bibliotecas Electron nativo</a>
-                                </li>
-                                <li>
-                                    <a href="/inter-process-communication/" class="panel-close">Inter process communication (ipc)</a>
-                                </li>
-                                <li>
-                                    <a href="/diagramas-de-dialogo-eletronico-sistema/" class="panel-close">Electron - sistema de dialogo</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-menus/" class="panel-close">Electron - Menus</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-system-tray/" class="panel-close">Electron - System tray</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-notificacoes/" class="panel-close">Electron - Notificações</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-webview/" class="panel-close">Electron - Webview</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-captura-de-audio-e-video/" class="panel-close">Electron - Captura de audio e vídeo</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-definicao-de-atalhos/" class="panel-close">Electron - definicao de atalhos</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-variaveis-de-ambiente/" class="panel-close">Electron - variaveis de ambiente</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-depuracao/" class="panel-close">Electron - Depuracao</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-packaging-apps/" class="panel-close">Electron - packaging apps</a>
-                                </li>
-                                <li>
-                                    <a href="/electron-recursos/" class="panel-close">Electron - Recursos</a>
+                                <li class="item-row">
+                                    <div class="item-cell width-auto flex-shrink-0">
+                                        <i class="icon f7-icons ios-only">money_dollar</i>
+                                        <i class="icon material-icons md-only">attach_money</i>
+                                    </div>
+                                    <div class="item-cell item-cell-shrink-3">
+                                        <!-- Dual range slider with all the parameters passed via data- attributes -->
+                                        <div id="price-filter" class="range-slider range-slider-init color-blue" data-label="true" data-dual="true" data-min="0"
+                                            data-max="500" data-step="1" data-value-left="200" data-value-right="400"></div>
+                                    </div>
+                                    <div class="item-cell width-auto flex-shrink-0">
+                                        <i class="icon f7-icons ios-only">money_dollar_fill</i>
+                                        <i class="icon material-icons md-only">monetization_on</i>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -118,20 +75,31 @@
                 <!-- Top Navbar -->
                 <div class="navbar">
                     <div class="navbar-inner">
-                        <div class="left">
-                            <a href="#" class="link icon-only panel-open" data-panel="left">
-                                <i class="icon f7-icons ios-only">menu</i>
-                                <i class="icon material-icons md-only">menu</i>
+                        <div class="title sliding">My App</div>
+                        <div class="right">
+                            <a href="#" class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo">
+                                <i class="icon f7-icons ios-only">search</i>
+                                <i class="icon material-icons md-only">search</i>
+                            </a>
+                            <a href="#" class="link icon-only panel-open" data-panel="right">
+                                <i class="icon f7-icons ios-only">refresh</i>
+                                <i class="icon material-icons md-only">refresh</i>
+                            </a>
+                            <a href="#" class="link icon-only panel-open" data-panel="right">
+                                <i class="icon f7-icons ios-only">filter</i>
+                                <i class="icon material-icons md-only">filter_list</i>
                             </a>
                         </div>
-                        <div class="title sliding">My App</div>
-                    </div>
-                </div>
-                <!-- Toolbar-->
-                <div class="toolbar">
-                    <div class="toolbar-inner">
-                        <a href="#" class="link">Left Link</a>
-                        <a href="#" class="link">Right Link</a>
+                        <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
+                            <div class="searchbar-inner">
+                                <div class="searchbar-input-wrap">
+                                    <input type="search" placeholder="Search" />
+                                    <i class="searchbar-icon"></i>
+                                    <span class="input-clear-button"></span>
+                                </div>
+                                <span class="searchbar-disable-button">Cancel</span>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!-- Scrollable page content-->
@@ -141,7 +109,7 @@
                     </div>
 
                     <div class="block-title">Navigation</div>
-                    <div class="list">
+                    <div class="list list-teste">
                         <ul>
                             <li>
                                 <a href="/about/" class="item-content item-link">
@@ -157,7 +125,19 @@
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/form/" class="item-content item-link">
+                                    <div class="item-inner">
+                                        <div class="item-title" translate="APP"></div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
+                    </div>
+
+                    <div class="block">
+                        <input type="text" ng-model="type">
+                        <b>{{type}}</b>
                     </div>
                 </div>
             </div>
@@ -166,15 +146,18 @@
     <!-- Cordova -->
     <script src="cordova.js"></script>
 
-    <!-- Codemirror -->
-    <script src="codemirror-5.36.0/lib/codemirror.js"></script>
-    <script src="codemirror-5.36.0/addon/runmode/runmode.js"></script>
-    <script src="codemirror-5.36.0/addon/runmode/colorize.js"></script>
-    <script src="codemirror-5.36.0/mode/shell/shell.js"></script>
-    <script src="codemirror-5.36.0/mode/javascript/javascript.js"></script>
-    <script src="codemirror-5.36.0/mode/css/css.js"></script>
-    <script src="codemirror-5.36.0/mode/xml/xml.js"></script>
-    <script src="codemirror-5.36.0/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="https://cdn.rawgit.com/SlexAxton/messageformat.js/v1.0.2/messageformat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-cookies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-sanitize.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate/2.17.0/angular-translate.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate-interpolation-messageformat/2.17.0/angular-translate-interpolation-messageformat.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate-storage-cookie/2.17.0/angular-translate-storage-cookie.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate-storage-local/2.17.0/angular-translate-storage-local.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate-loader-url/2.17.0/angular-translate-loader-url.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate-loader-static-files/2.17.0/angular-translate-loader-static-files.js"></script>
+    <script src="https://cdn.rawgit.com/angular-translate/bower-angular-translate-handler-log/2.17.0/angular-translate-handler-log.js"></script>
 
     <!-- Framework7 library -->
     <script src="framework7/js/framework7.min.js"></script>
