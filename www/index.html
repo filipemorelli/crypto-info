@@ -167,7 +167,10 @@
                                     </div>
                                     <div class="item-inner">
                                         <div class="item-title">
-                                            <div class="item-header" ng-bind="c.name + ' (' + c.symbol + ')'"></div>
+                                            <div class="item-header">
+                                                <span ng-bind="c.name + ' (' + c.symbol + ')'"></span>
+                                                <i class="icon f7-icons" ng-if="isNotified(c)">bell_fill</i>
+                                            </div>
                                             <span ng-bind="c[NAME_PRICE] | currency:SELECTED_COIN+' ':2"></span>
                                             <div class="item-footer">
                                                 <span translate="VOLUME:"></span>

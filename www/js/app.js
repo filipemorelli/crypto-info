@@ -153,12 +153,18 @@ angular.module("controller.app", ['service.app'])
                 if (!notificationService.isInArray(c)) {
                     app.dialog.confirm('Deseja ser notificado sobre mudança de valor da moeda?', 'Add Notificação', function () {
                         notificationService.addCoin(c);
+                        $scope.$apply();
                     });
                 } else {
                     app.dialog.confirm('Deseja remover notificação sobre mudança de valor da moeda?', 'Remover Notificação', function () {
                         notificationService.removeCoin(c);
+                        $scope.$apply();
                     });
                 }
+            };
+
+            $scope.isNotified = function (c) {
+                return notificationService.isInArray(c);
             };
 
             getCoinsIds();

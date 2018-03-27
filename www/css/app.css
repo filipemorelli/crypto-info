@@ -21,3 +21,9 @@
 #tab-1 .item-content:hover {
     background-color: #d2eafd;
 }
+
+#tab-1 .item-content .item-title .icon {
+    font-size: 12px;
+    margin-left: 5px;
+    color: #212121;
+}
