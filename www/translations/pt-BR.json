@@ -1,3 +1,16 @@
 {
-    "APP": "CRYPTO APP"
+    "OPTIONS": "Opções",
+    "COIN": "Moeda",
+    "COINS": "Moedas",
+    "Time Update ('s)": "Tempo de atualização",
+    "LANGUAGE": "Idioma",
+    "SHOW COINS": "Mostrar moedas",
+    "SAVE": "Salvar",
+    "SEARCH...": "Procurar...",
+    "CANCEL": "Cancelar",
+    "EXCHANGE": "Corretoras",
+    "INFO": "Info",
+    "VOLUME:": "Volume:",
+    "SAVED SUCCESSFULLY": "Salvo com sucesso!",
+    "ERROR SERVER CONNECTION": "Erro de conexão com o servidor"
 }
