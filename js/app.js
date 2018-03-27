@@ -67,7 +67,7 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
     "$translateProvider",
     function ($translateProvider) {
         $translateProvider.useStaticFilesLoader({
-            'prefix': '/translations/',
+            'prefix': 'translations/',
             'suffix': '.json'
         });
         var lang = getLang();
@@ -215,7 +215,7 @@ angular.module("service.app", [])
             };
 
             this.getCoinIds = function () {
-                return $http.get("/js/coins.json");
+                return $http.get("js/coins.json");
             };
         }
     ]);
