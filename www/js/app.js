@@ -8,6 +8,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
 
         $rootScope.FILTERS = {};
         $rootScope.FILTERS.range = [0, 3e4];
+        $rootScope.UPDATE_TIME = 30;
         $rootScope.IS_LOADING = false;
         $rootScope.NAME_PRICE = "price_usd";
         $rootScope.NAME_VOLUME = "24h_volume_usd";
@@ -105,6 +106,7 @@ angular.module("controller.app", ['service.app'])
         function ($scope, $rootScope, filtroService) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
+            $scope.time = [1, 5, 10, 20, 30, 60, 120, 60 * 5, 60 * 10];
         }
     ])
     .controller("navbarCtrl", ['$scope',
@@ -143,7 +145,7 @@ angular.module("controller.app", ['service.app'])
             getCoins();
             $interval(function () {
                 getCoins();
-            }, 1000 * 30);
+            }, 1000 * $rootScope.UPDATE_TIME);
 
         }
     ]);
