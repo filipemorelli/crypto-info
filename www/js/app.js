@@ -12,6 +12,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
         $rootScope.NAME_PRICE = "price_usd";
         $rootScope.NAME_VOLUME = "24h_volume_usd";
         $rootScope.SELECTED_COIN = "USD";
+        $rootScope.COIN_IDS = {};
 
         // Framework7 App main instance
         var app = new Framework7({
@@ -130,6 +131,15 @@ angular.module("controller.app", ['service.app'])
                         $rootScope.LIST_COINS = data;
                     });
             }
+
+            function getCoinsIds() {
+                coinsService.getCoinIds()
+                    .success(function (data) {
+                        $rootScope.COIN_IDS = data;
+                        console.log($rootScope.COIN_IDS);
+                    });
+            }
+            getCoinsIds();
             getCoins();
             $interval(function () {
                 getCoins();
@@ -185,6 +195,10 @@ angular.module("service.app", [])
             this.getCoins = function () {
                 var q = "";
                 return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + q);
+            };
+
+            this.getCoinIds = function () {
+                return $http.get("/js/coins.json");
             };
         }
     ]);
