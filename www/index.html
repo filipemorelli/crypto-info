@@ -41,33 +41,6 @@
                         </div>
                     </div>
                     <form class="page-content" ng-submit="saveData()">
-                        <div class="block-title display-flex justify-content-space-between">
-                            <span ng-bind="title"></span>
-                            <span class="price-value">
-                                <span ng-bind="FILTERS.range[0] | currency"></span>
-                                -
-                                <span ng-bind="FILTERS.range[1] | currency"></span>
-                            </span>
-                        </div>
-                        <div class="list simple-list">
-                            <ul>
-                                <li class="item-row">
-                                    <div class="item-cell width-auto flex-shrink-0">
-                                        <i class="icon f7-icons ios-only">money_dollar</i>
-                                        <i class="icon material-icons md-only">attach_money</i>
-                                    </div>
-                                    <div class="item-cell item-cell-shrink-3">
-                                        <!-- Dual range slider with all the parameters passed via data- attributes -->
-                                        <div id="price-filter" class="range-slider range-slider-init color-blue" data-label="true" data-dual="true" data-min="0"
-                                            data-max="500" data-step="1"></div>
-                                    </div>
-                                    <div class="item-cell width-auto flex-shrink-0">
-                                        <i class="icon f7-icons ios-only">money_dollar_fill</i>
-                                        <i class="icon material-icons md-only">monetization_on</i>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
                         <div class="list">
                             <ul>
                                 <li>

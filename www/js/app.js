@@ -38,26 +38,10 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
             var page = e.detail;
         });
 
-        var hasRange = false;
-        window.range = null;
+        var hasSelect = false;
         $$('.panel-right').on('panel:open', function () {
-            if (!hasRange) {
-                hasRange = true;
-                window.range = app.range.create({
-                    el: '.range-slider',
-                    min: 0,
-                    max: 9.99999e5,
-                    value: [0, 9.99999e5],
-                    on: {
-                        change: function (e, values) {
-                            console.log(values);
-                            $timeout(function () {
-                                $rootScope.FILTERS.range = values;
-                            });
-                        }
-                    }
-                });
-
+            if (!hasSelect) {
+                hasSelect = true;
                 var smartSelect = app.smartSelect.create({
                     el: '.smart-select'
                 });
@@ -89,7 +73,6 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
             'suffix': '.json'
         });
         var lang = getLang();
-        console.log(lang);
         $translateProvider.preferredLanguage(lang);
     }
 ]);
@@ -223,6 +206,9 @@ angular.module("service.app", [])
     ]);
 
 function getLang() {
+    if (localStorage.getItem('lang')) {
+        return localStorage.getItem('lang');
+    }
     switch (navigator.language) {
         case "pt-BR":
             return navigator.language;
