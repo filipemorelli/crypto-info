@@ -6,10 +6,24 @@
     color: #4caf50 !important;
 }
 
-.change-icon{
+.change-icon {
     font-size: 18px;
 }
 
-.text-center{
+.text-center {
     text-align: center;
+}
+
+#tab-1 .item-content {
+    cursor: pointer;
+}
+
+#tab-1 .item-content:hover {
+    background-color: #d2eafd;
+}
+
+#tab-1 .item-content .item-title .icon {
+    font-size: 12px;
+    margin-left: 5px;
+    color: #212121;
 }

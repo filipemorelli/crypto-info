@@ -3,8 +3,8 @@ var $$ = Dom7;
 
 angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 
-angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
-    function ($rootScope, $timeout, filtroService) {
+angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'notificationService',
+    function ($rootScope, $timeout, filtroService, notificationService) {
 
         $rootScope.IS_LOADING = false;
         $rootScope.NAME_PRICE = "price_" + filtroService.getRealCoin().toLowerCase();
@@ -14,12 +14,13 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
         $rootScope.SELECTED_COIN = filtroService.getRealCoin();
         $rootScope.LANG = filtroService.getLang();
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
+        notificationService.notificationActive();
 
         // Framework7 App main instance
         window.app = new Framework7({
             root: '#app', // App root element
             id: 'app.crypto', // App bundle ID
-            name: 'CryptoAgora', // App name
+            name: 'Crypto Info', // App name
             theme: 'auto', // Automatic theme detection
             // App routes
             routes: routes
@@ -110,8 +111,8 @@ angular.module("controller.app", ['service.app'])
             };
         }
     ])
-    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout',
-        function ($scope, $rootScope, coinsService, $interval, $timeout) {
+    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
+        function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
             $scope.showLoading = false;
 
@@ -123,8 +124,9 @@ angular.module("controller.app", ['service.app'])
                         $timeout(function () {
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
-                        }, 500);
-                        $rootScope.LIST_COINS = data;
+                            $rootScope.LIST_COINS = data;
+                        }, 250);
+                        notificationService.verifyChangesAndNotify(data);
                     })
                     .error(function () {
                         window.app.toast.create({
@@ -146,6 +148,25 @@ angular.module("controller.app", ['service.app'])
                         }).open();
                     });
             }
+
+            $scope.setNotify = function (c) {
+                if (!notificationService.isInArray(c)) {
+                    app.dialog.confirm('Deseja ser notificado sobre mudança de valor da moeda?', 'Add Notificação', function () {
+                        notificationService.addCoin(c);
+                        $scope.$apply();
+                    });
+                } else {
+                    app.dialog.confirm('Deseja remover notificação sobre mudança de valor da moeda?', 'Remover Notificação', function () {
+                        notificationService.removeCoin(c);
+                        $scope.$apply();
+                    });
+                }
+            };
+
+            $scope.isNotified = function (c) {
+                return notificationService.isInArray(c);
+            };
+
             getCoinsIds();
             getCoins();
             $interval(function () {
@@ -193,7 +214,7 @@ angular.module("service.app", [])
             };
 
             this.getTimeRefresh = function () {
-                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 30;
+                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 60;
             };
 
             this.setRangeValuesSearch = function (values) {
@@ -202,6 +223,87 @@ angular.module("service.app", [])
 
             this.getRangeValuesSearch = function () {
                 return localStorage.getItem("rangeValues") ? JSON.parse(localStorage.getItem("rangeValues")) : {};
+            };
+        }
+    ])
+    .service("notificationService", ['$rootScope', '$filter',
+        function ($rootScope, $filter) {
+            this.notificationActive = function () {
+                // Let's check if the browser supports notifications
+                if (!("Notification" in window)) {
+                    alert("This browser does not support desktop notification");
+                }
+                // Otherwise, we need to ask the user for permission
+                else if (Notification.permission !== 'granted') {
+                    Notification.requestPermission(function (permission) {
+                        // If the user accepts, let's create a notification
+                        if (permission === "granted") {
+                            var notification = new Notification("Crypo Info start!");
+                        }
+                    });
+                }
+            };
+
+            this.setCoinsToNotification = function (v) {
+                localStorage.setItem("notificationCoins", JSON.stringify(v));
+            };
+
+            this.getCoinsToNotification = function () {
+                return localStorage.getItem("notificationCoins") ? JSON.parse(localStorage.getItem("notificationCoins")) : [];
+            };
+
+            this.addCoin = function (c) {
+                var coins = this.getCoinsToNotification();
+                coins.push(c);
+                this.setCoinsToNotification(coins);
+            };
+
+            this.removeCoin = function (c) {
+                var coins = this.getCoinsToNotification();
+                for (var i in coins) {
+                    if (coins[i].id == c.id) {
+                        coins.splice(i, 1);
+                        this.setCoinsToNotification(coins);
+                        return;
+                    }
+                }
+                return;
+            };
+
+            this.updateCoinValue = function (p, coin) {
+                var coins = this.getCoinsToNotification();
+                coins[p] = coin;
+                this.setCoinsToNotification(coins);
+            };
+
+            this.isInArray = function (c) {
+                var coins = this.getCoinsToNotification();
+                for (var i in coins) {
+                    if (coins[i].id == c.id) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
+            this.notify = function (o) {
+                var notification = new Notification(o.title, o);
+            };
+
+            this.verifyChangesAndNotify = function (newCoins) {
+                var coins = this.getCoinsToNotification();
+                for (var i1 in newCoins) {
+                    for (var i2 in coins) {
+                        if (coins[i2].id == newCoins[i1].id && coins[i2].price_usd != newCoins[i1].price_usd) {
+                            this.notify({
+                                title: "Crypto Info - (" + newCoins[i1].symbol + ")",
+                                body: newCoins[i1].name + "\n" + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' '),
+                                icon: "icon.png"
+                            });
+                            this.updateCoinValue(i2, newCoins[i1]);
+                        }
+                    }
+                }
             };
         }
     ])
