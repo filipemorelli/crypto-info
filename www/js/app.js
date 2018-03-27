@@ -111,8 +111,8 @@ angular.module("controller.app", ['service.app'])
             };
         }
     ])
-    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout',
-        function ($scope, $rootScope, coinsService, $interval, $timeout) {
+    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
+        function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
             $scope.showLoading = false;
 
@@ -149,13 +149,15 @@ angular.module("controller.app", ['service.app'])
             }
 
             $scope.setNotify = function (c) {
-                app.dialog.confirm('Deseja ser notificado sobre mudança de valor da moeda?', function () {
-                    console.log(c);
-                });
-                // var notification = new Notification("Hi there!", {
-                //     body: "olá mundo!",
-                //     icon: "icon.png"
-                // });
+                if (!notificationService.isInArray(c)) {
+                    app.dialog.confirm('Deseja ser notificado sobre mudança de valor da moeda?', 'Add Notificação', function () {
+                        notificationService.addCoin(c);
+                    });
+                } else {
+                    app.dialog.confirm('Deseja remover notificação sobre mudança de valor da moeda?', 'Remover Notificação', function () {
+                        notificationService.removeCoin(c);
+                    });
+                }
             };
 
             getCoinsIds();
@@ -233,6 +235,46 @@ angular.module("service.app", [])
                         }
                     });
                 }
+            };
+
+            this.setCoinsToNotification = function (v) {
+                localStorage.setItem("notificationCoins", JSON.stringify(v));
+            };
+
+            this.getCoinsToNotification = function () {
+                return localStorage.getItem("notificationCoins") ? JSON.parse(localStorage.getItem("notificationCoins")) : [];
+            };
+
+            this.addCoin = function (c) {
+                var coins = this.getCoinsToNotification();
+                coins.push(c);
+                this.setCoinsToNotification(coins);
+            };
+
+            this.removeCoin = function (c) {
+                var coins = this.getCoinsToNotification();
+                for (var i in coins) {
+                    if (coins[i].id == c.id) {
+                        coins.splice(i, 1);
+                        this.setCoinsToNotification(coins);
+                        return;
+                    }
+                }
+                return;
+            };
+
+            this.isInArray = function (c) {
+                var coins = this.getCoinsToNotification();
+                for (var i in coins) {
+                    if (coins[i].id == c.id) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+
+            this.notify = function (o) {
+                var notification = new Notification(o.title, o);
             };
         }
     ])
