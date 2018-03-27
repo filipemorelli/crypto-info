@@ -43,7 +43,11 @@
                     <div class="page-content">
                         <div class="block-title display-flex justify-content-space-between">
                             <span ng-bind="title"></span>
-                            <span class="price-value">$200 - $400</span>
+                            <span class="price-value">
+                                <span ng-bind="FILTERS.range[0] | currency"></span>
+                                -
+                                <span ng-bind="FILTERS.range[1] | currency"></span>
+                            </span>
                         </div>
                         <div class="list simple-list">
                             <ul>
@@ -55,7 +59,7 @@
                                     <div class="item-cell item-cell-shrink-3">
                                         <!-- Dual range slider with all the parameters passed via data- attributes -->
                                         <div id="price-filter" class="range-slider range-slider-init color-blue" data-label="true" data-dual="true" data-min="0"
-                                            data-max="500" data-step="1" data-value-left="200" data-value-right="400"></div>
+                                            data-max="500" data-step="1"></div>
                                     </div>
                                     <div class="item-cell width-auto flex-shrink-0">
                                         <i class="icon f7-icons ios-only">money_dollar_fill</i>

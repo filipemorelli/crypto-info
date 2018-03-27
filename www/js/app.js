@@ -7,6 +7,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
     function ($rootScope, $timeout) {
 
         $rootScope.FILTERS = {};
+        $rootScope.FILTERS.range = [0, 3e4];
         $rootScope.IS_LOADING = false;
 
         // Framework7 App main instance
@@ -38,7 +39,8 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
                 window.range = app.range.create({
                     el: '.range-slider',
                     min: 0,
-                    max: 1e9,
+                    max: 3e4,
+                    value: [0, 3e4],
                     on: {
                         change: function (e, values) {
                             console.log(values);
