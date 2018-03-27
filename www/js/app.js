@@ -3,18 +3,19 @@ var $$ = Dom7;
 
 angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 
-angular.module("run.app", []).run(['$rootScope', '$timeout',
-    function ($rootScope, $timeout) {
+angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
+    function ($rootScope, $timeout, filtroService) {
 
         $rootScope.FILTERS = {};
-        $rootScope.FILTERS.range = [0, 3e4];
-        $rootScope.UPDATE_TIME = 30;
+        $rootScope.FILTERS.range = [0, 9.99999e5];
         $rootScope.IS_LOADING = false;
-        $rootScope.NAME_PRICE = "price_usd";
-        $rootScope.NAME_VOLUME = "24h_volume_usd";
-        $rootScope.SELECTED_COIN = "USD";
+        $rootScope.NAME_PRICE = "price_" + filtroService.getRealCoin().toLowerCase();
+        $rootScope.NAME_VOLUME = "24h_volume_" + filtroService.getRealCoin().toLowerCase();
         $rootScope.COIN_IDS = {};
-        $rootScope.LANG = 'en-US';
+        $rootScope.UPDATE_TIME = parseInt(filtroService.getTimeRefresh());
+        $rootScope.SELECTED_COIN = filtroService.getRealCoin();
+        $rootScope.LANG = filtroService.getLang();
+        $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
 
         // Framework7 App main instance
         var app = new Framework7({
@@ -45,8 +46,8 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
                 window.range = app.range.create({
                     el: '.range-slider',
                     min: 0,
-                    max: 3e4,
-                    value: [0, 3e4],
+                    max: 9.99999e5,
+                    value: [0, 9.99999e5],
                     on: {
                         change: function (e, values) {
                             console.log(values);
@@ -90,15 +91,6 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
         var lang = getLang();
         console.log(lang);
         $translateProvider.preferredLanguage(lang);
-
-        function getLang() {
-            switch (navigator.language) {
-                case "pt-BR":
-                    return navigator.language;
-                default:
-                    return "en-US";
-            }
-        }
     }
 ]);
 
@@ -108,7 +100,20 @@ angular.module("controller.app", ['service.app'])
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
             $scope.time = [1, 5, 10, 20, 30, 60, 120, 60 * 5, 60 * 10];
+            $scope.limitCoins = [0, 10, 20, 50, 100, 250, 500, 750, 1000, 1500];
             $scope.lang = ['pt-BR', 'en-US'];
+            $scope.cad = {};
+            $scope.cad.time = $rootScope.UPDATE_TIME;
+            $scope.cad.lang = $rootScope.LANG;
+            $scope.cad.coin = $rootScope.SELECTED_COIN;
+            $scope.cad.limit = $rootScope.LIMIT_COINS;
+            $scope.saveData = function () {
+                filtroService.setRealCoin($scope.cad.coin);
+                filtroService.setTimeRefresh($scope.cad.time);
+                filtroService.setLang($scope.cad.lang);
+                filtroService.setLimitCoin($scope.cad.limit);
+                window.location.reload();
+            };
         }
     ])
     .controller("navbarCtrl", ['$scope',
@@ -166,7 +171,7 @@ angular.module("service.app", [])
             };
 
             this.getRealCoin = function () {
-                return localStorage.getItem('realCoin');
+                return localStorage.getItem('realCoin') ? localStorage.getItem('realCoin') : 'USD';
             };
 
             this.setLimitCoin = function (c) {
@@ -174,7 +179,15 @@ angular.module("service.app", [])
             };
 
             this.getLimitCoin = function () {
-                return localStorage.getItem('limitCoin');
+                return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 500;
+            };
+
+            this.setLang = function (c) {
+                localStorage.setItem('lang', c);
+            };
+
+            this.getLang = function () {
+                return localStorage.getItem('lang') ? localStorage.getItem('lang') : getLang();
             };
 
             this.setTimeRefresh = function (time) {
@@ -182,7 +195,7 @@ angular.module("service.app", [])
             };
 
             this.getTimeRefresh = function () {
-                return localStorage.getItem('timeRefresh');
+                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 30;
             };
 
             this.setRangeValuesSearch = function (values) {
@@ -194,11 +207,13 @@ angular.module("service.app", [])
             };
         }
     ])
-    .service("coinsService", ['$http',
-        function ($http) {
+    .service("coinsService", ['$http', 'filtroService',
+        function ($http, filtroService) {
             this.getCoins = function () {
-                var q = "";
-                return $http.get("https://api.coinmarketcap.com/v1/ticker/?limit=500" + q);
+                var q = {};
+                q.limit = filtroService.getLimitCoin();
+                q.convert = filtroService.getRealCoin();
+                return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + $.param(q));
             };
 
             this.getCoinIds = function () {
@@ -206,3 +221,12 @@ angular.module("service.app", [])
             };
         }
     ]);
+
+function getLang() {
+    switch (navigator.language) {
+        case "pt-BR":
+            return navigator.language;
+        default:
+            return "en-US";
+    }
+}
