@@ -31,11 +31,14 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
         });
 
         var hasRange = false;
+        window.range = null;
         $$('.panel-right').on('panel:open', function () {
             if (!hasRange) {
                 hasRange = true;
-                var range = app.range.create({
+                window.range = app.range.create({
                     el: '.range-slider',
+                    min: 0,
+                    max: 1e9,
                     on: {
                         change: function (e, values) {
                             console.log(values);
