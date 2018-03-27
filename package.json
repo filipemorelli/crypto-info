@@ -5,7 +5,7 @@
   "devDependencies": {
     "@types/angular": "^1.6.43",
     "@types/angular-translate": "^2.15.2",
-    "gulp": "^3.5.6",
+    "gulp": "^3.9.1",
     "gulp-clean-css": "^3.7.0",
     "gulp-rename": "^1.2.0",
     "gulp-sass": "^3.1.0"
