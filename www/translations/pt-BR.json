@@ -11,5 +11,6 @@
     "EXCHANGE": "Corretoras",
     "INFO": "Info",
     "VOLUME:": "Volume:",
-    "SAVED SUCCESSFULLY": "Salvo com sucesso!"
+    "SAVED SUCCESSFULLY": "Salvo com sucesso!",
+    "ERROR SERVER CONNECTION": "Erro de conexão com o servidor"
 }

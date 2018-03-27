@@ -125,6 +125,12 @@ angular.module("controller.app", ['service.app'])
                             $rootScope.IS_LOADING = false;
                         }, 500);
                         $rootScope.LIST_COINS = data;
+                    })
+                    .error(function () {
+                        window.app.toast.create({
+                            text: 'ERROR SERVER CONNECTION',
+                            closeTimeout: 2000,
+                        }).open();
                     });
             }
 
@@ -132,7 +138,12 @@ angular.module("controller.app", ['service.app'])
                 coinsService.getCoinIds()
                     .success(function (data) {
                         $rootScope.COIN_IDS = data;
-                        console.log($rootScope.COIN_IDS);
+                    })
+                    .error(function () {
+                        window.app.toast.create({
+                            text: 'ERROR SERVER CONNECTION',
+                            closeTimeout: 2000,
+                        }).open();
                     });
             }
             getCoinsIds();

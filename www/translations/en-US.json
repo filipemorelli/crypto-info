@@ -11,5 +11,6 @@
     "EXCHANGE": "Exchange",
     "INFO": "Info",
     "VOLUME:": "Volume:",
-    "SAVED SUCCESSFULLY": "Saved successfully"
+    "SAVED SUCCESSFULLY": "Saved successfully",
+    "ERROR SERVER CONNECTION": "Error server connection"
 }
