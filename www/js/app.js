@@ -9,6 +9,9 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
         $rootScope.FILTERS = {};
         $rootScope.FILTERS.range = [0, 3e4];
         $rootScope.IS_LOADING = false;
+        $rootScope.NAME_PRICE = "price_usd";
+        $rootScope.NAME_VOLUME = "24h_volume_usd";
+        $rootScope.SELECTED_COIN = "USD";
 
         // Framework7 App main instance
         var app = new Framework7({
@@ -50,6 +53,11 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
                         }
                     }
                 });
+
+                var smartSelect = app.smartSelect.create({
+                    el: '.smart-select'
+                });
+
             }
         });
 
@@ -95,6 +103,7 @@ angular.module("controller.app", ['service.app'])
     .controller("panelRightCtrl", ['$scope', '$rootScope',
         function ($scope, $rootScope) {
             $scope.title = "Price Filter";
+            $scope.coins = ["USD", "AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"];
         }
     ])
     .controller("navbarCtrl", ['$scope',
@@ -112,10 +121,7 @@ angular.module("controller.app", ['service.app'])
             function getCoins() {
                 $rootScope.IS_LOADING = true;
                 $scope.showLoading = true;
-                var t = {
-                    limit: 10
-                };
-                coinsService.getCoins(t)
+                coinsService.getCoins()
                     .success(function (data) {
                         $timeout(function () {
                             $scope.showLoading = false;
@@ -171,8 +177,8 @@ angular.module("service.app", [])
     ])
     .service("coinsService", ['$http',
         function ($http) {
-            this.getCoins = function (data) {
-                var q = data && typeof data === 'object' ? $.param(data) : "";
+            this.getCoins = function () {
+                var q = "";
                 return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + q);
             };
         }

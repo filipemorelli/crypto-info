@@ -68,9 +68,19 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="block">
-                            <p ng-bind="FILTERS.range[0]"></p>
-                            <p ng-bind="FILTERS.range[1]"></p>
+                        <div class="list">
+                            <ul>
+                                <li>
+                                    <div class="item-content item-input item-input-with-value">
+                                        <div class="item-inner">
+                                            <div class="item-title item-label">Coin</div>
+                                            <div class="item-input-wrap">
+                                                <select name="gender" class="input-with-value" ng-model="SELECTED_COIN" ng-options="c for c in coins"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -147,10 +157,10 @@
                                     <div class="item-inner">
                                         <div class="item-title">
                                             <div class="item-header" ng-bind="c.name + ' (' + c.symbol + ')'"></div>
-                                            <span ng-bind="c.price_usd | currency"></span>
+                                            <span ng-bind="c[NAME_PRICE] | currency"></span>
                                             <div class="item-footer">
                                                 Volume:
-                                                <span ng-bind="c['24h_volume_usd'] | currency"></span>
+                                                <span ng-bind="c[NAME_VOLUME] | currency"></span>
                                             </div>
                                         </div>
                                         <div class="item-after">
