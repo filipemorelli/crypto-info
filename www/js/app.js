@@ -20,7 +20,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         window.app = new Framework7({
             root: '#app', // App root element
             id: 'app.crypto', // App bundle ID
-            name: 'CryptoAgora', // App name
+            name: 'Crypto Info', // App name
             theme: 'auto', // Automatic theme detection
             // App routes
             routes: routes
@@ -147,6 +147,17 @@ angular.module("controller.app", ['service.app'])
                         }).open();
                     });
             }
+
+            $scope.setNotify = function (c) {
+                app.dialog.confirm('Deseja ser notificado sobre mudança de valor da moeda?', function () {
+                    console.log(c);
+                });
+                // var notification = new Notification("Hi there!", {
+                //     body: "olá mundo!",
+                //     icon: "icon.png"
+                // });
+            };
+
             getCoinsIds();
             getCoins();
             $interval(function () {
@@ -218,7 +229,7 @@ angular.module("service.app", [])
                     Notification.requestPermission(function (permission) {
                         // If the user accepts, let's create a notification
                         if (permission === "granted") {
-                            var notification = new Notification("Hi there!");
+                            var notification = new Notification("Crypo Info start!");
                         }
                     });
                 }

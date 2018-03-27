@@ -160,7 +160,7 @@
                                 <li class="text-center padding" ng-show="showLoading">
                                     <div class="preloader color-multi"></div>
                                 </li>
-                                <li class="item-content" ng-repeat="c in LIST_COINS track by $index">
+                                <li class="item-content" ng-repeat="c in LIST_COINS track by $index" ng-click="setNotify(c)">
                                     <div class="item-media">
                                         <img ng-src="https://s2.coinmarketcap.com/static/img/coins/32x32/{{COIN_IDS[c.symbol]}}.png" class="currency-logo-sprite"
                                             alt="{{c.symbol}}">
