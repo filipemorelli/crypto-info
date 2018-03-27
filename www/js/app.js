@@ -124,8 +124,9 @@ angular.module("controller.app", ['service.app'])
                         $timeout(function () {
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
+                            $rootScope.LIST_COINS = data;
                         }, 250);
-                        $rootScope.LIST_COINS = data;
+                        notificationService.verifyChangesAndNotify(data);
                     })
                     .error(function () {
                         window.app.toast.create({
@@ -207,7 +208,7 @@ angular.module("service.app", [])
             };
 
             this.getTimeRefresh = function () {
-                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 30;
+                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 60;
             };
 
             this.setRangeValuesSearch = function (values) {
@@ -219,8 +220,8 @@ angular.module("service.app", [])
             };
         }
     ])
-    .service("notificationService", [
-        function () {
+    .service("notificationService", ['$rootScope', '$filter',
+        function ($rootScope, $filter) {
             this.notificationActive = function () {
                 // Let's check if the browser supports notifications
                 if (!("Notification" in window)) {
@@ -263,6 +264,12 @@ angular.module("service.app", [])
                 return;
             };
 
+            this.updateCoinValue = function (p, coin) {
+                var coins = this.getCoinsToNotification();
+                coins[p] = coin;
+                this.setCoinsToNotification(coins);
+            };
+
             this.isInArray = function (c) {
                 var coins = this.getCoinsToNotification();
                 for (var i in coins) {
@@ -275,6 +282,22 @@ angular.module("service.app", [])
 
             this.notify = function (o) {
                 var notification = new Notification(o.title, o);
+            };
+
+            this.verifyChangesAndNotify = function (newCoins) {
+                var coins = this.getCoinsToNotification();
+                for (var i1 in newCoins) {
+                    for (var i2 in coins) {
+                        if (coins[i2].id == newCoins[i1].id && coins[i2].price_usd != newCoins[i1].price_usd) {
+                            this.notify({
+                                title: "Crypto Info - (" + newCoins[i1].symbol + ")",
+                                body: newCoins[i1].name + "\n" + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' '),
+                                icon: "icon.png"
+                            });
+                            this.updateCoinValue(i2, newCoins[i1]);
+                        }
+                    }
+                }
             };
         }
     ])
