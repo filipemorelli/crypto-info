@@ -6,8 +6,6 @@ angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
     function ($rootScope, $timeout, filtroService) {
 
-        $rootScope.FILTERS = {};
-        $rootScope.FILTERS.range = [0, 9.99999e5];
         $rootScope.IS_LOADING = false;
         $rootScope.NAME_PRICE = "price_" + filtroService.getRealCoin().toLowerCase();
         $rootScope.NAME_VOLUME = "24h_volume_" + filtroService.getRealCoin().toLowerCase();
