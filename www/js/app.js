@@ -3,8 +3,8 @@ var $$ = Dom7;
 
 angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 
-angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
-    function ($rootScope, $timeout, filtroService) {
+angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'notificationService',
+    function ($rootScope, $timeout, filtroService, notificationService) {
 
         $rootScope.IS_LOADING = false;
         $rootScope.NAME_PRICE = "price_" + filtroService.getRealCoin().toLowerCase();
@@ -14,6 +14,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
         $rootScope.SELECTED_COIN = filtroService.getRealCoin();
         $rootScope.LANG = filtroService.getLang();
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
+        notificationService.notificationActive();
 
         // Framework7 App main instance
         window.app = new Framework7({
@@ -202,6 +203,25 @@ angular.module("service.app", [])
 
             this.getRangeValuesSearch = function () {
                 return localStorage.getItem("rangeValues") ? JSON.parse(localStorage.getItem("rangeValues")) : {};
+            };
+        }
+    ])
+    .service("notificationService", [
+        function () {
+            this.notificationActive = function () {
+                // Let's check if the browser supports notifications
+                if (!("Notification" in window)) {
+                    alert("This browser does not support desktop notification");
+                }
+                // Otherwise, we need to ask the user for permission
+                else if (Notification.permission !== 'granted') {
+                    Notification.requestPermission(function (permission) {
+                        // If the user accepts, let's create a notification
+                        if (permission === "granted") {
+                            var notification = new Notification("Hi there!");
+                        }
+                    });
+                }
             };
         }
     ])
