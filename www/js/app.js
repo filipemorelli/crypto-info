@@ -143,7 +143,7 @@ angular.module("controller.app", ['service.app'])
             getCoins();
             $interval(function () {
                 getCoins();
-            }, 1000 * 10);
+            }, 1000 * 30);
 
         }
     ]);
@@ -194,7 +194,7 @@ angular.module("service.app", [])
         function ($http) {
             this.getCoins = function () {
                 var q = "";
-                return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + q);
+                return $http.get("https://api.coinmarketcap.com/v1/ticker/?limit=500" + q);
             };
 
             this.getCoinIds = function () {
