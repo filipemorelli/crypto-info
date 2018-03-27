@@ -124,7 +124,7 @@ angular.module("controller.app", ['service.app'])
                         $timeout(function () {
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
-                        }, 500);
+                        }, 250);
                         $rootScope.LIST_COINS = data;
                     })
                     .error(function () {
