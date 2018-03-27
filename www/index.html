@@ -157,10 +157,10 @@
                                     <div class="item-inner">
                                         <div class="item-title">
                                             <div class="item-header" ng-bind="c.name + ' (' + c.symbol + ')'"></div>
-                                            <span ng-bind="c[NAME_PRICE] | currency"></span>
+                                            <span ng-bind="c[NAME_PRICE] | currency:SELECTED_COIN+' ':2"></span>
                                             <div class="item-footer">
                                                 Volume:
-                                                <span ng-bind="c[NAME_VOLUME] | currency"></span>
+                                                <span ng-bind="c[NAME_VOLUME] | currency:SELECTED_COIN+' ':2"></span>
                                             </div>
                                         </div>
                                         <div class="item-after">

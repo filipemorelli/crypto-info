@@ -100,10 +100,10 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
 ]);
 
 angular.module("controller.app", ['service.app'])
-    .controller("panelRightCtrl", ['$scope', '$rootScope',
-        function ($scope, $rootScope) {
+    .controller("panelRightCtrl", ['$scope', '$rootScope', 'filtroService',
+        function ($scope, $rootScope, filtroService) {
             $scope.title = "Price Filter";
-            $scope.coins = ["USD", "AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"];
+            $scope.coins = filtroService.getCoins();
         }
     ])
     .controller("navbarCtrl", ['$scope',
@@ -142,6 +142,11 @@ angular.module("controller.app", ['service.app'])
 angular.module("service.app", [])
     .service("filtroService", [
         function () {
+
+            this.getCoins = function () {
+                return ["USD", "AUD", "BRL", "CAD", "CHF", "CLP", "CNY", "CZK", "DKK", "EUR", "GBP", "HKD", "HUF", "IDR", "ILS", "INR", "JPY", "KRW", "MXN", "MYR", "NOK", "NZD", "PHP", "PKR", "PLN", "RUB", "SEK", "SGD", "THB", "TRY", "TWD", "ZAR"];
+            };
+
             this.setRealCoin = function (c) {
                 localStorage.setItem('realCoin', c);
             };
