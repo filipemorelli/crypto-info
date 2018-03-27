@@ -14,6 +14,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout',
         $rootScope.NAME_VOLUME = "24h_volume_usd";
         $rootScope.SELECTED_COIN = "USD";
         $rootScope.COIN_IDS = {};
+        $rootScope.LANG = 'en-US';
 
         // Framework7 App main instance
         var app = new Framework7({
@@ -107,6 +108,7 @@ angular.module("controller.app", ['service.app'])
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
             $scope.time = [1, 5, 10, 20, 30, 60, 120, 60 * 5, 60 * 10];
+            $scope.lang = ['pt-BR', 'en-US'];
         }
     ])
     .controller("navbarCtrl", ['$scope',
