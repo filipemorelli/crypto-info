@@ -18,7 +18,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
 
         // Framework7 App main instance
-        var app = new Framework7({
+        window.app = new Framework7({
             root: '#app', // App root element
             id: 'app.crypto', // App bundle ID
             name: 'CryptoAgora', // App name
@@ -28,7 +28,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
         });
 
         // Init/Create main view
-        var mainView = app.views.create('.view-main', {
+        var mainView = window.app.views.create('.view-main', {
             url: '/'
         });
 
@@ -50,7 +50,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService',
         });
 
         // create searchbar
-        var searchbar = app.searchbar.create({
+        var searchbar = window.app.searchbar.create({
             el: '.searchbar',
             searchContainer: '.list-search',
             searchIn: '.item-title,.item-after',
@@ -78,8 +78,8 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
 ]);
 
 angular.module("controller.app", ['service.app'])
-    .controller("panelRightCtrl", ['$scope', '$rootScope', 'filtroService',
-        function ($scope, $rootScope, filtroService) {
+    .controller("panelRightCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout',
+        function ($scope, $rootScope, filtroService, $timeout) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
             $scope.time = [1, 5, 10, 20, 30, 60, 120, 60 * 5, 60 * 10];
@@ -95,7 +95,13 @@ angular.module("controller.app", ['service.app'])
                 filtroService.setTimeRefresh($scope.cad.time);
                 filtroService.setLang($scope.cad.lang);
                 filtroService.setLimitCoin($scope.cad.limit);
-                window.location.reload();
+                window.app.toast.create({
+                    text: 'Salvo com sucesso!',
+                    closeTimeout: 2000,
+                }).open();
+                $timeout(function () {
+                    window.location.reload();
+                }, 500);
             };
         }
     ])

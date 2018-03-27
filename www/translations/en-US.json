@@ -1,3 +1,15 @@
 {
-    "APP": "CRYPTO APP"
+    "OPTIONS": "Options",
+    "COIN": "Coin",
+    "COINS": "Coins",
+    "Time Update ('s)": "Time Update ('s)",
+    "LANGUAGE": "Language",
+    "SHOW COINS": "Show Coins",
+    "SAVE": "Save",
+    "SEARCH...": "SEARCH",
+    "CANCEL": "Cancel",
+    "EXCHANGE": "Exchange",
+    "INFO": "Info",
+    "VOLUME:": "Volume:",
+    "SAVED SUCCESSFULLY": "Saved successfully"
 }

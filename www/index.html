@@ -37,7 +37,7 @@
                 <div class="page">
                     <div class="navbar">
                         <div class="navbar-inner">
-                            <div class="title">Opções</div>
+                            <div class="title" translate="OPTIONS"></div>
                         </div>
                     </div>
                     <form class="page-content" ng-submit="saveData()">
@@ -46,7 +46,7 @@
                                 <li>
                                     <div class="item-content item-input item-input-with-value">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">Coin</div>
+                                            <div class="item-title item-label" translate="COIN"></div>
                                             <div class="item-input-wrap">
                                                 <select name="gender" class="input-with-value" ng-model="cad.coin" ng-options="c for c in coins" required></select>
                                             </div>
@@ -56,7 +56,7 @@
                                 <li>
                                     <div class="item-content item-input item-input-with-value">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">Time Update ('s)</div>
+                                            <div class="item-title item-label" translate="Time Update ('s)"></div>
                                             <div class="item-input-wrap">
                                                 <select name="gender" class="input-with-value" ng-model="cad.time" ng-options="c for c in time" required></select>
                                             </div>
@@ -66,7 +66,7 @@
                                 <li>
                                     <div class="item-content item-input item-input-with-value">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">Lingua</div>
+                                            <div class="item-title item-label" translate="LANGUAGE"></div>
                                             <div class="item-input-wrap">
                                                 <select name="gender" class="input-with-value" ng-model="cad.lang" ng-options="c for c in lang" required></select>
                                             </div>
@@ -76,7 +76,7 @@
                                 <li>
                                     <div class="item-content item-input item-input-with-value">
                                         <div class="item-inner">
-                                            <div class="item-title item-label">Show coins</div>
+                                            <div class="item-title item-label" translate="SHOW COINS"></div>
                                             <div class="item-input-wrap">
                                                 <select name="gender" class="input-with-value" ng-model="cad.limit" ng-options="c for c in limitCoins" required></select>
                                             </div>
@@ -88,7 +88,7 @@
 
                         <div class="block">
                             <div class="row">
-                                <button class="col button button-fill">Save</button>
+                                <button class="col button button-fill" translate="SAVE"></button>
                             </div>
                         </div>
                     </form>
@@ -122,11 +122,11 @@
                         <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
                             <div class="searchbar-inner">
                                 <div class="searchbar-input-wrap">
-                                    <input type="search" placeholder="Search" />
+                                    <input type="search" placeholder="{{'SEARCH...' | translate}}" />
                                     <i class="searchbar-icon"></i>
                                     <span class="input-clear-button"></span>
                                 </div>
-                                <span class="searchbar-disable-button">Cancel</span>
+                                <span class="searchbar-disable-button" translate="CANCEL"></span>
                             </div>
                         </form>
                     </div>
@@ -135,15 +135,15 @@
                     <div class="toolbar-inner">
                         <a href="#tab-1" class="tab-link tab-link-active">
                             <i class="icon f7-icons">money_dollar</i>
-                            <span class="tabbar-label">Moedas</span>
+                            <span class="tabbar-label" translate="COINS"></span>
                         </a>
                         <a href="#tab-2" class="tab-link">
                             <i class="icon f7-icons">home</i>
-                            <span class="tabbar-label">Corretoras</span>
+                            <span class="tabbar-label" translate="EXCHANGE"></span>
                         </a>
                         <a href="#tab-3" class="tab-link">
                             <i class="icon f7-icons">info</i>
-                            <span class="tabbar-label">Info</span>
+                            <span class="tabbar-label" translate="INFO"></span>
                         </a>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                                             <div class="item-header" ng-bind="c.name + ' (' + c.symbol + ')'"></div>
                                             <span ng-bind="c[NAME_PRICE] | currency:SELECTED_COIN+' ':2"></span>
                                             <div class="item-footer">
-                                                Volume:
+                                                <span translate="VOLUME:"></span>
                                                 <span ng-bind="c[NAME_VOLUME] | currency:SELECTED_COIN+' ':2"></span>
                                             </div>
                                         </div>
