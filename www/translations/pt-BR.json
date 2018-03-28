@@ -12,5 +12,8 @@
     "INFO": "Info",
     "VOLUME:": "Volume:",
     "SAVED SUCCESSFULLY": "Salvo com sucesso!",
-    "ERROR SERVER CONNECTION": "Erro de conexão com o servidor"
+    "ERROR SERVER CONNECTION": "Erro de conexão com o servidor",
+    "LOW": "Baixa",
+    "HIGH": "Alta",
+    "VOLUME": "Volume"
 }
