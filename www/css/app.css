@@ -53,6 +53,12 @@
     border-right: none;
     height: 82px;
     width: 33.3333333333% !important;
+    font-size: 12px;
+}
+
+.demo-swiper .swp-coin-info .col .title {
+    display: block;
+    font-size: 16px;
 }
 
 .demo-swiper .swp-coin-info .col:first-child {
@@ -75,7 +81,7 @@
 .demo-swiper {
     margin: 0px 0 35px;
     font-size: 18px;
-    height: 250px;
+    height: 230px;
 }
 
 .demo-swiper.demo-swiper-auto .swiper-slide {

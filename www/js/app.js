@@ -115,6 +115,8 @@ angular.module("controller.app", ['service.app'])
         function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
             $scope.showLoading = false;
+            $scope.showTop5 = false;
+            $scope.top5Info = {};
 
             function getCoins() {
                 $rootScope.IS_LOADING = true;
@@ -125,6 +127,7 @@ angular.module("controller.app", ['service.app'])
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
                             $rootScope.LIST_COINS = data;
+                            getTop5Cons($rootScope.LIST_COINS);
                         }, 250);
                         notificationService.verifyChangesAndNotify(data);
                     })
@@ -133,6 +136,25 @@ angular.module("controller.app", ['service.app'])
                             text: 'ERROR SERVER CONNECTION',
                             closeTimeout: 2000,
                         }).open();
+                    });
+            }
+
+            function getTop5Cons(coins) {
+                var array = coins.slice(0, 5);
+                var arrayCoins = [];
+                for (var i in array) {
+                    arrayCoins.push(array[i].symbol);
+                }
+                coinsService.getMultiCoinInfo(arrayCoins)
+                    .success(function (data) {
+                        $timeout(function () {
+                            $scope.top5Info = data;
+                            console.log(data);
+                            $scope.showTop5 = true;
+                        }, 0);
+                    })
+                    .error(function () {
+                        $scope.showTop5 = false;
                     });
             }
 
@@ -320,7 +342,7 @@ angular.module("service.app", [])
                 var q = {};
                 q.fsyms = arrayCoins.join(",");
                 q.tsyms = filtroService.getRealCoin();
-                return $http.get("https://min-api.cryptocompare.com/data/pricemultifull?" + q);
+                return $http.get("https://min-api.cryptocompare.com/data/pricemultifull?" + $.param(q));
             };
 
             this.getCoinIds = function () {
