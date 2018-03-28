@@ -2,7 +2,7 @@
     "OPTIONS": "Opções",
     "COIN": "Moeda",
     "COINS": "Moedas",
-    "Time Update ('s)": "Tempo de atualização",
+    "Time Update ('s)": "Tempo de atualização (min)",
     "LANGUAGE": "Idioma",
     "SHOW COINS": "Mostrar moedas",
     "SAVE": "Salvar",
@@ -12,5 +12,8 @@
     "INFO": "Info",
     "VOLUME:": "Volume:",
     "SAVED SUCCESSFULLY": "Salvo com sucesso!",
-    "ERROR SERVER CONNECTION": "Erro de conexão com o servidor"
+    "ERROR SERVER CONNECTION": "Erro de conexão com o servidor",
+    "LOW": "Baixa",
+    "HIGH": "Alta",
+    "VOLUME": "Volume"
 }
