@@ -105,7 +105,7 @@
                 <!-- Top Navbar -->
                 <div class="navbar" ng-controller="navbarCtrl">
                     <div class="navbar-inner">
-                        <div class="title sliding">Crypto Info</div>
+                        <div class="title sliding" translate="APP_NAME">Crypto Info</div>
                         <div class="right">
                             <a href="#" class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo">
                                 <i class="icon f7-icons ios-only">search</i>
@@ -313,7 +313,7 @@
                                             </div>
                                         </div>
                                         <div class="item-after">
-                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h'] | number:2}}
+                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i> {{c['percent_change_24h'] | number:2}}
                                         </div>
                                     </div>
                                 </li>
@@ -347,29 +347,17 @@
                         </div>
                     </div>
                     <div id="tab-3" class="page-content tab">
-                        <div class="block">
-                            <p>Tab 3 content</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam enim quia molestiae facilis laudantium
-                                voluptates obcaecati officia cum, sit libero commodi. Ratione illo suscipit temporibus sequi
-                                iure ad laboriosam accusamus?</p>
-                            <p>Saepe explicabo voluptas ducimus provident, doloremque quo totam molestias! Suscipit blanditiis
-                                eaque exercitationem praesentium reprehenderit, fuga accusamus possimus sed, sint facilis
-                                ratione quod, qui dignissimos voluptas! Aliquam rerum consequuntur deleniti.</p>
-                            <p>Totam reprehenderit amet commodi ipsum nam provident doloremque possimus odio itaque, est animi
-                                culpa modi consequatur reiciendis corporis libero laudantium sed eveniet unde delectus a
-                                maiores nihil dolores? Natus, perferendis.</p>
-                            <p>Atque quis totam repellendus omnis alias magnam corrupti, possimus aspernatur perspiciatis quae
-                                provident consequatur minima doloremque blanditiis nihil maxime ducimus earum autem. Magni
-                                animi blanditiis similique iusto, repellat sed quisquam!</p>
-                            <p>Suscipit, facere quasi atque totam. Repudiandae facilis at optio atque, rem nam, natus ratione
-                                cum enim voluptatem suscipit veniam! Repellat, est debitis. Modi nam mollitia explicabo,
-                                unde aliquid impedit! Adipisci!</p>
-                            <p>Deserunt adipisci tempora asperiores, quo, nisi ex delectus vitae consectetur iste fugiat iusto
-                                dolorem autem. Itaque, ipsa voluptas, a assumenda rem, dolorum porro accusantium, officiis
-                                veniam nostrum cum cumque impedit.</p>
-                            <p>Laborum illum ipsa voluptatibus possimus nesciunt ex consequatur rem, natus ad praesentium rerum
-                                libero consectetur temporibus cupiditate atque aspernatur, eaque provident eligendi quaerat
-                                ea soluta doloremque. Iure fugit, minima facere.</p>
+                        <div class="block-title" translate="APP_NAME"></div>
+                        <div class="block block-strong">
+                            <p>Olá da equipe do APP_NAME. Esperamos que você goste de usar o APP_NAME!</p>
+                            <p>Este aplicativo é totalmente gratuito, fruto de muito esforço e dedicação voluntária.</p>
+                            <p>APP_NAME tem
+                                <strong>6 desenvolvedores em tempo integral</strong> que dependem das suas contribuições
+                                e apoio. Estamos confiando
+                                <em>muito</em> em você, mas nós achamos que é a coisa decente a se fazer.</p>
+                            <p>Por favor, pague o tanto quanto você puder, pois se mudar de ideia tem
+                                <strong>60 dias</strong> para obter um reembolso! Somos ingênuos em confiar que você
+                                nos pague? Eu acho que nós vamos descobrir :)</p>
                         </div>
                     </div>
                 </div>
