@@ -81,7 +81,7 @@ angular.module("controller.app", ['service.app'])
         function ($scope, $rootScope, filtroService, $timeout) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
-            $scope.time = [10, 20, 30, 60, 120, 60 * 5, 60 * 10];
+            $scope.time = [1, 2, 3, 5, 10, 20, 30, 60];
             $scope.limitCoins = [0, 10, 20, 50, 100, 250, 500, 750, 1000, 1500];
             $scope.lang = ['pt-BR', 'en-US'];
             $scope.cad = {};
@@ -171,7 +171,7 @@ angular.module("controller.app", ['service.app'])
             getCoins();
             $interval(function () {
                 getCoins();
-            }, 1000 * $rootScope.UPDATE_TIME);
+            }, 1000 * 60 * $rootScope.UPDATE_TIME);
 
         }
     ]);
