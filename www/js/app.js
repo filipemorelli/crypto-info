@@ -316,6 +316,13 @@ angular.module("service.app", [])
                 return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + $.param(q));
             };
 
+            this.getMultiCoinInfo = function (arrayCoins) {
+                var q = {};
+                q.fsyms = arrayCoins.join(",");
+                q.tsyms = filtroService.getRealCoin();
+                return $http.get("https://min-api.cryptocompare.com/data/pricemultifull?" + q);
+            };
+
             this.getCoinIds = function () {
                 return $http.get("/js/coins.json");
             };
