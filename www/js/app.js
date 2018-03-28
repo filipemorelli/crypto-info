@@ -81,7 +81,7 @@ angular.module("controller.app", ['service.app'])
         function ($scope, $rootScope, filtroService, $timeout) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
-            $scope.time = [10, 20, 30, 60, 120, 60 * 5, 60 * 10];
+            $scope.time = [1, 2, 3, 5, 10, 20, 30, 60];
             $scope.limitCoins = [0, 10, 20, 50, 100, 250, 500, 750, 1000, 1500];
             $scope.lang = ['pt-BR', 'en-US'];
             $scope.cad = {};
@@ -115,6 +115,8 @@ angular.module("controller.app", ['service.app'])
         function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
             $scope.showLoading = false;
+            $scope.showTop5 = false;
+            $scope.top5Info = {};
 
             function getCoins() {
                 $rootScope.IS_LOADING = true;
@@ -125,6 +127,7 @@ angular.module("controller.app", ['service.app'])
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
                             $rootScope.LIST_COINS = data;
+                            getTop5Cons($rootScope.LIST_COINS);
                         }, 250);
                         notificationService.verifyChangesAndNotify(data);
                     })
@@ -133,6 +136,25 @@ angular.module("controller.app", ['service.app'])
                             text: 'ERROR SERVER CONNECTION',
                             closeTimeout: 2000,
                         }).open();
+                    });
+            }
+
+            function getTop5Cons(coins) {
+                var array = coins.slice(0, 5);
+                var arrayCoins = [];
+                for (var i in array) {
+                    arrayCoins.push(array[i].symbol);
+                }
+                coinsService.getMultiCoinInfo(arrayCoins)
+                    .success(function (data) {
+                        $timeout(function () {
+                            $scope.top5Info = data;
+                            console.log(data);
+                            $scope.showTop5 = true;
+                        }, 0);
+                    })
+                    .error(function () {
+                        $scope.showTop5 = false;
                     });
             }
 
@@ -171,7 +193,7 @@ angular.module("controller.app", ['service.app'])
             getCoins();
             $interval(function () {
                 getCoins();
-            }, 1000 * $rootScope.UPDATE_TIME);
+            }, 1000 * 60 * $rootScope.UPDATE_TIME);
 
         }
     ]);
@@ -314,6 +336,13 @@ angular.module("service.app", [])
                 q.limit = filtroService.getLimitCoin();
                 q.convert = filtroService.getRealCoin();
                 return $http.get("https://api.coinmarketcap.com/v1/ticker/?" + $.param(q));
+            };
+
+            this.getMultiCoinInfo = function (arrayCoins) {
+                var q = {};
+                q.fsyms = arrayCoins.join(",");
+                q.tsyms = filtroService.getRealCoin();
+                return $http.get("https://min-api.cryptocompare.com/data/pricemultifull?" + $.param(q));
             };
 
             this.getCoinIds = function () {

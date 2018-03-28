@@ -2,7 +2,7 @@
     "OPTIONS": "Options",
     "COIN": "Coin",
     "COINS": "Coins",
-    "Time Update ('s)": "Time Update ('s)",
+    "Time Update ('s)": "Time Update (min)",
     "LANGUAGE": "Language",
     "SHOW COINS": "Show Coins",
     "SAVE": "Save",
@@ -12,5 +12,8 @@
     "INFO": "Info",
     "VOLUME:": "Volume:",
     "SAVED SUCCESSFULLY": "Saved successfully",
-    "ERROR SERVER CONNECTION": "Error server connection"
+    "ERROR SERVER CONNECTION": "Error server connection",
+    "LOW": "Low",
+    "HIGH": "High",
+    "VOLUME": "Volume"
 }

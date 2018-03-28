@@ -27,3 +27,71 @@
     margin-left: 5px;
     color: #212121;
 }
+
+/* SWIPER */
+
+.demo-swiper .swp-img-content {
+    text-align: center;
+}
+
+.demo-swiper .swp-img-content img {
+    width: 100px;
+    height: auto;
+}
+
+.demo-swiper .swp-coin-description {
+    text-align: center;
+}
+
+.demo-swiper .swp-coin-info {
+    text-align: center;
+}
+
+.demo-swiper .swp-coin-info .col {
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-right: none;
+    height: 82px;
+    width: 33.3333333333% !important;
+    font-size: 12px;
+}
+
+.demo-swiper .swp-coin-info .col .title {
+    display: block;
+    font-size: 16px;
+}
+
+.demo-swiper .swp-coin-info .col:first-child {
+    border-left: none;
+}
+
+.demo-swiper .swiper-slide {
+    padding: 15px;
+    font-weight: 300;
+    background: #fff;
+    color: #000;
+}
+
+.demo-swiper .swiper-slide {
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+.demo-swiper {
+    margin: 0px 0 35px;
+    font-size: 18px;
+    height: 230px;
+}
+
+.demo-swiper.demo-swiper-auto .swiper-slide {
+    width: 85%;
+}
+
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+    width: 70%;
+}
+
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+    width: 30%;
+}
