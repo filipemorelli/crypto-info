@@ -16,5 +16,10 @@
     "ERROR SERVER CONNECTION": "Erro de conexão com o servidor",
     "LOW": "Baixa",
     "HIGH": "Alta",
-    "VOLUME": "Volume"
+    "VOLUME": "Volume",
+    "HELLO FROM THE APP_NAME TEAM. WE HOPE YOU ENJOY USING APP_NAME!": "Olá da equipe do {{name}}. Esperamos que você goste de usar o {{name}}!",
+    "APP_NAME HAS FULL-TIME DEVELOPERS WHO DEPEND ON YOUR CONTRIBUTIONS AND SUPPORT. WE'RE RELYING ON YOU, BUT WE THINK IT'S THE DECENT THING TO DO.": "{{name}} tem desenvolvedores em tempo integral que dependem das suas contribuições e apoio. Estamos confiando muito em você, mas nós achamos que é a coisa decente a se fazer.",
+    "THIS APPLICATION IS TOTALLY FREE, FRUIT OF MUCH EFFORT AND VOLUNTARY DEDICATION.": "Este aplicativo é totalmente gratuito, fruto de muito esforço e dedicação voluntária.",
+    "PLEASE PAY AS MUCH AS YOU CAN, BECAUSE IF YOU CHANGE YOUR MIND, YOU HAVE 60 DAYS TO GET A REFUND! ARE WE NAIVE IN TRUSTING YOU TO REPAY US? I THINK WE'LL FIND OUT :)": "Por favor, pague o tanto quanto você puder, pois se mudar de ideia tem 60 dias para obter um reembolso! Somos ingênuos em confiar que você nos pague? Eu acho que nós vamos descobrir :)",
+    "DONATION": "Doação"
 }
