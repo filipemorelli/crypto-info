@@ -105,7 +105,7 @@
                 <!-- Top Navbar -->
                 <div class="navbar" ng-controller="navbarCtrl">
                     <div class="navbar-inner">
-                        <div class="title sliding">Crypto Info</div>
+                        <div class="title sliding" translate="APP_NAME">Crypto Info</div>
                         <div class="right">
                             <a href="#" class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo">
                                 <i class="icon f7-icons ios-only">search</i>
@@ -313,7 +313,7 @@
                                             </div>
                                         </div>
                                         <div class="item-after">
-                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h'] | number:2}}
+                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i> {{c['percent_change_24h'] | number:2}}%
                                         </div>
                                     </div>
                                 </li>
@@ -347,29 +347,26 @@
                         </div>
                     </div>
                     <div id="tab-3" class="page-content tab">
-                        <div class="block">
-                            <p>Tab 3 content</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam enim quia molestiae facilis laudantium
-                                voluptates obcaecati officia cum, sit libero commodi. Ratione illo suscipit temporibus sequi
-                                iure ad laboriosam accusamus?</p>
-                            <p>Saepe explicabo voluptas ducimus provident, doloremque quo totam molestias! Suscipit blanditiis
-                                eaque exercitationem praesentium reprehenderit, fuga accusamus possimus sed, sint facilis
-                                ratione quod, qui dignissimos voluptas! Aliquam rerum consequuntur deleniti.</p>
-                            <p>Totam reprehenderit amet commodi ipsum nam provident doloremque possimus odio itaque, est animi
-                                culpa modi consequatur reiciendis corporis libero laudantium sed eveniet unde delectus a
-                                maiores nihil dolores? Natus, perferendis.</p>
-                            <p>Atque quis totam repellendus omnis alias magnam corrupti, possimus aspernatur perspiciatis quae
-                                provident consequatur minima doloremque blanditiis nihil maxime ducimus earum autem. Magni
-                                animi blanditiis similique iusto, repellat sed quisquam!</p>
-                            <p>Suscipit, facere quasi atque totam. Repudiandae facilis at optio atque, rem nam, natus ratione
-                                cum enim voluptatem suscipit veniam! Repellat, est debitis. Modi nam mollitia explicabo,
-                                unde aliquid impedit! Adipisci!</p>
-                            <p>Deserunt adipisci tempora asperiores, quo, nisi ex delectus vitae consectetur iste fugiat iusto
-                                dolorem autem. Itaque, ipsa voluptas, a assumenda rem, dolorum porro accusantium, officiis
-                                veniam nostrum cum cumque impedit.</p>
-                            <p>Laborum illum ipsa voluptatibus possimus nesciunt ex consequatur rem, natus ad praesentium rerum
-                                libero consectetur temporibus cupiditate atque aspernatur, eaque provident eligendi quaerat
-                                ea soluta doloremque. Iure fugit, minima facere.</p>
+                        <div class="block-title" translate="APP_NAME"></div>
+                        <div class="block block-strong">
+                            <p translate="HELLO FROM THE APP_NAME TEAM. WE HOPE YOU ENJOY USING APP_NAME!" translate-values="NAME_APP"></p>
+                            <p translate="THIS APPLICATION IS TOTALLY FREE, FRUIT OF MUCH EFFORT AND VOLUNTARY DEDICATION."></p>
+                            <p translate="APP_NAME HAS FULL-TIME DEVELOPERS WHO DEPEND ON YOUR CONTRIBUTIONS AND SUPPORT. WE'RE RELYING ON YOU, BUT WE THINK IT'S THE DECENT THING TO DO." translate-values="NAME_APP"></p>
+                            <p translate="PLEASE PAY AS MUCH AS YOU CAN, BECAUSE IF YOU CHANGE YOUR MIND, YOU HAVE 60 DAYS TO GET A REFUND! ARE WE NAIVE IN TRUSTING YOU TO REPAY US? I THINK WE'LL FIND OUT :)"></p>
+                        </div>
+
+                        <div class="block-title" translate="DONATION"></div>
+                        <div class="block block-strong">
+                            <div class="row center">
+                                <div class="col">
+                                    <a class="external" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLS7A6UKU754N" target="_blank">
+                                        <img ng-src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal - The safer, easier way to pay online!">
+                                    </a>
+                                </div>
+                                <div class="col">
+                                    <img src="img/qr-carteira.png" alt="19CVSFkHEwFKk7fziNkkpcob8uQnMA9yis" title="19CVSFkHEwFKk7fziNkkpcob8uQnMA9yis">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

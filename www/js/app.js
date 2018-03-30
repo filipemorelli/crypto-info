@@ -15,6 +15,9 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         $rootScope.LANG = filtroService.getLang();
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
         notificationService.notificationActive();
+        $rootScope.NAME_APP = {
+            name: "Crypto Info"
+        };
 
         // Framework7 App main instance
         window.app = new Framework7({
