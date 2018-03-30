@@ -28,6 +28,12 @@
     color: #212121;
 }
 
+#tab-3 .center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 /* SWIPER */
 
 .demo-swiper .swp-img-content {
