@@ -9,7 +9,7 @@ var loopTime = parseInt(localStorage.getItem('timeRefresh') ? localStorage.getIt
 getCoins();
 setInterval(function() {
     getCoins();
-}, 1000 * 5 * loopTime);
+}, 1000 * 60 * loopTime);
 
 
 function getCoins() {
