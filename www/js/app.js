@@ -152,7 +152,6 @@ angular.module("controller.app", ['service.app'])
                     .success(function (data) {
                         $timeout(function () {
                             $scope.top5Info = data;
-                            console.log(data);
                             $scope.showTop5 = true;
                         }, 0);
                     })

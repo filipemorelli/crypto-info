@@ -313,7 +313,7 @@
                                             </div>
                                         </div>
                                         <div class="item-after">
-                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i> {{c['percent_change_24h'] | number:2}}%
+                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h'] | number:2}}%
                                         </div>
                                     </div>
                                 </li>
@@ -395,6 +395,17 @@
 
     <!-- Your custom app scripts -->
     <script src="js/app.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116709760-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-116709760-1');
+    </script>
+
 </body>
 
 </html>
