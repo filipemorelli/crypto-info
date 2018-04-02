@@ -115,8 +115,13 @@ angular.module("controller.app", ['service.app'])
     ])
     .controller("coursesPtBrCtrl", ['$scope', 'courseService',
         function ($scope, courseService) {
-            $scope.url = '/courses/pt-BR/';
-            $scope.courses = courseService.ptBr();
+            $scope.courses = [];
+            courseService.ptBr().then(
+                function (res) {
+                    var data = res.data;
+                    $scope.courses = data;
+                }
+            );
         }
     ])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
@@ -357,16 +362,10 @@ angular.module("service.app", [])
             };
         }
     ])
-    .service("courseService", [
-        function () {
+    .service("courseService", ['$http',
+        function ($http) {
             this.ptBr = function () {
-                return [{
-                    img: 'https://hotmart.s3.amazonaws.com/product_pictures/b4ce7783-efb5-499a-90ee-d5b57bf1c084/Designsemnome2.jpg',
-                    desc: 'Curso Que Vai Mostrar O Que Realmente Está Fazendo Pessoas COMUNS Ganhar Muito Dinheiro Através do Bitcoin!',
-                    info: 'Views: 112 Compras: 11',
-                    buyLink: 'https://go.hotmart.com/X7624988I?ap=72e9',
-                    pageLink: 'https://go.hotmart.com/X7624988I',
-                }];
+                return $http.get("js/courses/courses-ptbr.json");
             };
         }
     ]);
