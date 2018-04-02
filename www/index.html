@@ -247,30 +247,7 @@
             </div>
 
             <div class="popover popover-links">
-                <div class="popover-inner">
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a class="list-button item-link popover-close" href="/filter/" translate="FILTER">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-button item-link popover-close" href="/info/" translate="INFORMATION">
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-button item-link popover-close" ng-href="/course/{{LANG}}/">
-                                    Courses
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-button item-link popover-close" href="#">
-                                    Exchanges
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <div ng-include="'pages/popover-menu.html'"></div>
             </div>
         </div>
     </div>
