@@ -115,6 +115,7 @@ angular.module("controller.app", ['service.app'])
     ])
     .controller("coursesPtBrCtrl", ['$scope', 'courseService',
         function ($scope, courseService) {
+            $scope.url = '/courses/pt-BR/';
             $scope.courses = courseService.ptBr();
         }
     ])
@@ -363,8 +364,8 @@ angular.module("service.app", [])
                     img: 'https://hotmart.s3.amazonaws.com/product_pictures/b4ce7783-efb5-499a-90ee-d5b57bf1c084/Designsemnome2.jpg',
                     desc: 'Curso Que Vai Mostrar O Que Realmente Está Fazendo Pessoas COMUNS Ganhar Muito Dinheiro Através do Bitcoin!',
                     info: 'Views: 112 Compras: 11',
-                    buyLink: 'https://pay.hotmart.com/G6956895H?_ga=2.219273104.869215309.1522673355-2127038641.1522673355',
-                    pageLink: 'https://bitcoinrs.com/segredos-2/',
+                    buyLink: 'https://go.hotmart.com/X7624988I?ap=72e9',
+                    pageLink: 'https://go.hotmart.com/X7624988I',
                 }];
             };
         }

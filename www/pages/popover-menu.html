@@ -10,8 +10,12 @@
                 </a>
             </li>
             <li>
-                <a class="list-button item-link popover-close" ng-href="/courses/{{LANG}}/" translate="COURSES">
-                </a>
+                <span ng-switch="LANG">
+                    <a class="list-button item-link popover-close" href="/courses/pt-BR/" ng-switch-when="pt-BR" translate="COURSES">
+                    </a>
+                    <a class="list-button item-link popover-close" href="/courses/en-US/" ng-switch-when="en-US" translate="COURSES">
+                    </a>
+                </span>
             </li>
             <li>
                 <a class="list-button item-link popover-close" href="#" translate="EXCHANGES">
