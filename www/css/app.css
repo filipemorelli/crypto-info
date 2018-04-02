@@ -20,8 +20,9 @@ body {
 }
 
 .page-include .page-content {
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 0 !important;
+    padding-bottom: 56px;
 }
 
 .page-home .item-content {
@@ -114,4 +115,48 @@ body {
 
 .demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
     width: 30%;
+}
+
+/* courses */
+
+.page-courses .demo-facebook-card .card-header {
+    display: block;
+    padding: 10px;
+}
+
+.page-courses .demo-facebook-card .demo-facebook-avatar {
+    float: left;
+}
+
+.page-courses .demo-facebook-card .demo-facebook-name {
+    margin-left: 44px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.page-courses .demo-facebook-card .demo-facebook-date {
+    margin-left: 44px;
+    font-size: 13px;
+    color: #8e8e93;
+}
+
+.page-courses .demo-facebook-card .card-footer {
+    background: #fafafa;
+}
+
+.page-courses .demo-facebook-card .card-footer a {
+    color: #81848b;
+    font-weight: 500;
+}
+
+.page-courses .demo-facebook-card .card-content img {
+    display: block;
+}
+
+.page-courses .demo-facebook-card .card-content-padding {
+    padding: 15px 10px;
+}
+
+.page-courses .demo-facebook-card .card-content-padding .likes {
+    color: #8e8e93;
 }
