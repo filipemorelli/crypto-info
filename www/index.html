@@ -31,71 +31,6 @@
         <!-- Status bar overlay for fullscreen mode-->
         <div class="statusbar"></div>
 
-        <!-- Left panel with cover effect-->
-        <div class="panel panel-right panel-cover" ng-controller="panelRightCtrl">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="title" translate="OPTIONS"></div>
-                        </div>
-                    </div>
-                    <form class="page-content" ng-submit="saveData()">
-                        <div class="list">
-                            <ul>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="COIN"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.coin" ng-options="c for c in coins" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="Time Update ('s)"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.time" ng-options="c for c in time" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="LANGUAGE"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.lang" ng-options="c for c in lang" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="SHOW COINS"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.limit" ng-options="c for c in limitCoins" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="block">
-                            <div class="row">
-                                <button class="col button button-fill" translate="SAVE"></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main ios-edges">
             <div class="page" data-name="info">
@@ -135,8 +70,74 @@
                     </div>
                 </div>
             </div>
+
+            <div class="page" data-name="filter" ng-controller="filterCtrl">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a href="#" class="link back">
+                                <i class="icon icon-back"></i>
+                                <span class="ios-only">Back</span>
+                            </a>
+                        </div>
+                        <div class="title" translate="OPTIONS"></div>
+                    </div>
+                </div>
+                <form class="page-content" ng-submit="saveData()">
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="item-content item-input item-input-with-value">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label" translate="COIN"></div>
+                                        <div class="item-input-wrap">
+                                            <select name="gender" class="input-with-value" ng-model="cad.coin" ng-options="c for c in coins" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input item-input-with-value">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label" translate="Time Update ('s)"></div>
+                                        <div class="item-input-wrap">
+                                            <select name="gender" class="input-with-value" ng-model="cad.time" ng-options="c for c in time" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input item-input-with-value">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label" translate="LANGUAGE"></div>
+                                        <div class="item-input-wrap">
+                                            <select name="gender" class="input-with-value" ng-model="cad.lang" ng-options="c for c in lang" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content item-input item-input-with-value">
+                                    <div class="item-inner">
+                                        <div class="item-title item-label" translate="SHOW COINS"></div>
+                                        <div class="item-input-wrap">
+                                            <select name="gender" class="input-with-value" ng-model="cad.limit" ng-options="c for c in limitCoins" required></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="block">
+                        <div class="row">
+                            <button class="col button button-fill" translate="SAVE"></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <!-- Page, data-name contains page name which can be used in callbacks -->
-            <div class="page" data-name="home">
+            <div class="page page-home" data-name="home">
                 <div class="progressbar-infinite color-multi" ng-show="IS_LOADING"></div>
                 <!-- Top Navbar -->
                 <div class="navbar" ng-controller="navbarCtrl">
@@ -151,13 +152,9 @@
                                 <i class="icon f7-icons ios-only">refresh</i>
                                 <i class="icon material-icons md-only">refresh</i>
                             </a>
-                            <a href="#" class="link icon-only panel-open" data-panel="right">
-                                <i class="icon f7-icons ios-only">filter</i>
-                                <i class="icon material-icons md-only">filter_list</i>
-                            </a>
-                            <a href="/info/" class="link icon-only">
-                                <i class="icon f7-icons ios-only">info</i>
-                                <i class="icon material-icons md-only">info</i>
+                            <a href="#" class="link icon-only popover-open" data-popover=".popover-links">
+                                <i class="icon f7-icons ios-only">menu</i>
+                                <i class="icon material-icons md-only">menu</i>
                             </a>
                         </div>
                         <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
@@ -339,6 +336,35 @@
                                         <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h'] | number:2}}%
                                     </div>
                                 </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popover popover-links">
+                <div class="popover-inner">
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a class="list-button item-link popover-close" href="/filter/">
+                                    Filter
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-button item-link popover-close" href="/info/">
+                                    Information
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-button item-link popover-close" href="#">
+                                    Courses
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-button item-link popover-close" href="#">
+                                    Exchanges
+                                </a>
                             </li>
                         </ul>
                     </div>

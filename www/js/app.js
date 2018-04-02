@@ -41,7 +41,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         });
 
         var hasSelect = false;
-        $$('.panel-right').on('panel:open', function () {
+        $$(document).on('page:init', '.page[data-name="filter"]', function (e) {
             if (!hasSelect) {
                 hasSelect = true;
                 var smartSelect = app.smartSelect.create({
@@ -58,9 +58,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
             searchIn: '.item-title,.item-after',
             on: {
                 search(sb, query, previousQuery) {
-                    $timeout(function () {
-                        $rootScope.IS_LOADING = true;
-                    });
+
                 }
             }
         });
@@ -80,7 +78,7 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
 ]);
 
 angular.module("controller.app", ['service.app'])
-    .controller("panelRightCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout',
+    .controller("filterCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout',
         function ($scope, $rootScope, filtroService, $timeout) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
