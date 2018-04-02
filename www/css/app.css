@@ -19,6 +19,11 @@ body {
     text-align: center;
 }
 
+.page-include .page-content {
+    height: 100vh;
+    padding-top: 0 !important;
+}
+
 .page-home .item-content {
     cursor: pointer;
 }
@@ -40,6 +45,7 @@ body {
 }
 
 /* SWIPER */
+
 .demo-swiper .swp-img-content {
     text-align: center;
 }

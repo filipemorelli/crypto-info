@@ -34,33 +34,34 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
             url: '/'
         });
 
+        var hasSelect = false;
+        $rootScope.$on('$includeContentLoaded', function (event, templateName) {
+            $timeout(function () {
+                if (!hasSelect) {
+                    hasSelect = true;
+                    var smartSelect = app.smartSelect.create({
+                        el: '.smart-select'
+                    });
+
+                    // create searchbar
+                    var searchbar = window.app.searchbar.create({
+                        el: '.searchbar',
+                        searchContainer: '.list-search',
+                        searchIn: '.item-title,.item-after',
+                        on: {
+                            search(sb, query, previousQuery) {
+
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
         // In page events:
         $$(document).on('page:init', function (e) {
             // Page Data contains all required information about loaded and initialized page
             var page = e.detail;
-        });
-
-        var hasSelect = false;
-        $$(document).on('page:init', '.page[data-name="filter"]', function (e) {
-            if (!hasSelect) {
-                hasSelect = true;
-                var smartSelect = app.smartSelect.create({
-                    el: '.smart-select'
-                });
-
-            }
-        });
-
-        // create searchbar
-        var searchbar = window.app.searchbar.create({
-            el: '.searchbar',
-            searchContainer: '.list-search',
-            searchIn: '.item-title,.item-after',
-            on: {
-                search(sb, query, previousQuery) {
-
-                }
-            }
         });
     }
 ]);

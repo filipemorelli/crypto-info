@@ -1,0 +1,63 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="left">
+            <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+                <span class="ios-only">Back</span>
+            </a>
+        </div>
+        <div class="title" translate="OPTIONS"></div>
+    </div>
+</div>
+<form class="page-content" ng-submit="saveData()">
+    <div class="list">
+        <ul>
+            <li>
+                <div class="item-content item-input item-input-with-value">
+                    <div class="item-inner">
+                        <div class="item-title item-label" translate="COIN"></div>
+                        <div class="item-input-wrap">
+                            <select name="gender" class="input-with-value" ng-model="cad.coin" ng-options="c for c in coins" required></select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content item-input item-input-with-value">
+                    <div class="item-inner">
+                        <div class="item-title item-label" translate="Time Update ('s)"></div>
+                        <div class="item-input-wrap">
+                            <select name="gender" class="input-with-value" ng-model="cad.time" ng-options="c for c in time" required></select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content item-input item-input-with-value">
+                    <div class="item-inner">
+                        <div class="item-title item-label" translate="LANGUAGE"></div>
+                        <div class="item-input-wrap">
+                            <select name="gender" class="input-with-value" ng-model="cad.lang" ng-options="c for c in lang" required></select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item-content item-input item-input-with-value">
+                    <div class="item-inner">
+                        <div class="item-title item-label" translate="SHOW COINS"></div>
+                        <div class="item-input-wrap">
+                            <select name="gender" class="input-with-value" ng-model="cad.limit" ng-options="c for c in limitCoins" required></select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <div class="row">
+            <button class="col button button-fill" translate="SAVE"></button>
+        </div>
+    </div>
+</form>

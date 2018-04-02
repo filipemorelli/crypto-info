@@ -34,107 +34,11 @@
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main ios-edges">
             <div class="page page-info" data-name="info">
-                <div class="navbar">
-                    <div class="navbar-inner sliding">
-                        <div class="left">
-                            <a href="#" class="link back">
-                                <i class="icon icon-back"></i>
-                                <span class="ios-only">Back</span>
-                            </a>
-                        </div>
-                        <div class="title" translate="INFORMATION"></div>
-                    </div>
-                </div>
-                <div class="page-content">
-                    <div class="block-title" translate="APP_NAME"></div>
-                    <div class="block block-strong">
-                        <p translate="HELLO FROM THE APP_NAME TEAM. WE HOPE YOU ENJOY USING APP_NAME!" translate-values="NAME_APP"></p>
-                        <p translate="THIS APPLICATION IS TOTALLY FREE, FRUIT OF MUCH EFFORT AND VOLUNTARY DEDICATION."></p>
-                        <p translate="APP_NAME HAS FULL-TIME DEVELOPERS WHO DEPEND ON YOUR CONTRIBUTIONS AND SUPPORT. WE'RE RELYING ON YOU, BUT WE THINK IT'S THE DECENT THING TO DO."
-                            translate-values="NAME_APP"></p>
-                        <p translate="PLEASE PAY AS MUCH AS YOU CAN, BECAUSE IF YOU CHANGE YOUR MIND, YOU HAVE 60 DAYS TO GET A REFUND! ARE WE NAIVE IN TRUSTING YOU TO REPAY US? I THINK WE'LL FIND OUT :)"></p>
-                    </div>
-
-                    <div class="block-title" translate="DONATION"></div>
-                    <div class="block block-strong">
-                        <div class="row center">
-                            <div class="col">
-                                <a class="external" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SLS7A6UKU754N" target="_blank">
-                                    <img ng-src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal - The safer, easier way to pay online!">
-                                </a>
-                            </div>
-                            <div class="col">
-                                <img src="img/qr-carteira.png" alt="19CVSFkHEwFKk7fziNkkpcob8uQnMA9yis" title="19CVSFkHEwFKk7fziNkkpcob8uQnMA9yis">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="page-include" ng-include="'pages/info.html'"></div>
             </div>
 
             <div class="page" data-name="filter" ng-controller="filterCtrl">
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="left">
-                            <a href="#" class="link back">
-                                <i class="icon icon-back"></i>
-                                <span class="ios-only">Back</span>
-                            </a>
-                        </div>
-                        <div class="title" translate="OPTIONS"></div>
-                    </div>
-                </div>
-                <form class="page-content" ng-submit="saveData()">
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <div class="item-content item-input item-input-with-value">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label" translate="COIN"></div>
-                                        <div class="item-input-wrap">
-                                            <select name="gender" class="input-with-value" ng-model="cad.coin" ng-options="c for c in coins" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content item-input item-input-with-value">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label" translate="Time Update ('s)"></div>
-                                        <div class="item-input-wrap">
-                                            <select name="gender" class="input-with-value" ng-model="cad.time" ng-options="c for c in time" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content item-input item-input-with-value">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label" translate="LANGUAGE"></div>
-                                        <div class="item-input-wrap">
-                                            <select name="gender" class="input-with-value" ng-model="cad.lang" ng-options="c for c in lang" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="item-content item-input item-input-with-value">
-                                    <div class="item-inner">
-                                        <div class="item-title item-label" translate="SHOW COINS"></div>
-                                        <div class="item-input-wrap">
-                                            <select name="gender" class="input-with-value" ng-model="cad.limit" ng-options="c for c in limitCoins" required></select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="block">
-                        <div class="row">
-                            <button class="col button button-fill" translate="SAVE"></button>
-                        </div>
-                    </div>
-                </form>
+                <div class="page-include" ng-include="'pages/filter.html'"></div>
             </div>
             <!-- Page, data-name contains page name which can be used in callbacks -->
             <div class="page page-home" data-name="home">
@@ -173,7 +77,7 @@
                 <div class="page-content" ng-controller="coinsCtrl">
 
                     <div class="block searchbar-hide-on-search no-padding-left no-padding-right" ng-show="showTop5">
-                        <div data-swiper='{"speed":400, "spaceBetween":0, "autoplay": {"delay": 5000}, "grabCursor": true, "loop": false}' class="swiper-container swiper-init demo-swiper">
+                        <div data-swiper='{"speed":400, "spaceBetween":0, "autoplay": {"delay": 5000}, "grabCursor": true, "loop": true}' class="swiper-container swiper-init demo-swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide no-padding-left no-padding-right">
                                     <div class="swp-img-content">
