@@ -33,7 +33,7 @@
 
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main ios-edges">
-            <div class="page" data-name="info">
+            <div class="page page-info" data-name="info">
                 <div class="navbar">
                     <div class="navbar-inner sliding">
                         <div class="left">
@@ -42,7 +42,7 @@
                                 <span class="ios-only">Back</span>
                             </a>
                         </div>
-                        <div class="title">Info</div>
+                        <div class="title" translate="INFORMATION"></div>
                     </div>
                 </div>
                 <div class="page-content">
@@ -347,17 +347,15 @@
                     <div class="list">
                         <ul>
                             <li>
-                                <a class="list-button item-link popover-close" href="/filter/">
-                                    Filter
+                                <a class="list-button item-link popover-close" href="/filter/" translate="FILTER">
                                 </a>
                             </li>
                             <li>
-                                <a class="list-button item-link popover-close" href="/info/">
-                                    Information
+                                <a class="list-button item-link popover-close" href="/info/" translate="INFORMATION">
                                 </a>
                             </li>
                             <li>
-                                <a class="list-button item-link popover-close" href="#">
+                                <a class="list-button item-link popover-close" ng-href="/course/{{LANG}}/">
                                     Courses
                                 </a>
                             </li>

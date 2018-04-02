@@ -33,7 +33,7 @@ body {
     color: #212121;
 }
 
-#tab-3 .center {
+.page-info .center {
     justify-content: center;
     align-items: center;
     text-align: center;
