@@ -21,8 +21,8 @@ body {
 
 .page-include .page-content {
     min-height: 100vh;
+    min-height: calc(100vh - 56px);
     padding-top: 0 !important;
-    padding-bottom: 56px;
 }
 
 .page-home .item-content {
