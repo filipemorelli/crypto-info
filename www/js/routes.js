@@ -2,65 +2,8 @@ routes = [{
         "path": "/",
         "url": "./index.html"
     }, {
-        "path": "/electron-home/",
-        "url": "./pages/course/app-electron-home.html"
-    }, {
-        "path": "/electron-visao-geral/",
-        "url": "./pages/course/app-electron-visao-geral.html"
-    }, {
-        "path": "/electron-instalacao/",
-        "url": "./pages/course/app-electron-instalacao.html"
-    }, {
-        "path": "/como-o-electron-funciona/",
-        "url": "./pages/course/app-como-o-electron-funciona.html"
-    }, {
-        "path": "/electron-hello-world/",
-        "url": "./pages/course/app-electron-hello-world.html"
-    }, {
-        "path": "/on-line-de-construcao-eletronica/",
-        "url": "./pages/course/app-on-line-de-construcao-eletronica.html"
-    }, {
-        "path": "/electron-manipulacao-de-arquivos/",
-        "url": "./pages/course/app-electron-manipulacao-de-arquivos.html"
-    }, {
-        "path": "/bibliotecas-eletronicas-nativo-nativo/",
-        "url": "./pages/course/app-bibliotecas-eletronicas-nativo-nativo.html"
-    }, {
-        "path": "/inter-process-communication/",
-        "url": "./pages/course/app-electron-inter-process-communication.html"
-    }, {
-        "path": "/diagramas-de-dialogo-eletronico-sistema/",
-        "url": "./pages/course/app-diagramas-de-dialogo-eletronico-sistema.html"
-    }, {
-        "path": "/electron-menus/",
-        "url": "./pages/course/app-electron-menus.html"
-    }, {
-        "path": "/electron-system-tray/",
-        "url": "./pages/course/app-electron-system-tray.html"
-    }, {
-        "path": "/electron-notificacoes/",
-        "url": "./pages/course/app-electron-notificacoes.html"
-    }, {
-        "path": "/electron-webview/",
-        "url": "./pages/course/app-electron-webview.html"
-    }, {
-        "path": "/electron-captura-de-audio-e-video/",
-        "url": "./pages/course/app-electron-captura-de-audio-e-video.html"
-    }, {
-        "path": "/electron-definicao-de-atalhos/",
-        "url": "./pages/course/app-electron-definicao-de-atalhos.html"
-    }, {
-        "path": "/electron-variaveis-de-ambiente/",
-        "url": "./pages/course/app-electron-variaveis-de-ambiente.html"
-    }, {
-        "path": "/electron-depuracao/",
-        "url": "./pages/course/app-electron-depuracao.html"
-    }, {
-        "path": "/electron-packaging-apps/",
-        "url": "./pages/course/app-electron-packaging-apps.html"
-    }, {
-        "path": "/electron-recursos/",
-        "url": "./pages/course/app-electron-recursos.html"
+        "path": "/info/",
+        "el": document.querySelector('.page[data-name="info"]'),
     }, {
         "path": "(.*)",
         "url": "./pages/404.html"
