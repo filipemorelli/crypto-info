@@ -5,6 +5,9 @@ routes = [{
     "path": "/info/",
     "el": document.querySelector('.page[data-name="info"]'),
 }, {
+    "path": "/donation/",
+    "el": document.querySelector('.page[data-name="donation"]'),
+}, {
     "path": "/filter/",
     "el": document.querySelector('.page[data-name="filter"]'),
 }, {
