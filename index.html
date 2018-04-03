@@ -12,14 +12,23 @@
               * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                   * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#2196f3">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
-    <title>Crypto Info</title>
+    <title>Crypto Info - Information all time about crypto currency prices</title>
+    <meta name="robots" content="all">
+    <meta name="description" content="Crypto Info  is a web site that wants you to know the price of crypto coins all the time.">
+    <meta name="keywords" content="crypto currencies, coins, crypto coins, bitcoin, ethereum, litecoin, quotation, quotation crypto currencies">
+    <meta property="og:url" content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Crypto Info - Information all time about crypto currency prices" />
+    <meta property="og:description" content="Crypto Info  is a web site that wants you to know the price of crypto coins all the time."
+    />
+    <meta property="og:image" content="icon.png" />
 
     <link rel="stylesheet" href="framework7/css/framework7.min.css">
     <link rel="stylesheet" href="css/icons.css">
@@ -32,80 +41,30 @@
         <!-- Status bar overlay for fullscreen mode-->
         <div class="statusbar"></div>
 
-        <!-- Left panel with cover effect-->
-        <div class="panel panel-right panel-cover" ng-controller="panelRightCtrl">
-            <div class="view">
-                <div class="page">
-                    <div class="navbar">
-                        <div class="navbar-inner">
-                            <div class="title" translate="OPTIONS"></div>
-                        </div>
-                    </div>
-                    <form class="page-content" ng-submit="saveData()">
-                        <div class="list">
-                            <ul>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="COIN"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.coin" ng-options="c for c in coins" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="Time Update ('s)"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.time" ng-options="c for c in time" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="LANGUAGE"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.lang" ng-options="c for c in lang" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="item-content item-input item-input-with-value">
-                                        <div class="item-inner">
-                                            <div class="item-title item-label" translate="SHOW COINS"></div>
-                                            <div class="item-input-wrap">
-                                                <select name="gender" class="input-with-value" ng-model="cad.limit" ng-options="c for c in limitCoins" required></select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="block">
-                            <div class="row">
-                                <button class="col button button-fill" translate="SAVE"></button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main ios-edges">
+            <div class="page page-info" data-name="info">
+                <div class="page-include" ng-include="'pages/info.html'"></div>
+            </div>
+
+            <div class="page page-filter" data-name="filter" ng-controller="filterCtrl">
+                <div class="page-include" ng-include="'pages/filter.html'"></div>
+            </div>
+
+            <div class="page page-donation" data-name="donation">
+                <div class="page-include" ng-include="'pages/donation.html'"></div>
+            </div>
+
+            <div class="page page-courses" data-name="courses-ptbr">
+                <div class="page-include" ng-include="'pages/courses/courses-ptbr.html'"></div>
+            </div>
             <!-- Page, data-name contains page name which can be used in callbacks -->
-            <div class="page" data-name="home">
+            <div class="page page-home" data-name="home">
                 <div class="progressbar-infinite color-multi" ng-show="IS_LOADING"></div>
                 <!-- Top Navbar -->
                 <div class="navbar" ng-controller="navbarCtrl">
                     <div class="navbar-inner">
-                        <div class="title sliding">Crypto Info</div>
+                        <div class="title sliding" translate="APP_NAME">Crypto Info</div>
                         <div class="right">
                             <a href="#" class="link icon-only searchbar-enable" data-searchbar=".searchbar-demo">
                                 <i class="icon f7-icons ios-only">search</i>
@@ -115,9 +74,9 @@
                                 <i class="icon f7-icons ios-only">refresh</i>
                                 <i class="icon material-icons md-only">refresh</i>
                             </a>
-                            <a href="#" class="link icon-only panel-open" data-panel="right">
-                                <i class="icon f7-icons ios-only">filter</i>
-                                <i class="icon material-icons md-only">filter_list</i>
+                            <a href="#" class="link icon-only popover-open" data-popover=".popover-links">
+                                <i class="icon f7-icons ios-only">menu</i>
+                                <i class="icon material-icons md-only">menu</i>
                             </a>
                         </div>
                         <form data-search-container=".search-list" data-search-in=".item-title" class="searchbar searchbar-expandable searchbar-demo searchbar-init">
@@ -132,249 +91,184 @@
                         </form>
                     </div>
                 </div>
-                <div class="toolbar tabbar tabbar-labels">
-                    <div class="toolbar-inner">
-                        <a href="#tab-1" class="tab-link tab-link-active">
-                            <i class="icon f7-icons">money_dollar</i>
-                            <span class="tabbar-label" translate="COINS"></span>
-                        </a>
-                        <a href="#tab-2" class="tab-link">
-                            <i class="icon f7-icons">home</i>
-                            <span class="tabbar-label" translate="EXCHANGE"></span>
-                        </a>
-                        <a href="#tab-3" class="tab-link">
-                            <i class="icon f7-icons">info</i>
-                            <span class="tabbar-label" translate="INFO"></span>
-                        </a>
-                    </div>
-                </div>
 
-                <div class="tabs">
-                    <div id="tab-1" class="page-content tab tab-active" ng-controller="coinsCtrl">
+                <div class="page-content" ng-controller="coinsCtrl">
 
-                        <div class="block searchbar-hide-on-search no-padding-left no-padding-right" ng-show="showTop5">
-                            <div data-swiper='{"speed":400, "spaceBetween":0, "autoplay": {"delay": 5000}, "grabCursor": true, "loop": false}' class="swiper-container swiper-init demo-swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide no-padding-left no-padding-right">
-                                        <div class="swp-img-content">
-                                            <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[0].symbol]}}.png" class="currency-logo-sprite"
-                                                alt="{{LIST_COINS[0].symbol}}">
-                                        </div>
-
-                                        <div class="swp-coin-description">
-                                            {{LIST_COINS[0].name}}
-                                            <small>({{LIST_COINS[0].symbol}})</small>
-                                        </div>
-
-                                        <div class="swp-coin-info row margin-top">
-                                            <div class="col">
-                                                <span class="title" translate="LOW"></span>
-                                                {{top5Info.RAW[LIST_COINS[0].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="VOLUME"></span>
-                                                {{LIST_COINS[0][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="HIGH"></span>
-                                                {{top5Info.RAW[LIST_COINS[0].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                        </div>
+                    <div class="block searchbar-hide-on-search no-padding-left no-padding-right" ng-show="showTop5">
+                        <div data-swiper='{"speed":400, "spaceBetween":0, "autoplay": {"delay": 5000}, "grabCursor": true, "loop": true}' class="swiper-container swiper-init demo-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide no-padding-left no-padding-right">
+                                    <div class="swp-img-content">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[0].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS[0].symbol}}">
                                     </div>
-                                    <div class="swiper-slide no-padding-left no-padding-right">
-                                        <div class="swp-img-content">
-                                            <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[1].symbol]}}.png" class="currency-logo-sprite"
-                                                alt="{{LIST_COINS[1].symbol}}">
-                                        </div>
 
-                                        <div class="swp-coin-description">
-                                            {{LIST_COINS[1].name}}
-                                            <small>({{LIST_COINS[1].symbol}})</small>
-                                        </div>
-
-                                        <div class="swp-coin-info row margin-top">
-                                            <div class="col">
-                                                <span class="title" translate="LOW"></span>
-                                                {{top5Info.RAW[LIST_COINS[1].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="VOLUME"></span>
-                                                {{LIST_COINS[1][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="HIGH"></span>
-                                                {{top5Info.RAW[LIST_COINS[1].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                        </div>
+                                    <div class="swp-coin-description">
+                                        {{LIST_COINS[0].name}}
+                                        <small>({{LIST_COINS[0].symbol}})</small>
                                     </div>
-                                    <div class="swiper-slide no-padding-left no-padding-right">
-                                        <div class="swp-img-content">
-                                            <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[2].symbol]}}.png" class="currency-logo-sprite"
-                                                alt="{{LIST_COINS[2].symbol}}">
-                                        </div>
 
-                                        <div class="swp-coin-description">
-                                            {{LIST_COINS[2].name}}
-                                            <small>({{LIST_COINS[2].symbol}})</small>
+                                    <div class="swp-coin-info row margin-top">
+                                        <div class="col">
+                                            <span class="title" translate="LOW"></span>
+                                            {{top5Info.RAW[LIST_COINS[0].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
-
-                                        <div class="swp-coin-info row margin-top">
-                                            <div class="col">
-                                                <span class="title" translate="LOW"></span>
-                                                {{top5Info.RAW[LIST_COINS[2].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="VOLUME"></span>
-                                                {{LIST_COINS[2][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="HIGH"></span>
-                                                {{top5Info.RAW[LIST_COINS[2].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
+                                        <div class="col">
+                                            <span class="title" translate="VOLUME"></span>
+                                            {{LIST_COINS[0][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
                                         </div>
-                                    </div>
-                                    <div class="swiper-slide no-padding-left no-padding-right">
-                                        <div class="swp-img-content">
-                                            <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[3].symbol]}}.png" class="currency-logo-sprite"
-                                                alt="{{LIST_COINS[3].symbol}}">
-                                        </div>
-
-                                        <div class="swp-coin-description">
-                                            {{LIST_COINS[3].name}}
-                                            <small>({{LIST_COINS[3].symbol}})</small>
-                                        </div>
-
-                                        <div class="swp-coin-info row margin-top">
-                                            <div class="col">
-                                                <span class="title" translate="LOW"></span>
-                                                {{top5Info.RAW[LIST_COINS[3].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="VOLUME"></span>
-                                                {{LIST_COINS[3][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="HIGH"></span>
-                                                {{top5Info.RAW[LIST_COINS[3].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide no-padding-left no-padding-right">
-                                        <div class="swp-img-content">
-                                            <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[4].symbol]}}.png" class="currency-logo-sprite"
-                                                alt="{{LIST_COINS[4].symbol}}">
-                                        </div>
-
-                                        <div class="swp-coin-description">
-                                            {{LIST_COINS[4].name}}
-                                            <small>({{LIST_COINS[4].symbol}})</small>
-                                        </div>
-
-                                        <div class="swp-coin-info row margin-top">
-                                            <div class="col">
-                                                <span class="title" translate="LOW"></span>
-                                                {{top5Info.RAW[LIST_COINS[4].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="VOLUME"></span>
-                                                {{LIST_COINS[4][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
-                                            </div>
-                                            <div class="col">
-                                                <span class="title" translate="HIGH"></span>
-                                                {{top5Info.RAW[LIST_COINS[4].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
-                                            </div>
+                                        <div class="col">
+                                            <span class="title" translate="HIGH"></span>
+                                            {{top5Info.RAW[LIST_COINS[0].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
+                                <div class="swiper-slide no-padding-left no-padding-right">
+                                    <div class="swp-img-content">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[1].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS[1].symbol}}">
+                                    </div>
 
-                        <div class="list list-search">
-                            <ul>
-                                <li class="text-center padding" ng-show="showLoading">
-                                    <div class="preloader color-multi"></div>
-                                </li>
-                                <li class="item-content" ng-repeat="c in LIST_COINS track by $index" ng-click="setNotify(c)">
-                                    <div class="item-media">
-                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/32x32/{{COIN_IDS[c.symbol]}}.png" class="currency-logo-sprite"
-                                            alt="{{c.symbol}}">
+                                    <div class="swp-coin-description">
+                                        {{LIST_COINS[1].name}}
+                                        <small>({{LIST_COINS[1].symbol}})</small>
                                     </div>
-                                    <div class="item-inner">
-                                        <div class="item-title">
-                                            <div class="item-header">
-                                                <span ng-bind="c.name + ' (' + c.symbol + ')'"></span>
-                                                <i class="icon f7-icons" ng-if="isNotified(c)">bell_fill</i>
-                                            </div>
-                                            <span ng-bind="c[NAME_PRICE] | currency:SELECTED_COIN+' ':2"></span>
-                                            <div class="item-footer">
-                                                <span translate="VOLUME:"></span>
-                                                <span ng-bind="c[NAME_VOLUME] | currency:SELECTED_COIN+' ':2"></span>
-                                            </div>
+
+                                    <div class="swp-coin-info row margin-top">
+                                        <div class="col">
+                                            <span class="title" translate="LOW"></span>
+                                            {{top5Info.RAW[LIST_COINS[1].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
-                                        <div class="item-after">
-                                            <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h'] | number:2}}
+                                        <div class="col">
+                                            <span class="title" translate="VOLUME"></span>
+                                            {{LIST_COINS[1][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="HIGH"></span>
+                                            {{top5Info.RAW[LIST_COINS[1].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                                <div class="swiper-slide no-padding-left no-padding-right">
+                                    <div class="swp-img-content">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[2].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS[2].symbol}}">
+                                    </div>
+
+                                    <div class="swp-coin-description">
+                                        {{LIST_COINS[2].name}}
+                                        <small>({{LIST_COINS[2].symbol}})</small>
+                                    </div>
+
+                                    <div class="swp-coin-info row margin-top">
+                                        <div class="col">
+                                            <span class="title" translate="LOW"></span>
+                                            {{top5Info.RAW[LIST_COINS[2].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="VOLUME"></span>
+                                            {{LIST_COINS[2][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="HIGH"></span>
+                                            {{top5Info.RAW[LIST_COINS[2].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide no-padding-left no-padding-right">
+                                    <div class="swp-img-content">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[3].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS[3].symbol}}">
+                                    </div>
+
+                                    <div class="swp-coin-description">
+                                        {{LIST_COINS[3].name}}
+                                        <small>({{LIST_COINS[3].symbol}})</small>
+                                    </div>
+
+                                    <div class="swp-coin-info row margin-top">
+                                        <div class="col">
+                                            <span class="title" translate="LOW"></span>
+                                            {{top5Info.RAW[LIST_COINS[3].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="VOLUME"></span>
+                                            {{LIST_COINS[3][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="HIGH"></span>
+                                            {{top5Info.RAW[LIST_COINS[3].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide no-padding-left no-padding-right">
+                                    <div class="swp-img-content">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[4].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS[4].symbol}}">
+                                    </div>
+
+                                    <div class="swp-coin-description">
+                                        {{LIST_COINS[4].name}}
+                                        <small>({{LIST_COINS[4].symbol}})</small>
+                                    </div>
+
+                                    <div class="swp-coin-info row margin-top">
+                                        <div class="col">
+                                            <span class="title" translate="LOW"></span>
+                                            {{top5Info.RAW[LIST_COINS[4].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="VOLUME"></span>
+                                            {{LIST_COINS[4][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                        <div class="col">
+                                            <span class="title" translate="HIGH"></span>
+                                            {{top5Info.RAW[LIST_COINS[4].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
-                    <div id="tab-2" class="page-content tab">
-                        <div class="block">
-                            <p>Tab 2 content</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam enim quia molestiae facilis laudantium
-                                voluptates obcaecati officia cum, sit libero commodi. Ratione illo suscipit temporibus sequi
-                                iure ad laboriosam accusamus?</p>
-                            <p>Saepe explicabo voluptas ducimus provident, doloremque quo totam molestias! Suscipit blanditiis
-                                eaque exercitationem praesentium reprehenderit, fuga accusamus possimus sed, sint facilis
-                                ratione quod, qui dignissimos voluptas! Aliquam rerum consequuntur deleniti.</p>
-                            <p>Totam reprehenderit amet commodi ipsum nam provident doloremque possimus odio itaque, est animi
-                                culpa modi consequatur reiciendis corporis libero laudantium sed eveniet unde delectus a
-                                maiores nihil dolores? Natus, perferendis.</p>
-                            <p>Atque quis totam repellendus omnis alias magnam corrupti, possimus aspernatur perspiciatis quae
-                                provident consequatur minima doloremque blanditiis nihil maxime ducimus earum autem. Magni
-                                animi blanditiis similique iusto, repellat sed quisquam!</p>
-                            <p>Suscipit, facere quasi atque totam. Repudiandae facilis at optio atque, rem nam, natus ratione
-                                cum enim voluptatem suscipit veniam! Repellat, est debitis. Modi nam mollitia explicabo,
-                                unde aliquid impedit! Adipisci!</p>
-                            <p>Deserunt adipisci tempora asperiores, quo, nisi ex delectus vitae consectetur iste fugiat iusto
-                                dolorem autem. Itaque, ipsa voluptas, a assumenda rem, dolorum porro accusantium, officiis
-                                veniam nostrum cum cumque impedit.</p>
-                            <p>Laborum illum ipsa voluptatibus possimus nesciunt ex consequatur rem, natus ad praesentium rerum
-                                libero consectetur temporibus cupiditate atque aspernatur, eaque provident eligendi quaerat
-                                ea soluta doloremque. Iure fugit, minima facere.</p>
-                        </div>
-                    </div>
-                    <div id="tab-3" class="page-content tab">
-                        <div class="block">
-                            <p>Tab 3 content</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam enim quia molestiae facilis laudantium
-                                voluptates obcaecati officia cum, sit libero commodi. Ratione illo suscipit temporibus sequi
-                                iure ad laboriosam accusamus?</p>
-                            <p>Saepe explicabo voluptas ducimus provident, doloremque quo totam molestias! Suscipit blanditiis
-                                eaque exercitationem praesentium reprehenderit, fuga accusamus possimus sed, sint facilis
-                                ratione quod, qui dignissimos voluptas! Aliquam rerum consequuntur deleniti.</p>
-                            <p>Totam reprehenderit amet commodi ipsum nam provident doloremque possimus odio itaque, est animi
-                                culpa modi consequatur reiciendis corporis libero laudantium sed eveniet unde delectus a
-                                maiores nihil dolores? Natus, perferendis.</p>
-                            <p>Atque quis totam repellendus omnis alias magnam corrupti, possimus aspernatur perspiciatis quae
-                                provident consequatur minima doloremque blanditiis nihil maxime ducimus earum autem. Magni
-                                animi blanditiis similique iusto, repellat sed quisquam!</p>
-                            <p>Suscipit, facere quasi atque totam. Repudiandae facilis at optio atque, rem nam, natus ratione
-                                cum enim voluptatem suscipit veniam! Repellat, est debitis. Modi nam mollitia explicabo,
-                                unde aliquid impedit! Adipisci!</p>
-                            <p>Deserunt adipisci tempora asperiores, quo, nisi ex delectus vitae consectetur iste fugiat iusto
-                                dolorem autem. Itaque, ipsa voluptas, a assumenda rem, dolorum porro accusantium, officiis
-                                veniam nostrum cum cumque impedit.</p>
-                            <p>Laborum illum ipsa voluptatibus possimus nesciunt ex consequatur rem, natus ad praesentium rerum
-                                libero consectetur temporibus cupiditate atque aspernatur, eaque provident eligendi quaerat
-                                ea soluta doloremque. Iure fugit, minima facere.</p>
-                        </div>
+
+                    <div class="list list-search">
+                        <ul>
+                            <li class="text-center padding" ng-show="showLoading">
+                                <div class="preloader color-multi"></div>
+                            </li>
+                            <li class="item-content" ng-repeat="c in LIST_COINS track by $index" ng-click="setNotify(c)">
+                                <div class="item-media">
+                                    <img ng-src="https://s2.coinmarketcap.com/static/img/coins/32x32/{{COIN_IDS[c.symbol]}}.png" class="currency-logo-sprite"
+                                        alt="{{c.symbol}}">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title">
+                                        <div class="item-header">
+                                            <span ng-bind="c.name + ' (' + c.symbol + ')'"></span>
+                                            <i class="icon f7-icons" ng-if="isNotified(c)">bell_fill</i>
+                                        </div>
+                                        <span ng-bind="c[NAME_PRICE] | currency:SELECTED_COIN+' ':2"></span>
+                                        <div class="item-footer">
+                                            <span translate="VOLUME:"></span>
+                                            <span ng-bind="c[NAME_VOLUME] | currency:SELECTED_COIN+' ':2"></span>
+                                        </div>
+                                    </div>
+                                    <div class="item-after">
+                                        <i class="f7-icons change-icon" ng-class="c['percent_change_24h'] >= 0 ? 'text-green' : 'text-red'" ng-bind="c['percent_change_24h'] >= 0 ? 'arrow_up' : 'arrow_down'">arrow_up</i>&nbsp;{{c['percent_change_24h'] | number:2}}%
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
+
+            <div class="popover popover-links">
+                <div ng-include="'pages/popover-menu.html'"></div>
+            </div>
         </div>
+    </div>
     </div>
     <!-- Cordova -->
     <script src="cordova.js"></script>
@@ -398,6 +292,7 @@
 
     <!-- Your custom app scripts -->
     <script src="js/app.js"></script>
+
 </body>
 
 </html>

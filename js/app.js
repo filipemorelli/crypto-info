@@ -15,6 +15,9 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         $rootScope.LANG = filtroService.getLang();
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
         notificationService.notificationActive();
+        $rootScope.NAME_APP = {
+            name: "Crypto Info"
+        };
 
         // Framework7 App main instance
         window.app = new Framework7({
@@ -31,35 +34,34 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
             url: '/'
         });
 
+        var hasSelect = false;
+        $rootScope.$on('$includeContentLoaded', function (event, templateName) {
+            $timeout(function () {
+                if (!hasSelect) {
+                    hasSelect = true;
+                    var smartSelect = app.smartSelect.create({
+                        el: '.smart-select'
+                    });
+
+                    // create searchbar
+                    var searchbar = window.app.searchbar.create({
+                        el: '.searchbar',
+                        searchContainer: '.list-search',
+                        searchIn: '.item-title,.item-after',
+                        on: {
+                            search(sb, query, previousQuery) {
+
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
         // In page events:
         $$(document).on('page:init', function (e) {
             // Page Data contains all required information about loaded and initialized page
             var page = e.detail;
-        });
-
-        var hasSelect = false;
-        $$('.panel-right').on('panel:open', function () {
-            if (!hasSelect) {
-                hasSelect = true;
-                var smartSelect = app.smartSelect.create({
-                    el: '.smart-select'
-                });
-
-            }
-        });
-
-        // create searchbar
-        var searchbar = window.app.searchbar.create({
-            el: '.searchbar',
-            searchContainer: '.list-search',
-            searchIn: '.item-title,.item-after',
-            on: {
-                search(sb, query, previousQuery) {
-                    $timeout(function () {
-                        $rootScope.IS_LOADING = true;
-                    });
-                }
-            }
         });
     }
 ]);
@@ -68,7 +70,7 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
     "$translateProvider",
     function ($translateProvider) {
         $translateProvider.useStaticFilesLoader({
-            'prefix': '/crypto-info/translations/',
+            'prefix': '/translations/',
             'suffix': '.json'
         });
         var lang = getLang();
@@ -77,7 +79,7 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
 ]);
 
 angular.module("controller.app", ['service.app'])
-    .controller("panelRightCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout',
+    .controller("filterCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout',
         function ($scope, $rootScope, filtroService, $timeout) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
@@ -109,6 +111,17 @@ angular.module("controller.app", ['service.app'])
             $scope.reload = function () {
                 window.location.reload();
             };
+        }
+    ])
+    .controller("coursesPtBrCtrl", ['$scope', 'courseService',
+        function ($scope, courseService) {
+            $scope.courses = [];
+            courseService.ptBr().then(
+                function (res) {
+                    var data = res.data;
+                    $scope.courses = data;
+                }
+            );
         }
     ])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
@@ -149,7 +162,6 @@ angular.module("controller.app", ['service.app'])
                     .success(function (data) {
                         $timeout(function () {
                             $scope.top5Info = data;
-                            console.log(data);
                             $scope.showTop5 = true;
                         }, 0);
                     })
@@ -236,7 +248,7 @@ angular.module("service.app", [])
             };
 
             this.getTimeRefresh = function () {
-                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 60;
+                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 1;
             };
 
             this.setRangeValuesSearch = function (values) {
@@ -346,7 +358,14 @@ angular.module("service.app", [])
             };
 
             this.getCoinIds = function () {
-                return $http.get("/crypto-info/js/coins.json");
+                return $http.get("/js/coins.json");
+            };
+        }
+    ])
+    .service("courseService", ['$http',
+        function ($http) {
+            this.ptBr = function () {
+                return $http.get("js/courses/courses-ptbr.json");
             };
         }
     ]);
