@@ -358,7 +358,7 @@ angular.module("service.app", [])
             };
 
             this.getCoinIds = function () {
-                return $http.get("/js/coins.json");
+                return $http.get("js/coins.json");
             };
         }
     ])
