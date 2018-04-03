@@ -129,7 +129,7 @@ angular.module("controller.app", ['service.app'])
 
             $scope.showLoading = false;
             $scope.showTop5 = false;
-            $scope.top5Info = {};
+            $scope.top5Info = coinsService.getTop5();
 
             function getCoins() {
                 $rootScope.IS_LOADING = true;
@@ -162,6 +162,7 @@ angular.module("controller.app", ['service.app'])
                     .success(function (data) {
                         $timeout(function () {
                             $scope.top5Info = data;
+                            coinsService.setTop5(data);
                             $scope.showTop5 = true;
                         }, 0);
                     })
@@ -359,6 +360,14 @@ angular.module("service.app", [])
 
             this.getCoinIds = function () {
                 return $http.get("js/coins.json");
+            };
+
+            this.getTop5 = function (o) {
+                return localStorage.getItem("top5") ? JSON.parse(localStorage.getItem("top5")) : {};
+            };
+
+            this.setTop5 = function (o) {
+                localStorage.setItem("top5", JSON.stringify(o));
             };
         }
     ])
