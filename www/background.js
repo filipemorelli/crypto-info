@@ -5,7 +5,7 @@
 'use strict';
 
 setDefaultLocalStorage();
-var loopTime = parseInt(localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 60);
+var loopTime = parseInt(localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 1);
 getCoins();
 setInterval(function() {
     getCoins();

@@ -248,7 +248,7 @@ angular.module("service.app", [])
             };
 
             this.getTimeRefresh = function () {
-                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 60;
+                return localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 1;
             };
 
             this.setRangeValuesSearch = function (values) {
