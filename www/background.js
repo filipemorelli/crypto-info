@@ -25,7 +25,7 @@ function getCoins() {
                 if (coins[i2].id == newCoins[i1].id && coins[i2].price_usd != newCoins[i1].price_usd) {
                     notify({
                         title: "Crypto Info - (" + newCoins[i1].symbol + ")",
-                        body: newCoins[i1].name + "\n" + getRealCoin() + " " + numberFormat(newCoins[i1][nameCoin()].toFixed(2)),
+                        body: newCoins[i1].name + "\n" + getRealCoin() + " " + numberFormat(parseFloat(newCoins[i1][nameCoin()]).toFixed(2)),
                         icon: "icon.png"
                     });
                     updateCoinValue(i2, newCoins[i1]);
