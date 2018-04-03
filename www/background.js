@@ -91,7 +91,7 @@ function getLangBrowser() {
 }
 
 function getLimitCoin() {
-    return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 500;
+    return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 100;
 };
 
 function setDefaultLocalStorage() {

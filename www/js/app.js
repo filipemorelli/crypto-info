@@ -233,7 +233,7 @@ angular.module("service.app", [])
             };
 
             this.getLimitCoin = function () {
-                return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 500;
+                return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 100;
             };
 
             this.setLang = function (c) {
