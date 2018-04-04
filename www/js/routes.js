@@ -14,6 +14,9 @@ routes = [{
     "path": "/courses/pt-BR/",
     "el": document.querySelector('.page[data-name="courses-ptbr"]'),
 }, {
+    "path": "/exchanges/",
+    "el": document.querySelector('.page[data-name="coming-soon"]'),
+}, {
     "path": "(.*)",
     "url": "./pages/404.html"
 }];
