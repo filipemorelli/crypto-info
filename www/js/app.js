@@ -3,8 +3,8 @@ var $$ = Dom7;
 
 angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 
-angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'notificationService',
-    function ($rootScope, $timeout, filtroService, notificationService) {
+angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'notificationService', 'coinsService',
+    function ($rootScope, $timeout, filtroService, notificationService, coinsService) {
 
         $rootScope.IS_LOADING = false;
         $rootScope.NAME_PRICE = "price_" + filtroService.getRealCoin().toLowerCase();
@@ -14,6 +14,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         $rootScope.SELECTED_COIN = filtroService.getRealCoin();
         $rootScope.LANG = filtroService.getLang();
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
+        $rootScope.LIST_COINS_5 = coinsService.getInfoTop5();
         notificationService.notificationActive();
         $rootScope.NAME_APP = {
             name: "Crypto Info"
@@ -30,7 +31,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         });
 
         // Init/Create main view
-        var mainView = window.app.views.create('.view-main', {
+        window.mainView = window.app.views.create('.view-main', {
             url: '/'
         });
 
@@ -70,7 +71,7 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
     "$translateProvider",
     function ($translateProvider) {
         $translateProvider.useStaticFilesLoader({
-            'prefix': '/translations/',
+            'prefix': 'translations/',
             'suffix': '.json'
         });
         var lang = getLang();
@@ -128,7 +129,7 @@ angular.module("controller.app", ['service.app'])
         function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
             $scope.showLoading = false;
-            $scope.showTop5 = false;
+            $scope.showTop5 = $rootScope.LIST_COINS_5.length ? true : false;
             $scope.top5Info = coinsService.getTop5();
 
             function getCoins() {
@@ -140,7 +141,9 @@ angular.module("controller.app", ['service.app'])
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
                             $rootScope.LIST_COINS = data;
-                            getTop5Cons($rootScope.LIST_COINS);
+                            $rootScope.LIST_COINS_5 = data.slice(0, 5);
+                            coinsService.setInfoTop5($rootScope.LIST_COINS);
+                            getTop5Cons(data);
                         }, 250);
                         notificationService.verifyChangesAndNotify(data);
                     })
@@ -331,6 +334,7 @@ angular.module("service.app", [])
                     for (var i2 in coins) {
                         if (coins[i2].id == newCoins[i1].id && coins[i2].price_usd != newCoins[i1].price_usd) {
                             this.notify({
+                                id: newCoins[i1].rank,
                                 title: "Crypto Info - (" + newCoins[i1].symbol + ")",
                                 body: newCoins[i1].name + "\n" + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' '),
                                 icon: "icon.png"
@@ -367,8 +371,19 @@ angular.module("service.app", [])
             };
 
             this.setTop5 = function (o) {
+                delete o.DISPLAY;
                 localStorage.setItem("top5", JSON.stringify(o));
             };
+
+            this.getInfoTop5 = function (o) {
+                return localStorage.getItem("infoTop5") ? JSON.parse(localStorage.getItem("infoTop5")) : [];
+            };
+
+            this.setInfoTop5 = function (o) {
+                var top5 = o.slice(0, 5);
+                localStorage.setItem("infoTop5", JSON.stringify(top5));
+            };
+
         }
     ])
     .service("courseService", ['$http',

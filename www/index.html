@@ -20,9 +20,10 @@
     <meta name="msapplication-tap-highlight" content="no">
     <title>Crypto Info - Information all time about crypto currency prices</title>
     <meta name="robots" content="all">
-    <meta name="description" content="Crypto Info  is a web site that wants you to know the price of crypto coins all the time.">
+    <meta name="description" content="Crypto Info is a web site that wants you to know the price of crypto coins all the time.">
     <meta name="keywords" content="crypto currencies, coins, crypto coins, bitcoin, ethereum, litecoin, quotation, quotation crypto currencies">
-    <meta property="og:url" content="https://filipemorelli.github.io/crypto-info/" />
+    <meta property="og:url" content="https://filipemorelli.github.io/crypto-info/"
+    />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Crypto Info - Information all time about crypto currency prices" />
     <meta property="og:description" content="Crypto Info  is a web site that wants you to know the price of crypto coins all the time."
@@ -93,136 +94,136 @@
 
                 <div class="page-content" ng-controller="coinsCtrl">
 
-                    <div class="block searchbar-hide-on-search no-padding-left no-padding-right" ng-show="showTop5">
+                    <div class="block searchbar-hide-on-search no-padding-left no-padding-right">
                         <div data-swiper='{"speed":400, "spaceBetween":0, "autoplay": {"delay": 5000}, "grabCursor": true, "loop": true}' class="swiper-container swiper-init demo-swiper">
-                            <div class="swiper-wrapper">
+                            <div class="swiper-wrapper" ng-show="showTop5">
                                 <div class="swiper-slide no-padding-left no-padding-right">
                                     <div class="swp-img-content">
-                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[0].symbol]}}.png" class="currency-logo-sprite"
-                                            alt="{{LIST_COINS[0].symbol}}">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS_5[0].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS_5[0].symbol}}">
                                     </div>
 
                                     <div class="swp-coin-description">
-                                        {{LIST_COINS[0].name}}
-                                        <small>({{LIST_COINS[0].symbol}})</small>
+                                        {{LIST_COINS_5[0].name}}
+                                        <small>({{LIST_COINS_5[0].symbol}})</small>
                                     </div>
 
                                     <div class="swp-coin-info row margin-top">
                                         <div class="col">
                                             <span class="title" translate="LOW"></span>
-                                            {{top5Info.RAW[LIST_COINS[0].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[0].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="VOLUME"></span>
-                                            {{LIST_COINS[0][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                            {{LIST_COINS_5[0][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="HIGH"></span>
-                                            {{top5Info.RAW[LIST_COINS[0].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[0].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide no-padding-left no-padding-right">
                                     <div class="swp-img-content">
-                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[1].symbol]}}.png" class="currency-logo-sprite"
-                                            alt="{{LIST_COINS[1].symbol}}">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS_5[1].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS_5[1].symbol}}">
                                     </div>
 
                                     <div class="swp-coin-description">
-                                        {{LIST_COINS[1].name}}
-                                        <small>({{LIST_COINS[1].symbol}})</small>
+                                        {{LIST_COINS_5[1].name}}
+                                        <small>({{LIST_COINS_5[1].symbol}})</small>
                                     </div>
 
                                     <div class="swp-coin-info row margin-top">
                                         <div class="col">
                                             <span class="title" translate="LOW"></span>
-                                            {{top5Info.RAW[LIST_COINS[1].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[1].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="VOLUME"></span>
-                                            {{LIST_COINS[1][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                            {{LIST_COINS_5[1][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="HIGH"></span>
-                                            {{top5Info.RAW[LIST_COINS[1].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[1].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide no-padding-left no-padding-right">
                                     <div class="swp-img-content">
-                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[2].symbol]}}.png" class="currency-logo-sprite"
-                                            alt="{{LIST_COINS[2].symbol}}">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS_5[2].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS_5[2].symbol}}">
                                     </div>
 
                                     <div class="swp-coin-description">
-                                        {{LIST_COINS[2].name}}
-                                        <small>({{LIST_COINS[2].symbol}})</small>
+                                        {{LIST_COINS_5[2].name}}
+                                        <small>({{LIST_COINS_5[2].symbol}})</small>
                                     </div>
 
                                     <div class="swp-coin-info row margin-top">
                                         <div class="col">
                                             <span class="title" translate="LOW"></span>
-                                            {{top5Info.RAW[LIST_COINS[2].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[2].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="VOLUME"></span>
-                                            {{LIST_COINS[2][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                            {{LIST_COINS_5[2][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="HIGH"></span>
-                                            {{top5Info.RAW[LIST_COINS[2].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[2].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide no-padding-left no-padding-right">
                                     <div class="swp-img-content">
-                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[3].symbol]}}.png" class="currency-logo-sprite"
-                                            alt="{{LIST_COINS[3].symbol}}">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS_5[3].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS_5[3].symbol}}">
                                     </div>
 
                                     <div class="swp-coin-description">
-                                        {{LIST_COINS[3].name}}
-                                        <small>({{LIST_COINS[3].symbol}})</small>
+                                        {{LIST_COINS_5[3].name}}
+                                        <small>({{LIST_COINS_5[3].symbol}})</small>
                                     </div>
 
                                     <div class="swp-coin-info row margin-top">
                                         <div class="col">
                                             <span class="title" translate="LOW"></span>
-                                            {{top5Info.RAW[LIST_COINS[3].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[3].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="VOLUME"></span>
-                                            {{LIST_COINS[3][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                            {{LIST_COINS_5[3][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="HIGH"></span>
-                                            {{top5Info.RAW[LIST_COINS[3].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[3].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="swiper-slide no-padding-left no-padding-right">
                                     <div class="swp-img-content">
-                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS[4].symbol]}}.png" class="currency-logo-sprite"
-                                            alt="{{LIST_COINS[4].symbol}}">
+                                        <img ng-src="https://s2.coinmarketcap.com/static/img/coins/128x128/{{COIN_IDS[LIST_COINS_5[4].symbol]}}.png" class="currency-logo-sprite"
+                                            alt="{{LIST_COINS_5[4].symbol}}">
                                     </div>
 
                                     <div class="swp-coin-description">
-                                        {{LIST_COINS[4].name}}
-                                        <small>({{LIST_COINS[4].symbol}})</small>
+                                        {{LIST_COINS_5[4].name}}
+                                        <small>({{LIST_COINS_5[4].symbol}})</small>
                                     </div>
 
                                     <div class="swp-coin-info row margin-top">
                                         <div class="col">
                                             <span class="title" translate="LOW"></span>
-                                            {{top5Info.RAW[LIST_COINS[4].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[4].symbol][SELECTED_COIN].LOW24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="VOLUME"></span>
-                                            {{LIST_COINS[4][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
+                                            {{LIST_COINS_5[4][NAME_VOLUME] | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                         <div class="col">
                                             <span class="title" translate="HIGH"></span>
-                                            {{top5Info.RAW[LIST_COINS[4].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
+                                            {{top5Info.RAW[LIST_COINS_5[4].symbol][SELECTED_COIN].HIGH24HOUR | currency:SELECTED_COIN+' ':2}}
                                         </div>
                                     </div>
                                 </div>
