@@ -125,6 +125,17 @@ angular.module("controller.app", ['service.app'])
             );
         }
     ])
+    .controller("coursesEnUsCtrl", ['$scope', 'courseService',
+        function ($scope, courseService) {
+            $scope.courses = [];
+            courseService.enUs().then(
+                function (res) {
+                    var data = res.data;
+                    $scope.courses = data;
+                }
+            );
+        }
+    ])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
         function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
@@ -390,6 +401,10 @@ angular.module("service.app", [])
         function ($http) {
             this.ptBr = function () {
                 return $http.get("js/courses/courses-ptbr.json");
+            };
+
+            this.enUs = function () {
+                return $http.get("js/courses/courses-enus.json");
             };
         }
     ]);
