@@ -1,6 +1,6 @@
 {
     "name": "Crypto Info",
-    "description": "Change the current page color",
+    "description": "Crypto Info is a web site that wants you to know the price of crypto coins all the time.",
     "version": "1.0",
     "permissions": [
         "activeTab", "notifications"
