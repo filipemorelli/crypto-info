@@ -26,6 +26,9 @@
     "INFORMATION": "Informação",
     "COURSES": "Cursos",
     "EXCHANGES": "Corretoras",
-    "COMING SOON": "Em Breve",
+    "DO YOU WANT TO BE NOTIFIED ABOUT CURRENCY CHANGE?": "Deseja ser notificado sobre mudança de valor da moeda?",
+    "ADD NOTIFICATION": "Add Notificação",
+    "DO YOU WANT TO REMOVE CURRENCY CHANGE NOTIFICATION?": "Deseja remover notificação sobre mudança de valor da moeda?",
+    "DELETE NOTIFICATION": "Remover Notificação",
     "PAGE UNDER CONSTRUCTION": "Página em construção"
 }
