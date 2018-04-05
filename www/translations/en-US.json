@@ -26,6 +26,9 @@
     "INFORMATION": "Information",
     "COURSES": "Courses",
     "EXCHANGES": "Exchanges",
-    "COMING SOON": "Coming Soon",
-    "PAGE UNDER CONSTRUCTION": "Page under construction"
+    "DO YOU WANT TO BE NOTIFIED ABOUT CURRENCY CHANGE?": "Do you want to be notified about currency change?",
+    "ADD NOTIFICATION": "Add Notification",
+    "DO YOU WANT TO REMOVE CURRENCY CHANGE NOTIFICATION?": "Do you want to remove currency change notification?",
+    "DELETE NOTIFICATION": "Delete Notification",
+    "PAGE UNDER CONSTRUCTION": "Page under contruction"
 }
