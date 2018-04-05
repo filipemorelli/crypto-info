@@ -1,0 +1,4 @@
+User-Agent: *
+Disallow:
+
+Sitemap: https://filipemorelli.github.io/crypto-info/sitemap.xml
