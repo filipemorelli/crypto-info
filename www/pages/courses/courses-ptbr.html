@@ -1,0 +1,25 @@
+<div class="navbar">
+    <div class="navbar-inner sliding">
+        <div class="left">
+            <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+                <span class="ios-only">Back</span>
+            </a>
+        </div>
+        <div class="title" translate="COURSES"></div>
+    </div>
+</div>
+<div class="page-content" ng-controller="coursesPtBrCtrl">
+    <div class="card demo-facebook-card" ng-repeat="c in courses">
+        <div class="card-content card-content-padding">
+            <img ng-src="{{c.img}}" width="100%" />
+            <p ng-bind="c.desc"></p>
+            <p class="likes" ng-bind="c.info"></p>
+        </div>
+        <div class="card-footer">
+            <a ng-href="{{c.buyLink}}" class="link external" target="_blank">Comprar</a>
+            <a ng-href="{{c.pageLink}}" class="link external" target="_blank">Ver</a>
+            <a ng-href="{{c.pageLink}}" class="link external" target="_blank">Desconto</a>
+        </div>
+    </div>
+</div>

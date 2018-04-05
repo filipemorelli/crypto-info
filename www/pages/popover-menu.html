@@ -1,0 +1,30 @@
+<div class="popover-inner">
+    <div class="list">
+        <ul>
+            <li>
+                <a class="list-button item-link popover-close" href="/filter/" translate="OPTIONS">
+                </a>
+            </li>
+            <li>
+                <a class="list-button item-link popover-close" href="/info/" translate="INFORMATION">
+                </a>
+            </li>
+            <li>
+                <span ng-switch="LANG">
+                    <a class="list-button item-link popover-close" href="/courses/pt-BR/" ng-switch-when="pt-BR" translate="COURSES">
+                    </a>
+                    <a class="list-button item-link popover-close" href="/courses/en-US/" ng-switch-when="en-US" translate="COURSES">
+                    </a>
+                </span>
+            </li>
+            <li>
+                <a class="list-button item-link popover-close" href="/exchanges/" translate="EXCHANGES">
+                </a>
+            </li>
+            <li>
+                <a class="list-button item-link popover-close" href="/donation/" translate="DONATION">
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -3,8 +3,8 @@ var $$ = Dom7;
 
 angular.module("app-crypto", ["provider.app", "run.app", "controller.app"]);
 
-angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'notificationService',
-    function ($rootScope, $timeout, filtroService, notificationService) {
+angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'notificationService', 'coinsService',
+    function ($rootScope, $timeout, filtroService, notificationService, coinsService) {
 
         $rootScope.IS_LOADING = false;
         $rootScope.NAME_PRICE = "price_" + filtroService.getRealCoin().toLowerCase();
@@ -14,6 +14,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         $rootScope.SELECTED_COIN = filtroService.getRealCoin();
         $rootScope.LANG = filtroService.getLang();
         $rootScope.LIMIT_COINS = parseInt(filtroService.getLimitCoin());
+        $rootScope.LIST_COINS_5 = coinsService.getInfoTop5();
         notificationService.notificationActive();
         $rootScope.NAME_APP = {
             name: "Crypto Info"
@@ -30,7 +31,7 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         });
 
         // Init/Create main view
-        var mainView = window.app.views.create('.view-main', {
+        window.mainView = window.app.views.create('.view-main', {
             url: '/'
         });
 
@@ -124,12 +125,23 @@ angular.module("controller.app", ['service.app'])
             );
         }
     ])
+    .controller("coursesEnUsCtrl", ['$scope', 'courseService',
+        function ($scope, courseService) {
+            $scope.courses = [];
+            courseService.enUs().then(
+                function (res) {
+                    var data = res.data;
+                    $scope.courses = data;
+                }
+            );
+        }
+    ])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
         function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
 
             $scope.showLoading = false;
-            $scope.showTop5 = false;
-            $scope.top5Info = {};
+            $scope.showTop5 = $rootScope.LIST_COINS_5.length ? true : false;
+            $scope.top5Info = coinsService.getTop5();
 
             function getCoins() {
                 $rootScope.IS_LOADING = true;
@@ -140,7 +152,9 @@ angular.module("controller.app", ['service.app'])
                             $scope.showLoading = false;
                             $rootScope.IS_LOADING = false;
                             $rootScope.LIST_COINS = data;
-                            getTop5Cons($rootScope.LIST_COINS);
+                            $rootScope.LIST_COINS_5 = data.slice(0, 5);
+                            coinsService.setInfoTop5($rootScope.LIST_COINS);
+                            getTop5Cons(data);
                         }, 250);
                         notificationService.verifyChangesAndNotify(data);
                     })
@@ -162,6 +176,7 @@ angular.module("controller.app", ['service.app'])
                     .success(function (data) {
                         $timeout(function () {
                             $scope.top5Info = data;
+                            coinsService.setTop5(data);
                             $scope.showTop5 = true;
                         }, 0);
                     })
@@ -232,7 +247,7 @@ angular.module("service.app", [])
             };
 
             this.getLimitCoin = function () {
-                return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 500;
+                return localStorage.getItem('limitCoin') ? localStorage.getItem('limitCoin') : 100;
             };
 
             this.setLang = function (c) {
@@ -330,9 +345,10 @@ angular.module("service.app", [])
                     for (var i2 in coins) {
                         if (coins[i2].id == newCoins[i1].id && coins[i2].price_usd != newCoins[i1].price_usd) {
                             this.notify({
+                                id: newCoins[i1].rank,
                                 title: "Crypto Info - (" + newCoins[i1].symbol + ")",
                                 body: newCoins[i1].name + "\n" + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' '),
-                                icon: "icon.png"
+                                icon: "https://s2.coinmarketcap.com/static/img/coins/32x32/" + $rootScope.COIN_IDS[newCoins[i1].symbol] + ".png"
                             });
                             this.updateCoinValue(i2, newCoins[i1]);
                         }
@@ -360,12 +376,35 @@ angular.module("service.app", [])
             this.getCoinIds = function () {
                 return $http.get("js/coins.json");
             };
+
+            this.getTop5 = function (o) {
+                return localStorage.getItem("top5") ? JSON.parse(localStorage.getItem("top5")) : {};
+            };
+
+            this.setTop5 = function (o) {
+                delete o.DISPLAY;
+                localStorage.setItem("top5", JSON.stringify(o));
+            };
+
+            this.getInfoTop5 = function (o) {
+                return localStorage.getItem("infoTop5") ? JSON.parse(localStorage.getItem("infoTop5")) : [];
+            };
+
+            this.setInfoTop5 = function (o) {
+                var top5 = o.slice(0, 5);
+                localStorage.setItem("infoTop5", JSON.stringify(top5));
+            };
+
         }
     ])
     .service("courseService", ['$http',
         function ($http) {
             this.ptBr = function () {
                 return $http.get("js/courses/courses-ptbr.json");
+            };
+
+            this.enUs = function () {
+                return $http.get("js/courses/courses-enus.json");
             };
         }
     ]);
@@ -381,3 +420,32 @@ function getLang() {
             return "en-US";
     }
 }
+
+
+function getOfflineMessage() {
+    var messages = {
+        "pt-BR": "O app somente funciona com conexão a internet.",
+        "en-US": "The app only works with internet connection."
+    };
+    return messages[getLang()];
+};
+
+function isOfflineEvent() {
+    var dialog;
+    doWhenOffline();
+    setInterval(function () {
+        doWhenOffline();
+    }, 2500);
+
+    function doWhenOffline() {
+        if (!navigator.onLine) {
+            if (dialog === undefined) {
+                dialog = window.app.dialog.preloader(getOfflineMessage());
+            }
+        } else if (dialog !== undefined) {
+            dialog.close();
+            dialog = undefined;
+        }
+    }
+}
+isOfflineEvent();
