@@ -420,3 +420,32 @@ function getLang() {
             return "en-US";
     }
 }
+
+
+function getOfflineMessage() {
+    var messages = {
+        "pt-BR": "O app somente funciona com conexão a internet.",
+        "en-US": "The app only works with internet connection."
+    };
+    return messages[getLang()];
+};
+
+function isOfflineEvent() {
+    var dialog;
+    doWhenOffline();
+    setInterval(function () {
+        doWhenOffline();
+    }, 2500);
+
+    function doWhenOffline() {
+        if (!navigator.onLine) {
+            if (dialog === undefined) {
+                dialog = window.app.dialog.preloader(getOfflineMessage());
+            }
+        } else if (dialog !== undefined) {
+            dialog.close();
+            dialog = undefined;
+        }
+    }
+}
+isOfflineEvent();
