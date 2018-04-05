@@ -97,8 +97,9 @@ angular.module("controller.app", ['service.app'])
                 filtroService.setTimeRefresh($scope.cad.time);
                 filtroService.setLang($scope.cad.lang);
                 filtroService.setLimitCoin($scope.cad.limit);
+                var textToast = $filter("translate")("SAVED SUCCESSFULLY");
                 window.app.toast.create({
-                    text: 'Salvo com sucesso!',
+                    text: textToast,
                     closeTimeout: 2000,
                 }).open();
                 $timeout(function () {
@@ -199,13 +200,18 @@ angular.module("controller.app", ['service.app'])
             }
 
             $scope.setNotify = function (c) {
+                var msg, title;
                 if (!notificationService.isInArray(c)) {
-                    app.dialog.confirm('Deseja ser notificado sobre mudança de valor da moeda?', 'Add Notificação', function () {
+                    msg = $filter("translate")("DO YOU WANT TO BE NOTIFIED ABOUT CURRENCY CHANGE?");
+                    title = $filter("translate")("ADD NOTIFICATION");
+                    app.dialog.confirm(msg, title, function () {
                         notificationService.addCoin(c);
                         $scope.$apply();
                     });
                 } else {
-                    app.dialog.confirm('Deseja remover notificação sobre mudança de valor da moeda?', 'Remover Notificação', function () {
+                    msg = $filter("translate")("DO YOU WANT TO REMOVE CURRENCY CHANGE NOTIFICATION?");
+                    title = $filter("translate")("DELETE NOTIFICATION");
+                    app.dialog.confirm(msg, title, function () {
                         notificationService.removeCoin(c);
                         $scope.$apply();
                     });
