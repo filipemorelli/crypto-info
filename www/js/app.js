@@ -80,8 +80,8 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
 ]);
 
 angular.module("controller.app", ['service.app'])
-    .controller("filterCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout',
-        function ($scope, $rootScope, filtroService, $timeout) {
+    .controller("filterCtrl", ['$scope', '$rootScope', 'filtroService', '$timeout', '$filter',
+        function ($scope, $rootScope, filtroService, $timeout, $filter) {
             $scope.title = "Price Filter";
             $scope.coins = filtroService.getCoins();
             $scope.time = [1, 2, 3, 5, 10, 20, 30, 60];
@@ -137,8 +137,8 @@ angular.module("controller.app", ['service.app'])
             );
         }
     ])
-    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService',
-        function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService) {
+    .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService', '$filter',
+        function ($scope, $rootScope, coinsService, $interval, $timeout, notificationService, $filter) {
 
             $scope.showLoading = false;
             $scope.showTop5 = $rootScope.LIST_COINS_5.length ? true : false;
