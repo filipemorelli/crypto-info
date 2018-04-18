@@ -83,7 +83,7 @@ angular.module("provider.app", ["pascalprecht.translate"]).config([
     "$translateProvider",
     function ($translateProvider) {
         $translateProvider.useStaticFilesLoader({
-            'prefix': '/translations/',
+            'prefix': '/crypto-info/translations/',
             'suffix': '.json'
         });
         var lang = getLang();

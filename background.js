@@ -7,7 +7,7 @@
 setDefaultLocalStorage();
 var loopTime = parseInt(localStorage.getItem('timeRefresh') ? localStorage.getItem('timeRefresh') : 1);
 getCoins();
-setInterval(function() {
+setInterval(function () {
     getCoins();
 }, 1000 * 60 * loopTime);
 
@@ -17,7 +17,7 @@ function getCoins() {
     q.limit = getLimitCoin();
     q.convert = getRealCoin();
 
-    $.get("https://api.coinmarketcap.com/v1/ticker/?" + $.param(q), {}, function(data) {
+    $.get("https://api.coinmarketcap.com/v1/ticker/?" + $.param(q), {}, function (data) {
         var coins = getCoinsToNotification();
         var newCoins = data;
         for (var i1 in newCoins) {
@@ -25,7 +25,11 @@ function getCoins() {
                 if (coins[i2].id == newCoins[i1].id && coins[i2].price_usd != newCoins[i1].price_usd) {
                     notify({
                         title: "Crypto Info - (" + newCoins[i1].symbol + ")",
-                        body: newCoins[i1].name + "\n" + getRealCoin() + " " + numberFormat(parseFloat(newCoins[i1][nameCoin()]).toFixed(2)),
+                        body: newCoins[i1].name +
+                            "\nOld: " + getRealCoin() + " " + numberFormat(parseFloat(coins[i2][nameCoin()]).toFixed(2)) +
+                            "\nNew: " + getRealCoin() + " " + numberFormat(parseFloat(newCoins[i1][nameCoin()]).toFixed(2)) +
+                            "\nVar: " + getRealCoin() + " " + numberFormat(parseFloat(newCoins[i1][nameCoin()] - coins[i2][nameCoin()]).toFixed(2)) +
+                            "\nPer: " + numberFormat(parseFloat(((newCoins[i1][nameCoin()] / coins[i2][nameCoin()] - 1) * 100)).toFixed(2)) + "%",
                         icon: "icon.png"
                     });
                     updateCoinValue(i2, newCoins[i1]);
