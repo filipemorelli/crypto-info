@@ -399,7 +399,11 @@ angular.module("service.app", [])
                             this.notify({
                                 id: newCoins[i1].rank,
                                 title: "Crypto Info - (" + newCoins[i1].symbol + ")",
-                                body: newCoins[i1].name + "\n" + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' '),
+                                body: newCoins[i1].name +
+                                    "\nOld: " + $filter('currency')(coins[i2][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' ') +
+                                    "\nNew: " + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' ') +
+                                    "\nVar: " + $filter('currency')(newCoins[i1][$rootScope.NAME_PRICE] - coins[i2][$rootScope.NAME_PRICE], $rootScope.SELECTED_COIN + ' ') +
+                                    "\nPer: " + ((newCoins[i1][$rootScope.NAME_PRICE] / coins[i2][$rootScope.NAME_PRICE] - 1) * 100).toFixed(4) + "%",
                                 icon: "https://s2.coinmarketcap.com/static/img/coins/32x32/" + $rootScope.COIN_IDS[newCoins[i1].symbol] + ".png"
                             });
                             this.updateCoinValue(i2, newCoins[i1]);
