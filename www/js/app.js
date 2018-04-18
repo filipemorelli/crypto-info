@@ -388,16 +388,7 @@ angular.module("service.app", [])
             };
 
             this.notify = function (o) {
-                o.color = "#2196f3";
-                if (cordova.plugins) {
-                    cordova.plugins.notification.local.cancel(o.id);
-                    cordova.plugins.notification.local.schedule(o);
-                } else {
-                    setTimeout(function () {
-                        cordova.plugins.notification.local.cancel(o.id);
-                        cordova.plugins.notification.local.schedule(o);
-                    }, 5000);
-                }
+                var notification = new Notification(o.title, o);
             };
 
             this.verifyChangesAndNotify = function (newCoins) {
