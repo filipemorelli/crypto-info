@@ -170,7 +170,7 @@ angular.module("controller.app", ['service.app'])
                 var total = this.qtdeCryptoVenda * this.precoCryptoVenda;
                 var comissionTotal = this.qtdeCryptoVenda * this.precoCryptoVenda * this.comissaoCryptoVenda;
                 var profit = (total - comissionTotal) - this.qtdeCryptoCompra;
-                return profit ? profit.toFixed(2) : 0;
+                return profit ? profit.toFixed(8) : 0;
             };
 
             $scope.percentageProfit = function () {
@@ -179,7 +179,7 @@ angular.module("controller.app", ['service.app'])
                 var amout = total - comissionTotal;
                 var profit = (total - comissionTotal) - this.qtdeCryptoCompra;
                 var percentage = ((amout / this.qtdeCryptoCompra) - 1);
-                return percentage ? (percentage * 100).toFixed(4) + "%" : 0;
+                return percentage ? (percentage * 100).toFixed(8) + "%" : 0;
             };
         }
     ])
