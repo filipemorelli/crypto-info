@@ -30,5 +30,19 @@
     "ADD NOTIFICATION": "Add Notification",
     "DO YOU WANT TO REMOVE CURRENCY CHANGE NOTIFICATION?": "Do you want to remove currency change notification?",
     "DELETE NOTIFICATION": "Delete Notification",
-    "PAGE UNDER CONSTRUCTION": "Page under contruction"
+    "PAGE UNDER CONSTRUCTION": "Page under contruction",
+    "CALCULATOR": "Calculator",
+    "BUY": "Buy",
+    "SELL": "Sell",
+    "AMOUTN INVESTED": "Amount invested",
+    "ENTER THE AMOUNT YOU WANT TO SPEND TO BUY COINS": "Enter the amount you want to spend to buy coins",
+    "PRICE FOR EACH CRYPTO": "Price for each crypto",
+    "ENTER THE PRICE PER CRYPTO YOU WISH TO PAY": "Enter the price per crypto you wish to pay",
+    "COMMISSION": "Commission",
+    "ENTER BROKER COMMISSION": "Enter exchange commission",
+    "TOTAL RECEIVED": "Total Received",
+    "ENTER THE AMOUNT OF CRYPTO-COINS YOU WANT TO SELL": "Enter the amount of crypto-coins you want to sell",
+    "RESULT": "Result",
+    "PROFIT": "Profit",
+    "PERCENTAGE": "Percentage"
 }
