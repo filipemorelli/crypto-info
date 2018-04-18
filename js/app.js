@@ -27,7 +27,11 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
             name: 'Crypto Info', // App name
             theme: 'auto', // Automatic theme detection
             // App routes
-            routes: routes
+            routes: routes,
+            touch: {
+                tapHold: true,
+                disableContextMenu: false
+            }
         });
 
         // Init/Create main view
@@ -63,6 +67,14 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
         $$(document).on('page:init', function (e) {
             // Page Data contains all required information about loaded and initialized page
             var page = e.detail;
+        });
+
+        $$(document).on('page:beforein', '.page[data-name="calculator"]', function (e) {
+            $$(".fab").hide();
+        });
+
+        $$(document).on('page:beforeout', '.page[data-name="calculator"]', function (e) {
+            $$(".fab").show();
         });
     }
 ]);
@@ -135,6 +147,40 @@ angular.module("controller.app", ['service.app'])
                     $scope.courses = data;
                 }
             );
+        }
+    ])
+    .controller("calculatorCtrl", ['$scope', '$filter',
+        function ($scope, $filter) {
+
+            $scope.totalBuy = function () {
+                var total = this.qtdeCryptoCompra / this.precoCryptoCompra;
+                var comissionTotal = total * this.comissaoCryptoCompra ? total * this.comissaoCryptoCompra : 0;
+                var netTotal = total - comissionTotal;
+                return netTotal ? netTotal.toFixed(8) : 0;
+            };
+
+            $scope.totalSell = function () {
+                var total = this.qtdeCryptoVenda * this.precoCryptoVenda;
+                var comissionTotal = total * this.comissaoCryptoVenda ? total * this.comissaoCryptoVenda : 0;
+                var netTotal = total - comissionTotal;
+                return netTotal ? netTotal.toFixed(8) : 0;
+            };
+
+            $scope.profit = function () {
+                var total = this.qtdeCryptoVenda * this.precoCryptoVenda;
+                var comissionTotal = this.qtdeCryptoVenda * this.precoCryptoVenda * this.comissaoCryptoVenda;
+                var profit = (total - comissionTotal) - this.qtdeCryptoCompra;
+                return profit ? profit.toFixed(2) : 0;
+            };
+
+            $scope.percentageProfit = function () {
+                var total = this.qtdeCryptoVenda * this.precoCryptoVenda;
+                var comissionTotal = this.qtdeCryptoVenda * this.precoCryptoVenda * this.comissaoCryptoVenda;
+                var amout = total - comissionTotal;
+                var profit = (total - comissionTotal) - this.qtdeCryptoCompra;
+                var percentage = ((amout / this.qtdeCryptoCompra) - 1);
+                return percentage ? (percentage * 100).toFixed(4) + "%" : 0;
+            };
         }
     ])
     .controller("coinsCtrl", ['$scope', '$rootScope', 'coinsService', '$interval', '$timeout', 'notificationService', '$filter',
@@ -434,7 +480,7 @@ function getOfflineMessage() {
         "en-US": "The app only works with internet connection."
     };
     return messages[getLang()];
-};
+}
 
 function isOfflineEvent() {
     var dialog;
