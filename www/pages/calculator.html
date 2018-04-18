@@ -1,0 +1,128 @@
+<div class="navbar">
+    <div class="navbar-inner sliding">
+        <div class="left">
+            <a href="#" class="link back">
+                <i class="icon icon-back"></i>
+                <span class="ios-only">Back</span>
+            </a>
+        </div>
+        <div class="title" translate="CALCULATOR"></div>
+    </div>
+</div>
+<div class="page-content">
+    <form name="calculator">
+        <div class="block-title" translate="BUY"></div>
+        <div class="list">
+            <ul>
+                <li class="item-content item-input item-input-with-info">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="AMOUTN INVESTED"></div>
+                            <input type="number" step="any" ng-model="qtdeCryptoCompra" required validate />
+                            <span class="input-clear-button"></span>
+                            <div class="item-input-info" translate="ENTER THE AMOUNT YOU WANT TO SPEND TO BUY COINS"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input item-input-with-info">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="PRICE FOR EACH CRYPTO"></div>
+                            <input type="number" step="any" ng-model="precoCryptoCompra" required validate>
+                            <span class="input-clear-button"></span>
+                            <div class="item-input-info" translate="ENTER THE PRICE PER CRYPTO YOU WISH TO PAY"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input item-input-with-info">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="COMMISSION"></div>
+                            <input type="number" step="any" ng-model="comissaoCryptoCompra" required validate>
+                            <span class="input-clear-button"></span>
+                            <div class="item-input-info" translate="ENTER BROKER COMMISSION"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input item-input-with-info item-input-with-value">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="TOTAL RECEIVED"></div>
+                            <input type="text" step="any" ng-value="totalBuy()" readonly>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="block-title" translate="SELL"></div>
+        <div class="list">
+            <ul>
+                <li class="item-content item-input item-input-with-info">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="AMOUTN INVESTED"></div>
+                            <input type="number" step="any" ng-model="qtdeCryptoVenda" required validate />
+                            <span class="input-clear-button"></span>
+                            <div class="item-input-info" translate="ENTER THE AMOUNT OF CRYPTO-COINS YOU WANT TO SELL"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input item-input-with-info">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="PRICE FOR EACH CRYPTO"></div>
+                            <input type="number" step="any" ng-model="precoCryptoVenda" required validate>
+                            <span class="input-clear-button"></span>
+                            <div class="item-input-info" translate="ENTER THE PRICE PER CRYPTO YOU WISH TO PAY"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input item-input-with-info">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="COMMISSION"></div>
+                            <input type="number" step="any" ng-model="comissaoCryptoVenda" required validate>
+                            <span class="input-clear-button"></span>
+                            <div class="item-input-info" translate="ENTER THE PRICE PER CRYPTO YOU WISH TO PAY"></div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-content item-input item-input-with-info item-input-with-value">
+                    <div class="item-inner">
+                        <div class="item-input-wrap">
+                            <div class="item-title item-floating-label" translate="TOTAL RECEIVED"></div>
+                            <input type="number" step="any" ng-value="totalSell()" readonly>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="block-title" translate="RESULT"></div>
+        <div class="list">
+            <ul>
+                <li>
+                    <span class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <div class="item-header" translate="PROFIT"></div>
+                                {{profit()}}
+                            </div>
+                        </div>
+                    </span>
+                </li>
+                <li>
+                    <span class="item-content">
+                        <div class="item-inner">
+                            <div class="item-title">
+                                <div class="item-header" translate="PERCENTAGE"></div>
+                                {{percentageProfit()}}
+                            </div>
+                        </div>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
