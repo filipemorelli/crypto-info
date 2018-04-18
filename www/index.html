@@ -80,6 +80,10 @@
             <div class="page page-courses" data-name="coming-soon">
                 <div class="page-include" ng-include="'pages/coming-soon.html'"></div>
             </div>
+
+            <div class="page page-courses" data-name="calculator" ng-controller="calculatorCtrl">
+                <div class="page-include" ng-include="'pages/calculator.html'"></div>
+            </div>
             <!-- Page, data-name contains page name which can be used in callbacks -->
             <div class="page page-home" data-name="home">
                 <div class="progressbar-infinite color-multi" ng-show="IS_LOADING"></div>
@@ -284,6 +288,13 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <div class="fab fab-right-bottom">
+                <a href="/calculator/" data-force="true" data-ignore-cache="true">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZBAMAAAA2x5hQAAAALVBMVEUAAAD///////////////////////////////////////////////////////+hSKubAAAADnRSTlMABBAcP0BkbKart8Dk9bMFYT8AAABcSURBVBiVY2BgXwUBKxUYgIDvHRQ4oPACwLxnIJKBkWTeG7AFq6E8VDPRbGB7KJeQJ4iVh6ryzZrX+06d241VJaocqTYIIlwNNEUQ4SNkG8ByWG3ggHLeGjAwAADMM4uPDMr4AwAAAABJRU5ErkJggg=="
+                        width="25px" height="25px" alt="">
+                </a>
             </div>
 
             <div class="popover popover-links">
