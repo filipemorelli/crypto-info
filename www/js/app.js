@@ -68,6 +68,14 @@ angular.module("run.app", []).run(['$rootScope', '$timeout', 'filtroService', 'n
             // Page Data contains all required information about loaded and initialized page
             var page = e.detail;
         });
+
+        $$(document).on('page:beforein', '.page[data-name="calculator"]', function (e) {
+            $$(".fab").hide();
+        });
+
+        $$(document).on('page:beforeout', '.page[data-name="calculator"]', function (e) {
+            $$(".fab").show();
+        });
     }
 ]);
 
