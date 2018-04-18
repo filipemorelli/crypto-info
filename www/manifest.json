@@ -1,7 +1,7 @@
 {
     "name": "Crypto Info",
     "description": "Crypto Info is a web site that wants you to know the price of crypto coins all the time.",
-    "version": "1.2.0",
+    "version": "1.4.0",
     "permissions": [
         "activeTab", "notifications"
     ],
