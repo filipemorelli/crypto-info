@@ -30,5 +30,19 @@
     "ADD NOTIFICATION": "Add Notificação",
     "DO YOU WANT TO REMOVE CURRENCY CHANGE NOTIFICATION?": "Deseja remover notificação sobre mudança de valor da moeda?",
     "DELETE NOTIFICATION": "Remover Notificação",
-    "PAGE UNDER CONSTRUCTION": "Página em construção"
+    "PAGE UNDER CONSTRUCTION": "Página em construção",
+    "CALCULATOR": "Calculadora",
+    "BUY": "Comprar",
+    "SELL": "Vender",
+    "AMOUTN INVESTED":"Quantidade Investida",
+    "ENTER THE AMOUNT YOU WANT TO SPEND TO BUY COINS": "Digite o valor que deseja gastar para comprar moedas",
+    "PRICE FOR EACH CRYPTO": "Preço por cada criptomoeda",
+    "ENTER THE PRICE PER CRYPTO YOU WISH TO PAY": "Digite o preço por crypto que deseja pagar",
+    "COMMISSION": "Comissão",
+    "ENTER BROKER COMMISSION": "Digite a comissão da corretora",
+    "TOTAL RECEIVED": "Total recebido",
+    "ENTER THE AMOUNT OF CRYPTO-COINS YOU WANT TO SELL": "Digite a quantidade de criptomoedas que você quer vender",
+    "RESULT": "Resultado",
+    "PROFIT": "Lucro",
+    "PERCENTAGE": "Porcentagem"
 }
